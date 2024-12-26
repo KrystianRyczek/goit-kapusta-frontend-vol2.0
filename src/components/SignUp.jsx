@@ -17,8 +17,8 @@ export default function SignUp() {
                     initialValues={{name:"", email:"", password:"", passwordConfirmation:""}} 
                     onSubmit={
                       (values, actions)=>{
-                      signUp(values)
-                      actions.resetForm()
+                      signUp(values, actions)
+                      
                       }}>
                     <Form className="register-user-form" name="signUp">
                       <div className="register-input-box">

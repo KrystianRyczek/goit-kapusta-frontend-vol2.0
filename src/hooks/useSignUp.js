@@ -1,20 +1,24 @@
 import * as Yup from 'yup';
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { addUser } from "../redux/auth/operation"
 import { useNavigate } from "react-router";
+import {selectIsRegister} from '../redux/storeSlice';
 
 export const useSignUp=()=>{
 
   const dispach = useDispatch()
   const navigate = useNavigate()
-
+  const isRegister = useSelector(selectIsRegister)
   const clickSignIn=(e)=>{
     navigate("/", {replace: true})
     e.preventDefault()
   }
-  const signUp=(values)=>{
+  const signUp=(values, actions)=>{
     dispach(addUser(values))
-    navigate("/", {replace: true})
+    if(isRegister){
+      actions.resetForm()
+      navigate("/", {replace: true})
+    }
   }
   const ShemaSignUp = Yup.object().shape({
     name: Yup.string()

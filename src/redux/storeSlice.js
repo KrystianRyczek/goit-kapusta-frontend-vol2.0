@@ -47,7 +47,6 @@ const storeSlice = createSlice({
         builder
 //1.addUser
         .addCase(addUser.fulfilled,  (state,action) => {
-            console.log("addUser",action.payload.user)
             state.isError = null
             state.isLoading = false
             state.isRegister = true
