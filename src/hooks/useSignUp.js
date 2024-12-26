@@ -13,7 +13,6 @@ export const useSignUp=()=>{
     e.preventDefault()
   }
   const signUp=(values)=>{
-    console.log(values)
     dispach(addUser(values))
     navigate("/", {replace: true})
   }

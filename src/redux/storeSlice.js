@@ -262,7 +262,7 @@ const storeSlice = createSlice({
     export const selectIncomes = (state)=>state.store.incomes
     export const selectIncomesCat = (state)=>state.store.incomesCat
     export const selectIncomesStat = (state)=>state.store.incomesStat
-    export const selectExpense = (state)=>state.store.expenses
+    export const selectExpenses = (state)=>state.store.expenses
     export const selectExpenseCat = (state)=>state.store.expenseCat
     export const selectExpenseStat = (state)=>state.store.expenseStat
     export const selectTransactionData = (state)=>state.store.TransactionData       

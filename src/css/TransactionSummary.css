@@ -1,6 +1,6 @@
 .transaction-summary-box{
     width: 213px;
-    height: 264px;
+    height: 364px;
     background-color: #F5F6FB;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
@@ -15,11 +15,21 @@
     
 
 }
-.summary-table-row{
+.summary-table-head-p{
     border-bottom: 2px solid #FFFFFF;
     width: 213px;
-    height: 38px;
+    height: 28px;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding:0 20px 0 20px;
+}
+.summary-table-row{
+    border-bottom: 2px solid #FFFFFF;
+    width: 213px;
+    height: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:0 20px 0 20px;
 }

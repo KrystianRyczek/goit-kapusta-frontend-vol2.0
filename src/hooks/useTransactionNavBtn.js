@@ -7,7 +7,6 @@ export const useTransactionNavBtn=()=>{
         if(activeSheet==="expenses"){
             return
         }
-        console.log("change route path")
         return navigate('/transaction/expenses', {replace: true})
     }
 
@@ -15,7 +14,6 @@ export const useTransactionNavBtn=()=>{
         if(activeSheet==="incomes"){
             return
         }
-        console.log("change route path")
         return navigate('/transaction/incomes', {replace: true})
     }
 

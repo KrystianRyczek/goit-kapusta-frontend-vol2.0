@@ -21,6 +21,7 @@
     "react-router-dom": "^7.0.2",
     "recharts": "^2.15.0",
     "redux": "^5.0.1",
+    "uuid": "^11.0.3",
     "yup": "^1.6.1"
   },
   "devDependencies": {

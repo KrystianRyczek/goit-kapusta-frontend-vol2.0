@@ -13,7 +13,6 @@ export const useSignIn=()=>{
   const clickSignUp=(e)=>{
     navigate("/register", {replace: true})
     e.preventDefault()
-    console.log("clickSignUp")
   }
   const SignInShema = Yup.object().shape({
     email: Yup.string()
