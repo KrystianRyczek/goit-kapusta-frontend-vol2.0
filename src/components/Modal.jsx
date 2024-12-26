@@ -36,4 +36,22 @@ export const ConfCloseModal = ({modalIsOpen, modalIsClose, signOutConf})=>{
         );
     }
 
-  
+    export const ConfModal = ({modalIsOpen, deleteModalClose, deleteConf})=>{
+      return (
+          <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={deleteModalClose}
+          style={customStyles}
+          contentLabel="Gallery modal"
+          >
+          <div className='modal-box'>
+              <button onClick={deleteModalClose} className='modal-close-button'>X</button>
+              <p className='modal-p'>Are You sure?</p>
+              <div className='modal-btn-box'>
+              <button onClick={deleteModalClose} className='isInActive'>No</button>
+              <button onClick={deleteConf} className='isActive'>Yes</button>
+              </div>
+          </div>
+          </Modal>
+      );
+  }

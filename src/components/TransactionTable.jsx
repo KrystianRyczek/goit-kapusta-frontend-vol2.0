@@ -2,16 +2,16 @@ import '../css/TransactionTable.css'
 import {useTransactionTable} from '../hooks/useTransactionTable'
 import { v4 as uuidv4 } from 'uuid'
 import delate from '../images/delete-svg.png'
+import { ConfModal } from './Modal'
 
-const transactionTableRow =(row)=>{
-
+const transactionTableRow =(row, deleteTransaction)=>{
   return(
       <div key={uuidv4()} className='transaction-table-row'>
         <p>{row.date}</p>
         <p>{row.description}</p>
         <p>{row.category}</p>
         <p>{row.amount}</p>
-        <button className='transaction-table-delate-btn'>
+        <button onClick ={()=>{deleteTransaction(row.description)}} className='transaction-table-delate-btn'>
           <img src={delate}  alt="Delate icon"/>
         </button>
       </div>
@@ -19,7 +19,7 @@ const transactionTableRow =(row)=>{
 }
 export default function TransactionTable({activeSheet}) {
 
-  const { transactionTableData } =useTransactionTable()
+  const { transactionTableData, deleteTransaction, deleteConf, deleteModalClose , modalIsOpen} =useTransactionTable()
   const transactionData = transactionTableData(activeSheet)
   
     return (
@@ -32,8 +32,13 @@ export default function TransactionTable({activeSheet}) {
           <p className='transaction-table-head'>DELATE</p>
         </div>
         <div className='transaction-table-box'>
-          {transactionData.map((item)=>{return transactionTableRow(item)})}
+          {transactionData.map((item)=>{return transactionTableRow(item, deleteTransaction)})}
         </div>
+        <ConfModal
+          modalIsOpen={modalIsOpen}
+          deleteModalClose={deleteModalClose}
+          deleteConf={deleteConf}
+        />
       </div>
 
               
