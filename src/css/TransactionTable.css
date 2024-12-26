@@ -1,0 +1,53 @@
+.transaction-table-box{
+    width: 746px;
+    height: 382px;
+    background-color: white;
+    overflow-y: scroll;
+    scrollbar-color: red red;
+    scrollbar-width: thin;
+    scrollbs: ;
+    
+}
+.transaction-table-head-container{
+    height: 40px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: #F5F6FB;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+}
+.transaction-table-head{
+    text-align:left;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 14.06px;
+    letter-spacing: 2%;
+}
+.transaction-table-row{
+    height: 40px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border: 2px solid #F5F6FB;
+}
+.transaction-table-head-container > :nth-child(1){
+    margin-left: 28px;
+    width: 88px;
+}
+.transaction-table-head-container > :nth-child(2){
+    margin-left: 21px;
+    width: 129px;
+}
+.transaction-table-head-container > :nth-child(3){
+    margin-left: 56px;
+    width: 179px;
+}
+.transaction-table-head-container > :nth-child(4){
+    margin-left: 17px;
+    width: 109px;
+}
+.transaction-table-head-container > :nth-child(5){
+    margin-left: 10px;
+    width: 70px;
+}

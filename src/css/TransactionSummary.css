@@ -1,0 +1,25 @@
+.transaction-summary-box{
+    width: 213px;
+    height: 264px;
+    background-color: #F5F6FB;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.summary-table-head{
+    text-align:center;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 14.06px;
+    letter-spacing: 2%;
+    
+
+}
+.summary-table-row{
+    border-bottom: 2px solid #FFFFFF;
+    width: 213px;
+    height: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

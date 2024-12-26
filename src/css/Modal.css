@@ -1,0 +1,40 @@
+.modal-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:30px;
+    margin:auto;
+    position: relative;
+}
+.modal-close-button{
+ position: absolute;
+ top:0px;
+ right: 10px;
+}
+.modal-p{
+    margin:30px auto 0px auto;
+    font-size: 20px;
+}
+.modal-btn-box{
+    display: flex;
+    gap:30px;
+}
+
+.isActive{
+    width: 122px;
+    height: 44px;
+    background-color: #FF751D;
+    border-radius: 16px;
+    border: none;
+    color: #FFFFFF;
+    box-shadow: 0px 5px 5px 0px #FF6B0859;
+}
+.isInActive{
+    width: 122px;
+    height: 44px;
+    background-color: #F5F6FB;
+    border-radius: 16px;
+    border: none;
+    color: #52555F;
+    box-shadow: 0px 5px 5px 0px #AAB2C533;
+}

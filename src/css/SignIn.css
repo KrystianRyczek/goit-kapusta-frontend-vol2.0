@@ -1,0 +1,75 @@
+.login-form-container{
+    width: 426px;
+    height: 552px;
+    position: absolute;
+    top: 173px;
+    left: 763px;
+    background-color: #FFFFFF;
+    border-radius: 30px;
+    box-shadow: 0px 10px 10px 0px #AAB2C533;
+}
+.login-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.login-form-p1{
+    margin: 40px auto 0 auto;
+}
+.login-form-auth-btn{
+    width: 120px;
+    height: 40px;
+    background-color: #F6F7FB;
+    border-radius: 26px;
+    margin: 40px auto 0 auto;
+}
+.login-form-p2{
+    margin: 40px auto 40px auto;
+}
+.login-input-box{
+    width: 259px;
+    height: 78px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto 35px auto;
+}
+.sign-in-form-btn-box{
+    position: absolute;
+    bottom: 20px;
+    width: 259px;
+    height: 44px;
+    display: flex;
+    gap: 15px; 
+    margin: 0 auto;
+}
+.login-input{
+    width: 259px;
+    height: 52px;
+    padding-left: 20px;
+    border-radius: 30px;
+    background-color: #F6F7FB;
+    border: none;
+    margin: 0 auto 0 auto;
+}
+.isActive{
+    width: 122px;
+    height: 44px;
+    background-color: #FF751D;
+    border-radius: 16px;
+    border: none;
+    color: #FFFFFF;
+    box-shadow: 0px 5px 5px 0px #FF6B0859;
+}
+.isInActive{
+    width: 122px;
+    height: 44px;
+    background-color: #F5F6FB;
+    border-radius: 16px;
+    border: none;
+    color: #52555F;
+    box-shadow: 0px 5px 5px 0px #AAB2C533;
+}
+.error-msg{
+    color:red;
+}

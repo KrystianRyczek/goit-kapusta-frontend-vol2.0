@@ -1,0 +1,32 @@
+.transaction-nav-btn-container{
+    width: 276px;
+    height: 40px;
+}
+
+
+.sheetIsInActive{
+    width: 138px;
+    height: 40px;
+    background-color: #FAFBFD;
+    border: none;
+    color: #000000;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 14.06px;
+    letter-spacing: 2%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.sheetIsActive{
+    width: 138px;
+    height: 44px;
+    background-color: #FEFEFE;
+    border: none;
+    color: #FF751D;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 14.06px;
+    letter-spacing: 2%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
