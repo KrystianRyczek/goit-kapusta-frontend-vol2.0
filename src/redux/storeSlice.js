@@ -37,12 +37,12 @@ const storeSlice = createSlice({
     //1.readDataFromLocalStorage
     readDataFromLocalStorage: (state, action) => {
       console.log('Readed', action.payload);
-      state = JSON.parse(localStorage.getItem(`kapusta`));
+      state = JSON.parse(localStorage.getItem(`userLocaldata`));
     },
     //2.saveDataToLocalStorage
     saveDataToLocalStorage: (state, action) => {
       console.log('Saved', action.payload);
-      localStorage.setItem(`kapusta`, JSON.stringify(state));
+      localStorage.setItem(`userLocaldata`, JSON.stringify(state));
     },
     //3.selectedDate
     changeSelectedDate: (state, action) => {
