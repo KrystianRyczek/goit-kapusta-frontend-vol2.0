@@ -18,7 +18,7 @@ export default function TransactionSummary({activeSheet}) {
 
 const { summaryTableData } =useTransactionSummary()
 const samaryData = summaryTableData(activeSheet)
-
+console.log("samaryData",samaryData )
   return (
     <div className='transaction-summary-box'>
       <div className='summary-table-head'>

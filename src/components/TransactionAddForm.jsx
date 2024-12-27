@@ -1,10 +1,17 @@
 import '../css/TransactionAddForm.css'
 import calculator from '../images/calculator.svg'
 import {Field, Form, Formik, ErrorMessage} from "formik";
+import {useTransactionAddForm} from '../hooks/useTransactionAddForm'
+import { v4 as uuidv4 } from 'uuid'
+
+const Option = (category)=>{
+  return <option value={category} key={uuidv4()}>{category}</option>
+}
 
 export default function TransactionAddForm({activeSheet}) {
 
-  
+  const { category} = useTransactionAddForm()
+  const selectCategorys = category(activeSheet)
   return (
     <div className='transaction-add-form-container'>
                         <Formik
@@ -30,10 +37,9 @@ export default function TransactionAddForm({activeSheet}) {
                             </div>
                             <div  className="transaction-add-form-category">
                               <Field name="category" as="select" placeholder="Select Category">
-                                  <option value="red">Red</option>
-                                  <option value="green">Green</option>
-                                  <option value="blue">Blue</option>
-                                </Field>
+                                <option defaultValue>Product category</option>
+                                {selectCategorys.map((category)=>{return Option(category)})}
+                              </Field>
                               <div className='error-msg'>
                                 <ErrorMessage name="password" as='div'/>
                               </div>

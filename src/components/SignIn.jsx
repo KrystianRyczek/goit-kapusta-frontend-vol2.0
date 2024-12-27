@@ -2,12 +2,8 @@ import '../css/SignIn.css'
 import {Field, Form, Formik, ErrorMessage} from "formik";
 import {useSignIn} from '../hooks/useSignIn'
 
-
-
-
 export default function SignIn() {
     const {SignInShema, signIn, clickSignUp} = useSignIn()
-
     return (
         <div className='login-form-container'>
 

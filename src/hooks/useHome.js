@@ -7,12 +7,5 @@ export const useHome=()=>{
     const navigate = useNavigate()
     const isLogin = useSelector(selectIsLogin)
 
-
-    useEffect(() => {
-      if(isLogin){
-        navigate("/transaction/expenses", {replace: true})
-      }
-    }, [isLogin]);
-
     return {isLogin}
 }

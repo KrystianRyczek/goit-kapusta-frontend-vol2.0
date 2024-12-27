@@ -31,6 +31,7 @@ const handleRejected = (state, action) => {
 };
 
 const storeSlice = createSlice({
+<<<<<<< Updated upstream
   name: 'store',
   initialState: initialState,
   reducers: {
@@ -38,6 +39,21 @@ const storeSlice = createSlice({
     readDataFromLocalStorage: (state, action) => {
       console.log('Readed', action.payload);
       state = JSON.parse(localStorage.getItem(`kapusta`));
+=======
+    name: 'store',
+    initialState: initialState,
+    reducers:{
+//1.readDataFromLocalStorage
+        readDataFromLocalStorage: (state, action)=>{
+            console.log("Readed",action.payload)
+            state= JSON.parse(localStorage.getItem(`userLocaldata`))
+        },
+//2.saveDataToLocalStorage
+        saveDataToLocalStorage: (state, action)=>{
+            console.log("Saved",action.payload )
+            localStorage.setItem(`userLocaldata`, JSON.stringify(state))
+        },    
+>>>>>>> Stashed changes
     },
     //2.saveDataToLocalStorage
     saveDataToLocalStorage: (state, action) => {
@@ -243,6 +259,7 @@ const storeSlice = createSlice({
   },
 });
 
+<<<<<<< Updated upstream
 export const selectLightTheme = (state) => state.store.lightTheme;
 export const selectIsLoading = (state) => state.store.isLoading;
 export const selectIsError = (state) => state.store.isError;
@@ -268,6 +285,120 @@ export const selectExpenseCat = (state) => state.store.expenseCat;
 export const selectExpenseStat = (state) => state.store.expenseStat;
 export const selectTransactionData = (state) => state.store.transactionData;
 export const selectSelectedDate = (state) => state.store.selectedDate;
+=======
+//          add transation
+            
+        })
+//3.signOutUser      
+        .addCase(signOutUser.fulfilled,  (state,action) => {
+            console.log("signOutUser",action.payload)
+            state.isLoading = false,
+            state.isError = null
+            state.isLogin = false
+            state.isDelate = null
+            state.isRegister = null
+            state.isVerified = null
+            state.token = null
+            state.refreshToken = null
+            state.sesionId = null   
+            state.userName = null
+            state.email = null
+            state.balance = null
+            state.totalIncome = null
+            state.totalExpense = null
+            state.incomes = []
+            state.incomesCat = []
+            state.incomesStat = []
+            state.expenses = []
+            state.expenseCat = []
+            state.expenseStat = []
+            state.transactionData ={}
+        })
+//4.refreshUserToken   not implemented     
+        .addCase(refreshUserToken.fulfilled,  (state,action) => {
+            console.log("refreshUserToken",action.payload)
+            state.isLoading = false
+            state.isError = null
+        })
+//5.addUserIncome
+        .addCase(addUserIncome.fulfilled,  (state,action) => {
+            console.log("addUserIncome",action.payload)
+            state.isLoading = false
+            state.isError = null
+            state.balance = action.payload.newBalance
+        })
+//6.getUserIncome
+        .addCase(getUserIncome.fulfilled,  (state,action) => {
+            console.log("getUserIncome",action.payload.incomes)
+            state.isLoading = false
+            state.isError = null
+            state.incomes = action.payload.incomes
+            //state.incomesStat = action.payload.monthStats
+        })
+//7.addUserExpense
+        .addCase(addUserExpense.fulfilled,  (state,action) => {
+            console.log("addUserExpense",action.payload)
+            state.isLoading = false
+            state.isError = null
+            state.balance = action.payload.newBalance
+        })
+//8.getUserExpense
+        .addCase(getUserExpense.fulfilled,  (state,action) => {
+            console.log("getUserExpense",action.payload.monthStats)
+            state.isLoading = false
+            state.isError = null
+            state.expenses = action.payload.expense
+            state.expenseStat = action.payload.monthStats
+        })
+//9.deleteUserExpense
+        .addCase(deleteUserExpense.fulfilled,  (state,action) => {
+            console.log("deleteUserExpense",action.payload)
+            state.isLoading = false
+            state.isError = null
+            state.isDelate = true
+            state.balance = action.payload.newBalance
+        })
+//10.userIncomeCategory
+        .addCase(userIncomeCategory.fulfilled,  (state,action) => {
+            console.log("userIncomeCategory",action.payload)
+            state.isLoading = false
+            state.isError = null
+            state.incomesCat = action.payload
+        })
+//11.userExpenseCategory
+        .addCase(userExpenseCategory.fulfilled,  (state,action) => {
+            console.log("userExpenseCategory",action.payload)
+            state.isLoading = false
+            state.isError = null
+            state.expenseCat = action.payload
+        })
+//12.userTransactionPeriodDate
+        .addCase(userTransactionPeriodDate.fulfilled,  (state,action) => {
+            console.log("userTransactionPeriodDate",action.payload)
+            state.isLoading = false
+            state.isError = null
+        })
+//13.userDetails
+        .addCase(userDetails.fulfilled,  (state,action) => {
+            console.log("userDetails",action.payload.balance)
+            state.isError = null
+            state.isLoading = false
+            state.isLogin = true
+            //state.userName = action.payload.username
+            //state.email = action.payload.email
+            //state.userID = action.payload.id
+            //state.userAvatar = action.payload.color
+            //state.isVerified = action.payload.veryfi
+            state.balance = action.payload.balance
+            action.payload.userData.transactions.forEach(transaction => {
+                console.log(transaction)
+                // if (transaction.typeOfTransaction.toLowerCase().includes("expense")){
+                //     state.incomes = [...state.incomes, transaction]
+                // }
+                // else if (transaction.typeOfTransaction.toLowerCase().includes("income")){
+                //     state.expenses =[...state.expenses, transaction]
+                // }
+>>>>>>> Stashed changes
 
 export const {
   readDataFromLocalStorage,

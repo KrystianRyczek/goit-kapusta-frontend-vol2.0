@@ -1,14 +1,20 @@
 import '../css/HomePage.css'
-import { Outlet } from "react-router-dom"
+import { Outlet, useNavigate } from "react-router-dom"
 import kapusta from '../images/kapusta-svg.svg'
 import {useHome} from '../hooks/useHome'
+import { useEffect } from 'react'
+
 
 export default function HomePage() {
-  const {isLogin} = useHome()
-  if(isLogin){
-    return(<></>)
-  }
+   const {isLogin} = useHome()
+   const navigate = useNavigate()
+  useEffect(() => {
+    if(isLogin){
+      navigate("/transaction/expenses", {replace: true})
+    }
+  }, [isLogin]);
 
+  
   return (
     <div className="home-page-container">
       <div className='home-page-logo-box'>
