@@ -1,12 +1,9 @@
 import React from 'react';
 import '../../App.css';
 import '../../css/Transaction.css';
-import { selectIncomesStat } from '../../redux/storeSlice';
 import css from './ReportsIconSet.module.css';
-import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
 import { expencesIcons, incomeIcons } from './icons';
-import TransactionNavBtn from '../TransactionNavBtn';
 import ReportNavBtn from '../ReportNavBtn';
 
 export default function ReportsIconSet({
@@ -14,14 +11,10 @@ export default function ReportsIconSet({
   expensesClass,
   incomesClass,
 }) {
-  const incomesStat = useSelector(selectIncomesStat);
   const location = useLocation();
   return (
     <div>
       <div className={css.box}>
-        <h1>
-          {location.pathname === '/reports/expenses' ? 'Expenses' : 'Income'}
-        </h1>
         <ReportNavBtn
           activeSheet={activeSheet}
           expensesClass={expensesClass}
@@ -52,8 +45,6 @@ export default function ReportsIconSet({
                 </div>
               ))}
         </div>
-
-        {/* <div>{`${incomesStat}`}</div> */}
       </div>
     </div>
   );

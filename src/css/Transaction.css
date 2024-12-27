@@ -4,16 +4,40 @@
   flex-direction: column;
 }
 .transaction-sheet {
-  width: 1098px;
-  height: 579px;
+  width: 320px;
+  /* height: 579px; */
   background-color: white;
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
   border-bottom-left-radius: 30px;
   box-shadow: 0px 8px 10px 0px rgba(129, 129, 151, 0.5);
 }
+@media (min-width: 768px) {
+  .transaction-sheet {
+    width: 704px;
+  }
+}
+@media (min-width: 1280px) {
+  .transaction-sheet {
+    width: 1098px;
+    margin-bottom: 50px;
+  }
+}
+
 .transaction-tables-box {
   display: flex;
+  flex-wrap: wrap;
   gap: 74px;
   justify-content: center;
+}
+@media (min-width: 768px) {
+  .transaction-tables-box {
+    gap: 40px;
+  }
+}
+@media (min-width: 1280px) {
+  .transaction-tables-box {
+    width: 1034px;
+    gap: 74px;
+  }
 }

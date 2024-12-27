@@ -1,8 +1,8 @@
-import { BrowserRouter, Routes, Route} from 'react-router-dom'
-import { lazy, Suspense } from "react";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
 import PrivateRoute from './scripts/PrivateRoute';
-import "./App.css";
-import {useApp} from './hooks/useApp'
+import './App.css';
+import { useApp } from './hooks/useApp';
 
 const NavBar = lazy(() => import('./components/NavBar'));
 const Incomes = lazy(() => import('./components/Transaction'));
@@ -14,12 +14,11 @@ const Report = lazy(() => import('./components/Report'));
 const SignIn = lazy(() => import('./components/SignIn'));
 const SignUp = lazy(() => import('./components/SignUp'));
 
-
 function App() {
-  const {useReadLocalStorage, useSaveLocalStorage } =useApp()
+  const { useReadLocalStorage, useSaveLocalStorage } = useApp();
 
-  useReadLocalStorage()
-  useSaveLocalStorage()
+  useReadLocalStorage();
+  useSaveLocalStorage();
   return (
     <>
       <BrowserRouter>
@@ -58,11 +57,23 @@ function App() {
               />
               <Route
                 path="reports/incomes"
-                element={<Report activeSheet={'incomes'} />}
+                element={
+                  <Report
+                    activeSheet={'incomes'}
+                    expensesClass={'sheetIsInActive'}
+                    incomesClass={'sheetIsActive'}
+                  />
+                }
               />
               <Route
                 path="reports/expenses"
-                element={<Report activeSheet={'expenses'} />}
+                element={
+                  <Report
+                    activeSheet={'expenses'}
+                    expensesClass={'sheetIsActive'}
+                    incomesClass={'sheetIsInActive'}
+                  />
+                }
               />
             </Route>
             <Route path="*" element={<NotFoundPage />} />

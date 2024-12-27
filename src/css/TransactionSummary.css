@@ -1,10 +1,11 @@
 .transaction-summary-box{
     width: 213px;
-    height: 364px;
     background-color: #F5F6FB;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
+  /* height: 364px; */
+  margin-bottom: 50px;
 }
 .summary-table-head{
     text-align:center;
