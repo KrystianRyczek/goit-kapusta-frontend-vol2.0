@@ -16,7 +16,7 @@ const SignIn = lazy(() => import('./components/SignIn'));
 const SignUp = lazy(() => import('./components/SignUp'));
 function App() {
   return (
-    <div className="appContainer">
+    <>
       <BrowserRouter>
         <NavBar />
         <Suspense fallback={<div>Loading page...</div>}>
@@ -64,7 +64,7 @@ function App() {
           </Routes>
         </Suspense>
       </BrowserRouter>
-    </div>
+    </>
   );
 }
 
