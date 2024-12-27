@@ -19,6 +19,10 @@ export const initialState ={
     totalExpense:null,
     incomes: [
             {
+  selectedDate: {
+    monthIndex: new Date().getMonth(),
+    year: new Date().getFullYear(),
+  },
       description: "1Transaction's description",
       category: "Продукты",
       amount: 100,

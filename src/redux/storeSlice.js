@@ -164,12 +164,6 @@ const storeSlice = createSlice({
             state.isError = null
             state.expenseCat = action.payload
         })
-//12.userTransactionPeriodDate
-        .addCase(userTransactionPeriodDate.fulfilled,  (state,action) => {
-            console.log("userTransactionPeriodDate",action.payload)
-            state.isLoading = false
-            state.isError = null
-        })
 //13.userDetails
         .addCase(userDetails.fulfilled,  (state,action) => {
             console.log("userDetails",action.payload.balance)
@@ -238,8 +232,19 @@ const storeSlice = createSlice({
             ),
             handleRejected
         )
+    //3.selectedDate
+    changeSelectedDate: (state, action) => {
+      state.selectedDate = action.payload;
+    },
 
     }})
+      //12.userTransactionPeriodDate & selectedDate
+      .addCase(userTransactionPeriodDate.fulfilled, (state, action) => {
+        console.log('userTransactionPeriodDate', action.payload);
+        state.isLoading = false;
+        state.isError = null;
+        state.transactionData = action.payload;
+      })
 
     export const selectLightTheme = (state)=>state.store.lightTheme
     export const selectIsLoading = (state)=>state.store.isLoading
@@ -264,8 +269,13 @@ const storeSlice = createSlice({
     export const selectExpenses = (state)=>state.store.expenses
     export const selectExpenseCat = (state)=>state.store.expenseCat
     export const selectExpenseStat = (state)=>state.store.expenseStat
-    export const selectTransactionData = (state)=>state.store.TransactionData       
+export const selectTransactionData = (state) => state.store.transactionData;
+export const selectSelectedDate = (state) => state.store.selectedDate;
 
-export const { readDataFromLocalStorage,  saveDataToLocalStorage} = storeSlice.actions
+export const {
+  readDataFromLocalStorage,
+  saveDataToLocalStorage,
+  changeSelectedDate,
+} = storeSlice.actions;
 
 export default storeSlice.reducer;         
