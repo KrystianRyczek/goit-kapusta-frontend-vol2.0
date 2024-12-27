@@ -41,12 +41,14 @@
 .dataArrows {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .arrowBtn {
   background: none;
   border: none;
   color: var(--orange);
   font-size: 18px;
+  font-weight: 900;
   cursor: pointer;
   padding: 5px;
 }

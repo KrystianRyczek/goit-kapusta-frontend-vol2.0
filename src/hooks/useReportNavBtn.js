@@ -7,14 +7,14 @@ export const useReportNavBtn = () => {
     if (activeSheet === 'expenses') {
       return;
     }
-    return navigate('/reports/expenses', { replace: true });
+    return navigate('/transaction/reports/expenses', { replace: true });
   };
 
   const navigateOnClickincomes = (activeSheet) => {
     if (activeSheet === 'incomes') {
       return;
     }
-    return navigate('/reports/incomes', { replace: true });
+    return navigate('/transaction/reports/incomes', { replace: true });
   };
 
   return { navigateOnClickExpens, navigateOnClickincomes };
