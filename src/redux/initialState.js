@@ -1,4 +1,7 @@
-const init ={
+
+
+
+export const initialState = {
   lightTheme: true,
   isLoading: false,
   isError: null,
@@ -7,150 +10,104 @@ const init ={
   isRegister: null,
   isVerified: null,
   token: null,
-  refreshToken:null,
+  refreshToken: null,
   sesionId: null,
-  userName: null,
+  userName: 'Olaf',
   email: null,
-  userID: null,
-  userAvatar: null,
+  userID: 1111,
+  userAvatar: 'red',
   balance: null,
-  totalIncome:null,
-  totalExpense:null,
-  incomes: [],
+  totalIncome: null,
+  totalExpense: null,
+  selectedDate: {
+    monthIndex: new Date().getMonth(),
+    year: new Date().getFullYear(),
+  },
+  incomes: [
+    {
+      description: "1Transaction's description",
+      category: 'Продукты',
+      amount: 100,
+      date: '2020-12-31',
+      _id: '507f1f77bcf86cd799439011',
+    },
+    {
+      description: "2Transaction's description",
+      category: 'Продукты',
+      amount: 300,
+      date: '2020-12-31',
+      _id: '507f1f77bcf86cd799439012',
+    },
+    {
+      description: "3Transaction's description",
+      category: 'Продукты',
+      amount: 500,
+      date: '2020-12-31',
+      _id: '507f1f77bcf86cd799439013',
+    },
+  ],
   incomesCat: [],
-  incomesStat: [],
-  expenses: [],
+  incomesStat: [
+    { January: 1000 },
+    { February: 2000 },
+    { March: 500 },
+    { April: 800 },
+    { May: 300 },
+    { June: 2500 },
+    { July: 400 },
+    { August: 800 },
+    { September: 0 },
+    { October: 200 },
+    { November: 9000 },
+    { December: 5000 },
+  ],
+  expenses: [
+    {
+      description: "1Transaction's description",
+      category: 'Продукты',
+      amount: 10,
+      date: '2020-12-31',
+      _id: '507f1f77bcf86cd799439011',
+    },
+    {
+      description: "2Transaction's description",
+      category: 'Продукты',
+      amount: 30,
+      date: '2020-12-31',
+      _id: '507f1f77bcf86cd799439012',
+    },
+    {
+      description: "3Transaction's description",
+      category: 'Продукты',
+      amount: 50,
+      date: '2020-12-31',
+      _id: '507f1f77bcf86cd799439013',
+    },
+    {
+      description: "4Transaction's description",
+      category: 'Продукты',
+      amount: 75,
+      date: '2020-12-31',
+      _id: '507f1f77bcf86cd799439011',
+    },
+  ],
   expenseCat: [],
-  expenseStat: [],
-  transactionData:{}
-}
-
-const initStorageValue=()=>{
-  const userLocaldata = window.localStorage.getItem('userLocaldata');
-  if (userLocaldata !== null) {
-    return JSON.parse(userLocaldata)
-  }
-  return init
- }
-
-
- export const initialState =initStorageValue()
-
-
-
-
-
-
-// export const initialState ={
-//     lightTheme: true,
-//     isLoading: false,
-//     isError: null,
-//     isLogin: false,
-//     isDelate: null,
-//     isRegister: null,
-//     isVerified: null,
-//     token: null,
-//     refreshToken:null,
-//     sesionId: null,
-//     userName: "Olaf",
-//     email: null,
-//     userID: 1111,
-//     userAvatar: "red",
-//     balance: null,
-//     totalIncome:null,
-//     totalExpense:null,
-//     incomes: [
-//             {
-//       description: "1Transaction's description",
-//       category: "Продукты",
-//       amount: 100,
-//       date: "2020-12-31",
-//       _id: "507f1f77bcf86cd799439011",
-//     },
-//     {
-//       description: "2Transaction's description",
-//       category: "Продукты",
-//       amount: 300,
-//       date: "2020-12-31",
-//       _id: "507f1f77bcf86cd799439012",
-//     },
-//     {
-//       description: "3Transaction's description",
-//       category: "Продукты",
-//       amount: 500,
-//       date: "2020-12-31",
-//       _id: "507f1f77bcf86cd799439013",
-//     },
-//     ],
-//     incomesCat: [
-//         "education",
-//         "food",
-//         "clothes",
-//         "entertainment",
-//         "transport",
-//     ],
-//     incomesStat: [
-//         {January: 1000},
-//         {February: 2000},
-//         {March: 500},
-//         {April: 800},
-//         {May: 300},
-//         {June: 2500},
-//         {July: 400},
-//         {August: 800},
-//         {September: 0},
-//         {October: 200},
-//         {November: 9000},
-//         {December: 5000},
-//     ],
-//     expenses: [
-//         {
-//             description: "1Transaction's description",
-//             category: "Продукты",
-//             amount: 10,
-//             date: "2020-12-31",
-//             _id: "507f1f77bcf86cd799439011",
-//           },
-//           {
-//             description: "2Transaction's description",
-//             category: "Продукты",
-//             amount: 30,
-//             date: "2020-12-31",
-//             _id: "507f1f77bcf86cd799439012",
-//           },
-//           {
-//             description: "3Transaction's description",
-//             category: "Продукты",
-//             amount: 50,
-//             date: "2020-12-31",
-//             _id: "507f1f77bcf86cd799439013",
-//           },
-//     ],
-//     expenseCat: [
-//     "education",
-//     "food",
-//     "clothes",
-//     "entertainment",
-//     "transport",
-//     ],
-//     expenseStat: [
-//             {January: 100},
-//             {February: 200},
-//             {March: 50},
-//             {April: 80},
-//             {May: 30},
-//             {June: 250},
-//             {July: 40},
-//             {August: 80},
-//             {September: 100},
-//             {October: 20},
-//             {November: 900},
-//             {December: 500},
-//     ],
-//     transactionData:{}
-// }
-
-
+  expenseStat: [
+    { January: 100 },
+    { February: 200 },
+    { March: 50 },
+    { April: 80 },
+    { May: 30 },
+    { June: 250 },
+    { July: 40 },
+    { August: 80 },
+    { September: 100 },
+    { October: 20 },
+    { November: 900 },
+    { December: 500 },
+  ],
+  transactionData: {},
+};
 
 // export const initialState = {
 //   lightTheme: true,
@@ -236,11 +193,11 @@ const initStorageValue=()=>{
 //     },
 //   ],
 //   expenseCat: [
-//     education,
-//     food,
-//     clothes,
-//     entertainment,
-//     transport,
+//     { education: 2000 },
+//     { food: 100 },
+//     { clothes: 500 },
+//     { entertainment: 800 },
+//     { transport: 100 },
 //   ],
 //   expenseStat: {
 //     January: 4000,
