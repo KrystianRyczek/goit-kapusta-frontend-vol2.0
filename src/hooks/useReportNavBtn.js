@@ -1,20 +1,20 @@
-import { useNavigate } from "react-router";
+import { useNavigate } from 'react-router';
 
 export const useReportNavBtn = () => {
   const navigate = useNavigate();
 
   const navigateOnClickExpens = (activeSheet) => {
-    if (activeSheet === "expenses") {
+    if (activeSheet === 'expenses') {
       return;
     }
-    return navigate("/reports/expenses", { replace: true });
+    return navigate('/reports/expenses', { replace: true });
   };
 
   const navigateOnClickincomes = (activeSheet) => {
-    if (activeSheet === "incomes") {
+    if (activeSheet === 'incomes') {
       return;
     }
-    return navigate("/reports/incomes", { replace: true });
+    return navigate('/reports/incomes', { replace: true });
   };
 
   return { navigateOnClickExpens, navigateOnClickincomes };

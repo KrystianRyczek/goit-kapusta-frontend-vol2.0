@@ -1,7 +1,7 @@
-import "../../App.css";
-import { useReportChart } from "../../hooks/useReportChart";
+import '../../App.css';
+import { useReportChart } from '../../hooks/useReportChart';
 // import { selectIncomes } from "../../redux/storeSlice";
-import css from "./Chart.module.css";
+import css from './Chart.module.css';
 // import { useSelector } from "react-redux";
 import {
   BarChart,
@@ -12,7 +12,7 @@ import {
   YAxis,
   LabelList,
   Cell,
-} from "recharts";
+} from 'recharts';
 
 export function Chart({ activeSheet }) {
   const { summaryReportData } = useReportChart();
@@ -38,7 +38,7 @@ export function Chart({ activeSheet }) {
             <CartesianGrid vertical={false} horizontal={true} />
             <XAxis
               dataKey="description"
-              axisLine={{ stroke: "#ccc" }}
+              axisLine={{ stroke: '#ccc' }}
               tickSize={0}
               tickMargin={10}
             />
@@ -55,7 +55,7 @@ export function Chart({ activeSheet }) {
               {sortedData.map((entry, index) => (
                 <Cell
                   key={`cell-${index}`}
-                  fill={index % 2 === 0 ? "#ff751d" : "#ffdac0"}
+                  fill={index % 2 === 0 ? '#ff751d' : '#ffdac0'}
                 />
               ))}
               <LabelList dataKey="amount" position="top" fill="#5e6373" />

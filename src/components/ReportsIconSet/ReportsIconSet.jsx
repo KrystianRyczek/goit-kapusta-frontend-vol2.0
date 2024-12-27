@@ -1,13 +1,13 @@
-import React from "react";
-import "../../App.css";
-import "../../css/Transaction.css";
-import { selectIncomesStat } from "../../redux/storeSlice";
-import css from "./ReportsIconSet.module.css";
-import { useSelector } from "react-redux";
-import { useLocation } from "react-router";
-import { expencesIcons, incomeIcons } from "./icons";
-import TransactionNavBtn from "../TransactionNavBtn";
-import ReportNavBtn from "../ReportNavBtn";
+import React from 'react';
+import '../../App.css';
+import '../../css/Transaction.css';
+import { selectIncomesStat } from '../../redux/storeSlice';
+import css from './ReportsIconSet.module.css';
+import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router';
+import { expencesIcons, incomeIcons } from './icons';
+import TransactionNavBtn from '../TransactionNavBtn';
+import ReportNavBtn from '../ReportNavBtn';
 
 export default function ReportsIconSet({
   activeSheet,
@@ -20,7 +20,7 @@ export default function ReportsIconSet({
     <div>
       <div className={css.box}>
         <h1>
-          {location.pathname === "/reports/expenses" ? "Expenses" : "Income"}
+          {location.pathname === '/reports/expenses' ? 'Expenses' : 'Income'}
         </h1>
         <ReportNavBtn
           activeSheet={activeSheet}
@@ -29,7 +29,7 @@ export default function ReportsIconSet({
         />
 
         <div className={css.icons}>
-          {location.pathname === "/reports/expenses"
+          {location.pathname === '/reports/expenses'
             ? expencesIcons.map((icon, index) => (
                 <React.Fragment key={index}>
                   <div key={index} className={css.div_svg}>

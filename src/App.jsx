@@ -21,18 +21,18 @@ function App() {
         <NavBar />
         <Suspense fallback={<div>Loading page...</div>}>
           <Routes>
-            <Route path='/' element={<Home />}>
-              <Route path='/' element={<SignIn />} />
-              <Route path='/register' element={<SignUp />} />
+            <Route path="/" element={<Home />}>
+              <Route path="/" element={<SignIn />} />
+              <Route path="/register" element={<SignUp />} />
             </Route>
             <Route
-              path='/transaction'
+              path="/transaction"
               element={
-                <PrivateRoute redirectPath='/' Component={<Transaction />} />
+                <PrivateRoute redirectPath="/" Component={<Transaction />} />
               }
             >
               <Route
-                path='incomes'
+                path="incomes"
                 element={
                   <Incomes
                     activeSheet={'incomes'}
@@ -42,7 +42,7 @@ function App() {
                 }
               />
               <Route
-                path='expenses'
+                path="expenses"
                 element={
                   <Expenses
                     activeSheet={'expenses'}
@@ -52,15 +52,15 @@ function App() {
                 }
               />
               <Route
-                path='reports/incomes'
+                path="reports/incomes"
                 element={<Report activeSheet={'incomes'} />}
               />
               <Route
-                path='reports/expenses'
+                path="reports/expenses"
                 element={<Report activeSheet={'expenses'} />}
               />
             </Route>
-            <Route path='*' element={<NotFoundPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
       </BrowserRouter>

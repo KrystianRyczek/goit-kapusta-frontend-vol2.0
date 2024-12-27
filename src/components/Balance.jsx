@@ -1,6 +1,6 @@
-import "../css/Balance.css";
-import { Field, Form, Formik, ErrorMessage } from "formik";
-import { useBalance } from "../hooks/useBalance";
+import '../css/Balance.css';
+import { Field, Form, Formik, ErrorMessage } from 'formik';
+import { useBalance } from '../hooks/useBalance';
 
 export default function Balance() {
   const { balanceShema } = useBalance();

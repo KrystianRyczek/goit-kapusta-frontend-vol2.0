@@ -1,22 +1,22 @@
-import { useState } from "react";
-import "../../App.css";
-import { selectIncomesStat, selectExpenseStat } from "../../redux/storeSlice";
-import css from "./ReportsIncExpSum.module.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from 'react';
+import '../../App.css';
+import { selectIncomesStat, selectExpenseStat } from '../../redux/storeSlice';
+import css from './ReportsIncExpSum.module.css';
+import { useDispatch, useSelector } from 'react-redux';
 
 const monthNames = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
 ];
 
 export default function ReportsIncExpSum() {
