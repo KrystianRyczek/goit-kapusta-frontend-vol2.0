@@ -1,34 +1,46 @@
-.balance-container{
-    width: 334px;
-    height: 44px;
-    display: flex;
-    gap: 16px;
-    align-items: center;
-    margin: 20px auto 20px auto;
+.balance-container {
+  width: 280px;
+  /* height: 44px; */
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  align-items: center;
+  margin: 0 auto;
+  margin: 20px auto 20px auto;
 }
-.balance-p1{
-    width: 48px;
-    text-align: center;
-    letter-spacing: 2%;
-    font-weight: 500;
-    line-height: 14.06px;
+@media (min-width: 768px) {
+  .balance-container {
+    width: 704px;
+  }
 }
-.balance-form{
-    display: flex;
-    gap:16px;
+@media (min-width: 1280px) {
+  .balance-container {
+    width: 1034px;
+  }
 }
-.balance-input{
-    padding-left: 15px;
-    width: 125px;
-    height: 44px;
-    background-color: #F2F5FC;
-    border-radius: 16px;
-    border: 2px solid #FFFFFF;
+.balance-p1 {
+  width: 48px;
+  text-align: center;
+  letter-spacing: 2%;
+  font-weight: 500;
+  line-height: 14.06px;
 }
-.balance-btn{
-    width: 125px;
-    height: 44px;
-    background-color: #F2F5FC;
-    border-radius: 16px;
-    border: 2px solid #FFFFFF;
+.balance-form {
+  display: flex;
+  gap: 16px;
+}
+.balance-input {
+  padding-left: 15px;
+  width: 125px;
+  height: 44px;
+  background-color: #f2f5fc;
+  border-radius: 16px;
+  border: 2px solid #ffffff;
+}
+.balance-btn {
+  width: 125px;
+  height: 44px;
+  background-color: #f2f5fc;
+  border-radius: 16px;
+  border: 2px solid #ffffff;
 }

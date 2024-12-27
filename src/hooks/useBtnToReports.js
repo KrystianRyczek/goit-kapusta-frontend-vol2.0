@@ -1,13 +1,11 @@
-
 import { useNavigate } from "react-router";
 
-export const useBtnToReports=()=>{
+export const useBtnToReports = () => {
+  const navigate = useNavigate();
 
-  const navigate = useNavigate()
+  const handleOnClick = () => {
+    navigate("/transaction/reports/incomes");
+  };
 
-  const handleOnClick=()=>{
-    navigate("/transaction/reports",)
-  }
-
-  return { handleOnClick }
-}
+  return { handleOnClick };
+};

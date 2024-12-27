@@ -1,0 +1,29 @@
+.box {
+  width: 280px;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--white);
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+  .box {
+    width: 704px;
+  }
+}
+@media (min-width: 1280px) {
+  .box {
+    width: 1034px;
+  }
+}
+
+.dataNav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.dataBold {
+  font-weight: bold;
+  text-transform: uppercase;
+}
