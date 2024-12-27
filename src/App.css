@@ -17,8 +17,18 @@
   font-style: normal;
   color: var(--text-grey);
 
-  max-width: 1280px;
+  width: 280px;
   margin: 0 auto;
+}
+@media (min-width: 768px) {
+  #root {
+    width: 704px;
+  }
+}
+@media (min-width: 1280px) {
+  #root {
+    width: 1034px;
+  }
 }
 
 header,
@@ -52,19 +62,4 @@ p {
 *::before,
 *::after {
   box-sizing: border-box;
-}
-
-.appContainer {
-  width: 280px;
-  margin: 0 auto;
-}
-@media (min-width: 768px) {
-  .appContainer {
-    width: 704px;
-  }
-}
-@media (min-width: 1280px) {
-  .appContainer {
-    width: 1034px;
-  }
 }
