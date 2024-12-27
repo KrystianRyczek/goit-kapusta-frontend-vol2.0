@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-export const initialState = {
-=======
 const init ={
->>>>>>> Stashed changes
   lightTheme: true,
   isLoading: false,
   isError: null,
@@ -11,99 +7,6 @@ const init ={
   isRegister: null,
   isVerified: null,
   token: null,
-<<<<<<< Updated upstream
-  refreshToken: null,
-  sesionId: null,
-  userName: 'Olaf',
-  email: null,
-  userID: 1111,
-  userAvatar: 'red',
-  balance: null,
-  totalIncome: null,
-  totalExpense: null,
-  selectedDate: {
-    monthIndex: new Date().getMonth(),
-    year: new Date().getFullYear(),
-  },
-  incomes: [
-    {
-      description: "1Transaction's description",
-      category: 'Продукты',
-      amount: 100,
-      date: '2020-12-31',
-      _id: '507f1f77bcf86cd799439011',
-    },
-    {
-      description: "2Transaction's description",
-      category: 'Продукты',
-      amount: 300,
-      date: '2020-12-31',
-      _id: '507f1f77bcf86cd799439012',
-    },
-    {
-      description: "3Transaction's description",
-      category: 'Продукты',
-      amount: 500,
-      date: '2020-12-31',
-      _id: '507f1f77bcf86cd799439013',
-    },
-  ],
-  incomesCat: [],
-  incomesStat: [
-    { January: 1000 },
-    { February: 2000 },
-    { March: 500 },
-    { April: 800 },
-    { May: 300 },
-    { June: 2500 },
-    { July: 400 },
-    { August: 800 },
-    { September: 0 },
-    { October: 200 },
-    { November: 9000 },
-    { December: 5000 },
-  ],
-  expenses: [
-    {
-      description: "1Transaction's description",
-      category: 'Продукты',
-      amount: 10,
-      date: '2020-12-31',
-      _id: '507f1f77bcf86cd799439011',
-    },
-    {
-      description: "2Transaction's description",
-      category: 'Продукты',
-      amount: 30,
-      date: '2020-12-31',
-      _id: '507f1f77bcf86cd799439012',
-    },
-    {
-      description: "3Transaction's description",
-      category: 'Продукты',
-      amount: 50,
-      date: '2020-12-31',
-      _id: '507f1f77bcf86cd799439013',
-    },
-  ],
-  expenseCat: [],
-  expenseStat: [
-    { January: 100 },
-    { February: 200 },
-    { March: 50 },
-    { April: 80 },
-    { May: 30 },
-    { June: 250 },
-    { July: 40 },
-    { August: 80 },
-    { September: 100 },
-    { October: 20 },
-    { November: 900 },
-    { December: 500 },
-  ],
-  transactionData: {},
-};
-=======
   refreshToken:null,
   sesionId: null,
   userName: null,
@@ -121,7 +24,6 @@ const init ={
   expenseStat: [],
   transactionData:{}
 }
->>>>>>> Stashed changes
 
 const initStorageValue=()=>{
   const userLocaldata = window.localStorage.getItem('userLocaldata');
