@@ -1,7 +1,7 @@
 .box {
   width: 280px;
   display: flex;
-  align-items: center;
+  align-items: cleftenter;
   justify-content: space-between;
   margin: 0 auto;
 }
@@ -18,6 +18,8 @@
 
 .back {
   display: flex;
+  align-items: center;
+  gap: 14px;
 }
 
 .dataNav {

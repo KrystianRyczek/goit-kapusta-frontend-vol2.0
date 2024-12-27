@@ -1,12 +1,12 @@
 import css from "../css/ReportDateSelection.module.css";
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
   changeSelectedDate,
   selectSelectedDate,
   selectToken,
-} from '../redux/storeSlice';
-import { userTransactionPeriodDate } from '../redux/transaction/operation';
+} from "../redux/storeSlice";
+import { userTransactionPeriodDate } from "../redux/transaction/operation";
 
 const monthNames = [
   "January",
@@ -61,7 +61,7 @@ export default function ReportDateSelection() {
   };
 
   const handleBack = () => {
-    console.log('Navigating back to the main page');
+    console.log("Navigating back to the main page");
   };
 
   const formatDate = (monthIndex, year) => {
@@ -72,7 +72,7 @@ export default function ReportDateSelection() {
     <div className={css.box}>
       <div className={css.back}>
         <button onClick={handleBack} className={css.arrowBtn}>
-          {'<-'}
+          {"<--"}
         </button>
         <p>Main page</p>
       </div>
@@ -80,13 +80,13 @@ export default function ReportDateSelection() {
         <p>Current period:</p>
         <div className={css.dataArrows}>
           <button onClick={handlePrevious} className={css.arrowBtn}>
-            {'<'}
+            {"<"}
           </button>
           <span className={css.dataBold}>
             {formatDate(selectedDate.monthIndex, selectedDate.year)}
           </span>
           <button onClick={handleNext} className={css.arrowBtn}>
-            {'>'}
+            {">"}
           </button>
         </div>
       </div>
