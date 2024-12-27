@@ -11,7 +11,7 @@ const transactionTableRow =(row, deleteTransaction)=>{
         <p>{row.description}</p>
         <p>{row.category}</p>
         <p>{row.amount}</p>
-        <button onClick ={()=>{deleteTransaction(row.description)}} className='transaction-table-delate-btn'>
+        <button onClick ={()=>{deleteTransaction(row._id)}} className='transaction-table-delate-btn'>
           <img src={delate}  alt="Delate icon"/>
         </button>
       </div>

@@ -23,14 +23,14 @@ export const initialState ={
       category: "Продукты",
       amount: 100,
       date: "2020-12-31",
-      _id: "507f1f77bcf86cd799439013",
+      _id: "507f1f77bcf86cd799439011",
     },
     {
       description: "2Transaction's description",
       category: "Продукты",
       amount: 300,
       date: "2020-12-31",
-      _id: "507f1f77bcf86cd799439013",
+      _id: "507f1f77bcf86cd799439012",
     },
     {
       description: "3Transaction's description",
@@ -61,14 +61,14 @@ export const initialState ={
             category: "Продукты",
             amount: 10,
             date: "2020-12-31",
-            _id: "507f1f77bcf86cd799439013",
+            _id: "507f1f77bcf86cd799439011",
           },
           {
             description: "2Transaction's description",
             category: "Продукты",
             amount: 30,
             date: "2020-12-31",
-            _id: "507f1f77bcf86cd799439013",
+            _id: "507f1f77bcf86cd799439012",
           },
           {
             description: "3Transaction's description",

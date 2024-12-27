@@ -36,12 +36,26 @@ export const ConfCloseModal = ({modalIsOpen, modalIsClose, signOutConf})=>{
         );
     }
 
+    const customStylesDelete = {
+      content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)',
+        width: '380px',
+        height: '194px',
+      },
+    };
+
+
     export const ConfModal = ({modalIsOpen, deleteModalClose, deleteConf})=>{
       return (
           <Modal
           isOpen={modalIsOpen}
           onRequestClose={deleteModalClose}
-          style={customStyles}
+          style={customStylesDelete}
           contentLabel="Gallery modal"
           >
           <div className='modal-box'>
