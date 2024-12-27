@@ -15,7 +15,7 @@
   font-weight: 400;
   letter-spacing: 0.02em;
   font-style: normal;
-  color: var(--dark-grey);
+  color: var(--text-grey);
 
   max-width: 1280px;
   margin: 0 auto;
@@ -52,4 +52,19 @@ p {
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+.appContainer {
+  width: 280px;
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+  .appContainer {
+    width: 704px;
+  }
+}
+@media (min-width: 1280px) {
+  .appContainer {
+    width: 1034px;
+  }
 }
