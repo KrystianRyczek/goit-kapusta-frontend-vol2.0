@@ -125,14 +125,15 @@
 .home-page-logo-h {
   font-size: 102px;
   font-weight: 900;
-  font-family: Roboto;
+  color: var(--black);
 }
 
 .home-page-logo-p {
   text-align: center;
   font-size: 16px;
   font-weight: 700;
-  font-family: Roboto;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 
 .home-page-bottom-svg-box {
