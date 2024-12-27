@@ -40,11 +40,6 @@ const initStorageValue=()=>{
 
  export const initialState =initStorageValue()
 
-
-
-
-
-
 // export const initialState ={
 //     lightTheme: true,
 //     isLoading: false,

@@ -1,7 +1,5 @@
 
-
-
-export const initialState = {
+ const init = {
   lightTheme: true,
   isLoading: false,
   isError: null,
@@ -12,10 +10,10 @@ export const initialState = {
   token: null,
   refreshToken: null,
   sesionId: null,
-  userName: 'Olaf',
+  userName: null,
   email: null,
-  userID: 1111,
-  userAvatar: 'red',
+  userID: null,
+  userAvatar: null,
   balance: null,
   totalIncome: null,
   totalExpense: null,
@@ -108,6 +106,19 @@ export const initialState = {
   ],
   transactionData: {},
 };
+
+const initStorageValue=()=>{
+  const userLocaldata = window.localStorage.getItem('userLocaldata');
+  if (userLocaldata !== null) {
+    return JSON.parse(userLocaldata)
+  }
+  return init
+ }
+
+
+ export const initialState =initStorageValue()
+
+
 
 // export const initialState = {
 //   lightTheme: true,
