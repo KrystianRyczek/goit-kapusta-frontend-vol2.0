@@ -81,7 +81,7 @@ export default function ReportDateSelection() {
         <button onClick={handleBack} className={css.arrowBtn}>
           {"<--"}
         </button>
-        <p>Main page</p>
+        <p className={css.text}>Main page</p>
       </div>
       <div className={css.dataNav}>
         <p>Current period:</p>
