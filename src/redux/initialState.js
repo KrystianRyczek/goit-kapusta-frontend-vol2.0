@@ -1,5 +1,4 @@
-
- const init = {
+const init = {
   lightTheme: true,
   isLoading: false,
   isError: null,
@@ -17,30 +16,27 @@
   balance: null,
   totalIncome: null,
   totalExpense: null,
-  selectedDate: {
-    monthIndex: new Date().getMonth(),
-    year: new Date().getFullYear(),
-  },
+  selectedDate: null,
   incomes: [
     {
       description: "1Transaction's description",
-      category: 'Продукты',
+      category: 'Salary',
       amount: 100,
-      date: '2020-12-31',
+      date: '2024-12-20',
       _id: '507f1f77bcf86cd799439011',
     },
     {
       description: "2Transaction's description",
-      category: 'Продукты',
+      category: 'Salary',
       amount: 300,
-      date: '2020-12-31',
+      date: '2024-11-31',
       _id: '507f1f77bcf86cd799439012',
     },
     {
       description: "3Transaction's description",
-      category: 'Продукты',
+      category: 'Additional income',
       amount: 500,
-      date: '2020-12-31',
+      date: '2024-12-21',
       _id: '507f1f77bcf86cd799439013',
     },
   ],
@@ -61,31 +57,31 @@
   ],
   expenses: [
     {
-      description: "1Transaction's description",
-      category: 'Продукты',
+      description: 'Ticket',
+      category: 'Transport',
       amount: 10,
-      date: '2020-12-31',
+      date: '2024-12-10',
       _id: '507f1f77bcf86cd799439011',
     },
     {
-      description: "2Transaction's description",
-      category: 'Продукты',
+      description: 'Books',
+      category: 'Education',
       amount: 30,
-      date: '2020-12-31',
+      date: '2024-12-06',
       _id: '507f1f77bcf86cd799439012',
     },
     {
-      description: "3Transaction's description",
-      category: 'Продукты',
+      description: 'Vegetables',
+      category: 'Products',
       amount: 50,
-      date: '2020-12-31',
+      date: '2024-11-31',
       _id: '507f1f77bcf86cd799439013',
     },
     {
-      description: "4Transaction's description",
-      category: 'Продукты',
+      description: 'Gym',
+      category: 'Sport',
       amount: 75,
-      date: '2020-12-31',
+      date: '2024-11-30',
       _id: '507f1f77bcf86cd799439011',
     },
   ],
@@ -107,18 +103,15 @@
   transactionData: {},
 };
 
-const initStorageValue=()=>{
+const initStorageValue = () => {
   const userLocaldata = window.localStorage.getItem('userLocaldata');
   if (userLocaldata !== null) {
-    return JSON.parse(userLocaldata)
+    return JSON.parse(userLocaldata);
   }
-  return init
- }
+  return init;
+};
 
-
- export const initialState =initStorageValue()
-
-
+export const initialState = initStorageValue();
 
 // export const initialState = {
 //   lightTheme: true,
