@@ -22,6 +22,7 @@ const handlePending = (state) => {
   console.log('Pending');
   state.isLoading = true;
   state.isError = null;
+  state.isRegister = false;
 };
 const handleRejected = (state, action) => {
   console.log('Fail');
