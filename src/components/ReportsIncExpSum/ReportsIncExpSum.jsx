@@ -1,8 +1,11 @@
-import { useState } from 'react';
 import '../../App.css';
-import { selectIncomesStat, selectExpenseStat } from '../../redux/storeSlice';
-import css from './ReportsIncExpSum.module.css';
-import { useDispatch, useSelector } from 'react-redux';
+import {
+  selectIncomesStat,
+  selectExpenseStat,
+  selectSelectedDate,
+} from '../../redux/storeSlice';
+import css from '../../css/ReportsIncExpSum.module.css';
+import { useSelector } from 'react-redux';
 
 const monthNames = [
   'January',
@@ -20,59 +23,47 @@ const monthNames = [
 ];
 
 export default function ReportsIncExpSum() {
-  const currentMonthIndex = new Date().getMonth();
-  const currentYear = new Date().getFullYear();
-  const [monthIndex, setMonthIndex] = useState(currentMonthIndex);
-  const [year, setYear] = useState(currentYear);
+  const storedDate = localStorage.getItem('selectedDate');
+  const initialDate = storedDate
+    ? JSON.parse(storedDate)
+    : { monthIndex: new Date().getMonth(), year: new Date().getFullYear() };
 
-  const dispatch = useDispatch();
+  const selectedDate = useSelector(selectSelectedDate) || initialDate;
+  console.log('selectedDate', selectedDate);
 
-  const totalExpenseMonth = useSelector(selectExpenseStat);
-  const totalIncomeMonth = useSelector(selectIncomesStat);
+  const totalIncomeYear = useSelector(selectIncomesStat);
+  const totalExpenseYear = useSelector(selectExpenseStat);
+  console.log('totalExpenseYear', totalExpenseYear);
+  console.log('totalIncomeYear', totalIncomeYear);
+
+  const monthIndex = selectedDate.monthIndex;
+  console.log('monthIndex', monthIndex);
+
+  const monthName = monthNames[monthIndex];
 
   let monthIncome = 0;
-  if (totalIncomeMonth) {
-    Object.entries(totalIncomeMonth).forEach(([key, value]) => {
-      if (key === monthNames[monthIndex]) {
-        monthIncome = value || 0;
-      }
-    });
+  if (totalIncomeYear) {
+    const entry = totalIncomeYear.find((item) =>
+      item.hasOwnProperty(monthName)
+    );
+    monthIncome = entry ? entry[monthName] : 0;
   }
+  console.log('month income', monthIncome);
 
-  let monthExpense = 0;
-  if (totalExpenseMonth) {
-    Object.entries(totalExpenseMonth).forEach(([key, value]) => {
-      if (key === monthNames[monthIndex]) {
-        monthExpense = value || 0;
-      }
-    });
+  let monthExpense = 10;
+  if (totalExpenseYear) {
+    const entry = totalExpenseYear.find((item) =>
+      item.hasOwnProperty(monthName)
+    );
+    monthExpense = entry ? entry[monthName] : 0;
   }
 
   return (
     <div>
       <div className={css.bar}>
-        {/* <p>Month:</p>
-        <select
-          value={monthIndex}
-          onChange={(e) => handleMonthChange(Number(e.target.value))}
-        >
-          {monthNames.map((month, index) => (
-            <option key={index} value={index}>
-              {month}
-            </option>
-          ))}
-        </select>
-
-        <p>Year:</p>
-        <input
-          type="number"
-          value={year}
-          onChange={(e) => handleYearChange(Number(e.target.value))}
-        /> */}
-
         <p>Expenses:</p>
         <p className={css.textExpense}>- {`${monthExpense}`}</p>
-        <p>Income:</p>
+        <p>Incomes:</p>
         <p className={css.textIncome}>{`${monthIncome}`}</p>
       </div>
     </div>
