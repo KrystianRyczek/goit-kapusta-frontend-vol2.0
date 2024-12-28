@@ -14,14 +14,20 @@ export const useSignUp=()=>{
     e.preventDefault()
   }
   const signUp=(values, actions)=>{
-    dispach(addUser(values))
+    const newUser = {
+                     "username": values.username,
+                     "email": values.email,
+                     "password": values.password
+                    }
+    dispach(addUser(newUser))
+    console.log(isRegister)
     if(isRegister){
       actions.resetForm()
       navigate("/", {replace: true})
     }
   }
   const ShemaSignUp = Yup.object().shape({
-    name: Yup.string()
+    username: Yup.string()
                .min(2,"Password is too short")
                .max(20,"Password is too long")
                .required('Login is required'),

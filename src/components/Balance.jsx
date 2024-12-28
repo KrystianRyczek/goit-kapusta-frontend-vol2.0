@@ -3,7 +3,7 @@ import { Field, Form, Formik, ErrorMessage } from 'formik';
 import { useBalance } from '../hooks/useBalance';
 
 export default function Balance() {
-  const { balanceShema } = useBalance();
+  const {balanceShema, setBalance} = useBalance();
 
   return (
     <div className="balance-container">
@@ -12,7 +12,7 @@ export default function Balance() {
         validationSchema={balanceShema}
         initialValues={{ balance: 0 }}
         onSubmit={(values, actions) => {
-          //             actions.resetForm()
+          setBalance(values, actions)      
         }}
       >
         <Form className="balance-form">

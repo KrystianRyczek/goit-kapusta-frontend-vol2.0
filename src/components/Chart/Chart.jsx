@@ -1,8 +1,8 @@
 import '../../App.css';
 import { useReportChart } from '../../hooks/useReportChart';
-// import { selectIncomes } from "../../redux/storeSlice";
+import { selectSelectedDate } from '../../redux/storeSlice';
 import css from './Chart.module.css';
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import {
   BarChart,
   Bar,
@@ -17,18 +17,32 @@ import {
 export function Chart({ activeSheet }) {
   const { summaryReportData } = useReportChart();
   const sumaryData = summaryReportData(activeSheet);
+  const selectedDate = useSelector(selectSelectedDate) // {monthIndex: 9, year: 2024} - data wybrana na przełączniku 
 
-  const groupedData = sumaryData.reduce((acc, { description, amount }) => {
+  console.log(selectedDate)
+
+
+  const groupedData = sumaryData.reduce((acc, { description, amount, date }) => {
     const existing = acc.find((item) => item.description === description);
     if (existing) {
       existing.amount += amount;
     } else {
-      acc.push({ description, amount });
+      acc.push({ description, amount, date });
     }
     return acc;
   }, []);
 
-  const sortedData = groupedData.sort((a, b) => b.amount - a.amount);
+
+  const filteredData = groupedData.filter(transaction => {
+      
+    const date = new Date(transaction.date);
+    const transactionMonthYear = date.toISOString().slice(0, 7);
+    const selectedMonthYear = `${selectedDate.year}-${String(selectedDate.monthIndex + 1).padStart(2, '0')}`;
+
+    return transactionMonthYear === selectedMonthYear;
+  })
+
+  const sortedData = filteredData.sort((a, b) => b.amount - a.amount);
 
   return (
     <div>

@@ -14,7 +14,7 @@ export default function SignUp() {
                   <Formik
                     name="signUp"
                     validationSchema={ShemaSignUp}
-                    initialValues={{name:"", email:"", password:"", passwordConfirmation:""}} 
+                    initialValues={{username:"", email:"", password:"", passwordConfirmation:""}} 
                     onSubmit={
                       (values, actions)=>{
                       signUp(values, actions)
@@ -22,10 +22,10 @@ export default function SignUp() {
                       }}>
                     <Form className="register-user-form" name="signUp">
                       <div className="register-input-box">
-                        <label htmlFor="name">*Name</label>
-                        <Field className="register-input" type="text" name="name" placeholder="Name"/>
+                        <label htmlFor="username">*Name</label>
+                        <Field className="register-input" type="text" name="username" placeholder="Name"/>
                         <div className='error-msg'>
-                          <ErrorMessage name="name" as='div'/>
+                          <ErrorMessage name="username" as='div'/>
                         </div>
                       </div>
                       <div className="register-input-box">

@@ -24,18 +24,18 @@ const monthNames = [
 ];
 
 export default function ReportDateSelection() {
-  const selectedDate = useSelector(selectSelectedDate);
+  const storedDate = localStorage.getItem("selectedDate");
+  const initialDate = storedDate
+    ? JSON.parse(storedDate)
+    : { monthIndex: new Date().getMonth(), year: new Date().getFullYear() };
+
+  const selectedDate = useSelector(selectSelectedDate) || initialDate;
+
   const token = useSelector(selectToken);
   const dispatch = useDispatch();
 
-  const handleDateChange = (newDate) => {
-    const monthIndex = newDate.getMonth();
-    const year = newDate.getFullYear();
-
-    dispatch(changeSelectedDate({ monthIndex, year }));
-  };
-
   useEffect(() => {
+    localStorage.setItem("selectedDate", JSON.stringify(selectedDate));
     if (token && selectedDate) {
       dispatch(
         userTransactionPeriodDate({
@@ -45,7 +45,14 @@ export default function ReportDateSelection() {
         })
       );
     }
-  }, [selectedDate, dispatch, token]);
+  }, [selectedDate, token]);
+
+  const handleDateChange = (newDate) => {
+    const monthIndex = newDate.getMonth();
+    const year = newDate.getFullYear();
+
+    dispatch(changeSelectedDate({ monthIndex, year }));
+  };
 
   const handlePrevious = () => {
     const previousDate = new Date(
