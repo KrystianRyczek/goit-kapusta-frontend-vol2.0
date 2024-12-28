@@ -9,6 +9,7 @@
   align-items: center;
   flex-direction: column;
   border-radius: 30px;
+  padding-top: 40px;
 }
 .icons {
   display: flex;
@@ -75,7 +76,6 @@
   .box {
     width: 1034px;
     height: 348px;
-    padding: 40px;
   }
   .line {
     display: none;
