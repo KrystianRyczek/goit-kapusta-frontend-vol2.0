@@ -1,32 +1,41 @@
 import "../css/TransactionNavBtn.css";
 import { useReportNavBtn } from "../hooks/useReportNavBtn";
+import { useLocation } from "react-router";
 
 export default function ReportNavBtn({
-  activeSheet,
   expensesClass,
   incomesClass,
 }) {
-  const { navigateOnClickExpens, navigateOnClickincomes } = useReportNavBtn();
+  const  toggleSheet  = useReportNavBtn();
+  const location = useLocation().pathname.slice(21);
+  const text = location.toUpperCase(); 
 
   return (
     <div className="transaction-nav-btn-container">
       <button
         type="submit"
         onClick={() => {
-          navigateOnClickExpens(activeSheet);
+          toggleSheet();
         }}
-        className={`${expensesClass}`}
+        className="button-vector"
       >
-        EXPENSES
+        <svg className="svg">
+          <use href="/icons/sprite.svg#icon-vector-left"></use>
+        </svg>
       </button>
+      <h1>
+      {text}
+      </h1>
       <button
         type="submit"
         onClick={() => {
-          navigateOnClickincomes(activeSheet);
+          toggleSheet();
         }}
-        className={`${incomesClass}`}
+        className="button-vector"
       >
-        INCOMES
+        <svg className="svg">
+          <use href="/icons/sprite.svg#icon-vector-right"></use>
+        </svg>
       </button>
     </div>
   );

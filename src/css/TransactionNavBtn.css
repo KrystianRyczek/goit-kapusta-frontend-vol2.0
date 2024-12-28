@@ -1,8 +1,24 @@
 .transaction-nav-btn-container{
     width: 276px;
     height: 40px;
+    display: flex;
+    justify-content: center;
+    gap:20px;
 }
 
+.transaction-nav-btn-container h1{
+    font-size: 14px;
+}
+
+
+.button-vector{
+    width: 10px;
+    height: 34px;
+    display: flex;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
 
 .sheetIsInActive{
     width: 138px;

@@ -22,16 +22,15 @@ export default function ReportsIconSet({
         />
 
         <div className={css.icons}>
-          {location.pathname === '/reports/expenses'
+          {location.pathname === '/transaction/reports/expenses'
             ? expencesIcons.map((icon, index) => (
                 <React.Fragment key={index}>
                   <div key={index} className={css.div_svg}>
-                    <p>kwota</p>
+
                     <svg className={css.svg}>
                       <use href={icon}></use>
                     </svg>
                     <div className={css.div_background_svg}></div>
-                    <p>kategoria</p>
                   </div>
                   {(index + 1) % 3 === 0 && <div className={css.line}></div>}
                 </React.Fragment>

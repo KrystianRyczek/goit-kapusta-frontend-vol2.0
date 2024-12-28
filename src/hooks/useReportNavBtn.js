@@ -1,21 +1,20 @@
-import { useNavigate } from 'react-router';
+import { useNavigate, useLocation } from 'react-router'; // Dodajemy useLocation do sprawdzania bieżącej ścieżki
 
 export const useReportNavBtn = () => {
   const navigate = useNavigate();
+  const location = useLocation(); // Hook zwracający obecną lokalizację (ścieżkę)
 
-  const navigateOnClickExpens = (activeSheet) => {
-    if (activeSheet === 'expenses') {
-      return;
+  // Funkcja do przełączania widoku
+  const toggleSheet = () => {
+    const currentPath = location.pathname; // Bieżąca ścieżka
+
+    // Jeżeli obecna ścieżka to "expenses", to przełączamy na "incomes", i odwrotnie
+    if (currentPath.includes('expenses')) {
+      navigate('/transaction/reports/incomes', { replace: true });
+    } else if (currentPath.includes('incomes')) {
+      navigate('/transaction/reports/expenses', { replace: true });
     }
-    return navigate('/transaction/reports/expenses', { replace: true });
   };
 
-  const navigateOnClickincomes = (activeSheet) => {
-    if (activeSheet === 'incomes') {
-      return;
-    }
-    return navigate('/transaction/reports/incomes', { replace: true });
-  };
-
-  return { navigateOnClickExpens, navigateOnClickincomes };
+  return toggleSheet ;
 };
