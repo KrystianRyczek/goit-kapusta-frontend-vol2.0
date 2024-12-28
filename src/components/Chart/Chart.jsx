@@ -21,6 +21,8 @@ export function Chart({ activeSheet }) {
 
   console.log(selectedDate)
 
+  const safeSelectedDate = selectedDate || { monthIndex: 0, year: new Date().getFullYear() };
+
 
   const groupedData = sumaryData.reduce((acc, { description, amount, date }) => {
     const existing = acc.find((item) => item.description === description);
@@ -37,7 +39,7 @@ export function Chart({ activeSheet }) {
       
     const date = new Date(transaction.date);
     const transactionMonthYear = date.toISOString().slice(0, 7);
-    const selectedMonthYear = `${selectedDate.year}-${String(selectedDate.monthIndex + 1).padStart(2, '0')}`;
+    const selectedMonthYear = `${safeSelectedDate.year}-${String(safeSelectedDate.monthIndex + 1).padStart(2, '0')}`;
 
     return transactionMonthYear === selectedMonthYear;
   })
