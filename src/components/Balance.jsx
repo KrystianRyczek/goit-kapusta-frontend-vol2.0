@@ -22,7 +22,7 @@ export default function Balance() {
 
   return (
     <div className="balance-container">
-      <p className="balance-p1">Balance</p>
+      <p className="balance-p1">Balance:</p>
       <Formik
         validationSchema={balanceShema}
         initialValues={initialValues}
