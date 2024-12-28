@@ -8,6 +8,21 @@ import {
 import { userTransactionPeriodDate } from '../redux/transaction/operation';
 
 export const useSelectedDate = () => {
+  const monthNames = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+
   const dispatch = useDispatch();
   const token = useSelector(selectToken);
 
@@ -37,5 +52,5 @@ export const useSelectedDate = () => {
     dispatch(changeSelectedDate({ monthIndex, year }));
   };
 
-  return { selectedDate, setSelectedDate };
+  return { selectedDate, setSelectedDate, monthNames };
 };
