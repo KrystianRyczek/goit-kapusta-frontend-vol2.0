@@ -29,15 +29,15 @@ export default function ReportsIncExpSum() {
     : { monthIndex: new Date().getMonth(), year: new Date().getFullYear() };
 
   const selectedDate = useSelector(selectSelectedDate) || initialDate;
-  console.log('selectedDate', selectedDate);
+  // console.log('selectedDate', selectedDate);
 
   const totalIncomeYear = useSelector(selectIncomesStat);
   const totalExpenseYear = useSelector(selectExpenseStat);
-  console.log('totalExpenseYear', totalExpenseYear);
-  console.log('totalIncomeYear', totalIncomeYear);
+  // console.log('totalExpenseYear', totalExpenseYear);
+  // console.log('totalIncomeYear', totalIncomeYear);
 
   const monthIndex = selectedDate.monthIndex;
-  console.log('monthIndex', monthIndex);
+  // console.log('monthIndex', monthIndex);
 
   const monthName = monthNames[monthIndex];
 
@@ -48,7 +48,7 @@ export default function ReportsIncExpSum() {
     );
     monthIncome = entry ? entry[monthName] : 0;
   }
-  console.log('month income', monthIncome);
+  // console.log('month income', monthIncome);
 
   let monthExpense = 10;
   if (totalExpenseYear) {
