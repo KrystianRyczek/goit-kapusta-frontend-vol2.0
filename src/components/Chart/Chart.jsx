@@ -18,6 +18,8 @@ export function Chart({ activeSheet }) {
   const { summaryReportData } = useReportChart();
   const sumaryData = summaryReportData(activeSheet);
 
+  console.log("sumaryData:", sumaryData)
+
   const { selectedDate } = useSelectedDate();
 
   const groupedData = sumaryData.reduce((acc, { description, amount, date }) => {
@@ -42,11 +44,13 @@ export function Chart({ activeSheet }) {
 
   const sortedData = filteredData.sort((a, b) => b.amount - a.amount).slice(0, 6);
 
+  console.log("sortedData:", sortedData)
+
   return (
     <div>
       <div className={css.box}>
         <ResponsiveContainer width="100%" height="100%" className={css.chart}>
-          <BarChart data={sortedData}>
+          <BarChart data={sortedData} margin={{ top: 40 }}>
             <CartesianGrid vertical={false} horizontal={true} />
             <XAxis
               dataKey="description"
@@ -70,7 +74,7 @@ export function Chart({ activeSheet }) {
                   fill={index % 2 === 0 ? '#ff751d' : '#ffdac0'}
                 />
               ))}
-              <LabelList dataKey="amount" position="top" fill="#5e6373" />
+              <LabelList dataKey="amount" position="top" fill="#5e6373"  />
             </Bar>
           </BarChart>
         </ResponsiveContainer>
