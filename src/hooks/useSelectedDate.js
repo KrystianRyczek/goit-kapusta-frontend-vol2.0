@@ -31,7 +31,7 @@ export const useSelectedDate = () => {
     ? JSON.parse(storedDate)
     : { monthIndex: new Date().getMonth(), year: new Date().getFullYear() };
 
-  const selectedDate = useSelector(selectSelectedDate) || initialDate;
+  const selectedDate = useSelector(selectSelectedDate);
 
   useEffect(() => {
     localStorage.setItem('selectedDate', JSON.stringify(selectedDate));
