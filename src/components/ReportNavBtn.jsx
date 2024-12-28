@@ -2,10 +2,7 @@ import "../css/TransactionNavBtn.css";
 import { useReportNavBtn } from "../hooks/useReportNavBtn";
 import { useLocation } from "react-router";
 
-export default function ReportNavBtn({
-  expensesClass,
-  incomesClass,
-}) {
+export default function ReportNavBtn() {
   const  toggleSheet  = useReportNavBtn();
   const location = useLocation().pathname.slice(21);
   const text = location.toUpperCase(); 
