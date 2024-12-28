@@ -209,6 +209,7 @@ const storeSlice = createSlice({
       //14.getUserBalance
       .addCase(setUserBalance.fulfilled, (state, action) => {
         console.log("getUserBalance", action.payload);
+        state.balance = action.payload.newBalance
         state.isLoading = false;
         state.isError = null;
       })

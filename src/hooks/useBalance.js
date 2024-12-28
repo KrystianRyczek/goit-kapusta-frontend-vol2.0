@@ -26,7 +26,7 @@ export const useBalance=()=>{
     console.log("usebalance", data)
 
     dispach(setUserBalance(data))
-    //actions.resetForm()
+    actions.resetForm()
   }
 
 
