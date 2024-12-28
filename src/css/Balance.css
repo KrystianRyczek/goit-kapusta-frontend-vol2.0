@@ -28,6 +28,7 @@
 .balance-form {
   display: flex;
   gap: 16px;
+  position: relative;
 }
 .balance-input {
   padding-left: 15px;
@@ -43,4 +44,11 @@
   background-color: #f2f5fc;
   border-radius: 16px;
   border: 2px solid #ffffff;
+}
+.welcome-modal-container {
+  position: absolute;
+  top: 130px;
+  left: 80%;
+  transform: translateX(-50%);
+  z-index: 1000;
 }

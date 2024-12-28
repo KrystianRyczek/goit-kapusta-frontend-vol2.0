@@ -1,10 +1,10 @@
-import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import {
   addUser,
   signInUser,
   signOutUser,
   refreshUserToken,
-} from './auth/operation';
+} from "./auth/operation";
 import {
   addUserIncome,
   getUserIncome,
@@ -14,35 +14,38 @@ import {
   userIncomeCategory,
   userExpenseCategory,
   userTransactionPeriodDate,
-} from './transaction/operation';
-import { userDetails, setUserBalance } from './user/operation';
-import { initialState } from './initialState';
+} from "./transaction/operation";
+import { userDetails, setUserBalance } from "./user/operation";
+import { initialState } from "./initialState";
 
 const handlePending = (state) => {
-  console.log('Pending');
+  console.log("Pending");
   state.isLoading = true;
   state.isError = null;
   state.isRegister = false;
 };
 const handleRejected = (state, action) => {
-  console.log('Fail');
+  console.log("Fail");
   state.isLoading = false;
   state.isError = action.error.message;
   console.log(state.isError);
 };
 
 const storeSlice = createSlice({
-  name: 'store',
-  initialState: initialState,
+  name: "store",
+  initialState: {
+    ...initialState,
+    balance: 0, // Ustawienie balance na 0
+  },
   reducers: {
     //1.readDataFromLocalStorage
     readDataFromLocalStorage: (state, action) => {
-      console.log('Readed', action.payload);
+      console.log("Readed", action.payload);
       state = JSON.parse(localStorage.getItem(`userLocaldata`));
     },
     //2.saveDataToLocalStorage
     saveDataToLocalStorage: (state, action) => {
-      console.log('Saved', action.payload);
+      console.log("Saved", action.payload);
       localStorage.setItem(`userLocaldata`, JSON.stringify(state));
     },
     //3.selectedDate
@@ -62,7 +65,7 @@ const storeSlice = createSlice({
       })
       //2.signInUser
       .addCase(signInUser.fulfilled, (state, action) => {
-        console.log('signInUser', action.payload);
+        console.log("signInUser", action.payload);
         state.isError = null;
         state.isLoading = false;
         state.isLogin = true;
@@ -74,25 +77,23 @@ const storeSlice = createSlice({
         state.userAvatar = action.payload.userData.color;
         state.isVerified = action.payload.userData.veryfi;
         state.balance = action.payload.userData.balance;
-        state.incomes = []
-        state.expenses = []
+        state.incomes = [];
+        state.expenses = [];
         action.payload.userData.transactions.forEach((transaction) => {
-
-          if (transaction.typeOfTransaction.toLowerCase().includes("expense")){
-            console.log('income')
-              state.expenses =[...state.expenses, transaction]
-              
-          }
-          else if (transaction.typeOfTransaction.toLowerCase().includes("income")){
-            console.log('expense')
-              state.incomes = [...state.incomes, transaction]
+          if (transaction.typeOfTransaction.toLowerCase().includes("expense")) {
+            console.log("income");
+            state.expenses = [...state.expenses, transaction];
+          } else if (
+            transaction.typeOfTransaction.toLowerCase().includes("income")
+          ) {
+            console.log("expense");
+            state.incomes = [...state.incomes, transaction];
           }
         });
-
       })
       //3.signOutUser
       .addCase(signOutUser.fulfilled, (state, action) => {
-        console.log('signOutUser', action.payload);
+        console.log("signOutUser", action.payload);
         (state.isLoading = false), (state.isError = null);
         state.isLogin = false;
         state.isDelate = null;
@@ -116,20 +117,20 @@ const storeSlice = createSlice({
       })
       //4.refreshUserToken   not implemented
       .addCase(refreshUserToken.fulfilled, (state, action) => {
-        console.log('refreshUserToken', action.payload);
+        console.log("refreshUserToken", action.payload);
         state.isLoading = false;
         state.isError = null;
       })
       //5.addUserIncome
       .addCase(addUserIncome.fulfilled, (state, action) => {
-        console.log('addUserIncome', action.payload);
+        console.log("addUserIncome", action.payload);
         state.isLoading = false;
         state.isError = null;
         state.balance = action.payload.newBalance;
       })
       //6.getUserIncome
       .addCase(getUserIncome.fulfilled, (state, action) => {
-        console.log('getUserIncome', action.payload.incomes);
+        console.log("getUserIncome", action.payload.incomes);
         state.isLoading = false;
         state.isError = null;
         state.incomes = action.payload.incomes;
@@ -137,14 +138,14 @@ const storeSlice = createSlice({
       })
       //7.addUserExpense
       .addCase(addUserExpense.fulfilled, (state, action) => {
-        console.log('addUserExpense', action.payload);
+        console.log("addUserExpense", action.payload);
         state.isLoading = false;
         state.isError = null;
         state.balance = action.payload.newBalance;
       })
       //8.getUserExpense
       .addCase(getUserExpense.fulfilled, (state, action) => {
-        console.log('getUserExpense', action.payload.monthStats);
+        console.log("getUserExpense", action.payload.monthStats);
         state.isLoading = false;
         state.isError = null;
         state.expenses = action.payload.expense;
@@ -152,7 +153,7 @@ const storeSlice = createSlice({
       })
       //9.deleteUserExpense
       .addCase(deleteUserExpense.fulfilled, (state, action) => {
-        console.log('deleteUserExpense', action.payload);
+        console.log("deleteUserExpense", action.payload);
         state.isLoading = false;
         state.isError = null;
         state.isDelate = true;
@@ -160,28 +161,28 @@ const storeSlice = createSlice({
       })
       //10.userIncomeCategory
       .addCase(userIncomeCategory.fulfilled, (state, action) => {
-        console.log('userIncomeCategory', action.payload);
+        console.log("userIncomeCategory", action.payload);
         state.isLoading = false;
         state.isError = null;
         state.incomesCat = action.payload;
       })
       //11.userExpenseCategory
       .addCase(userExpenseCategory.fulfilled, (state, action) => {
-        console.log('userExpenseCategory', action.payload);
+        console.log("userExpenseCategory", action.payload);
         state.isLoading = false;
         state.isError = null;
         state.expenseCat = action.payload;
       })
       //12.userTransactionPeriodDate & selectedDate
       .addCase(userTransactionPeriodDate.fulfilled, (state, action) => {
-        console.log('userTransactionPeriodDate', action.payload);
+        console.log("userTransactionPeriodDate", action.payload);
         state.isLoading = false;
         state.isError = null;
         state.transactionData = action.payload;
       })
       //13.userDetails
       .addCase(userDetails.fulfilled, (state, action) => {
-        console.log('userDetails', action.payload.balance);
+        console.log("userDetails", action.payload.balance);
         state.isError = null;
         state.isLoading = false;
         state.isLogin = true;
@@ -194,21 +195,20 @@ const storeSlice = createSlice({
         // state.incomes = []
         // state.expenses = []
         action.payload.userData.transactions.forEach((transaction) => {
-
-        //   if (transaction.typeOfTransaction.toLowerCase().includes("expense")){
-        //     console.log('income')
-        //       state.incomes = [...state.incomes, transaction]
-        //   }
-        //   else if (transaction.typeOfTransaction.toLowerCase().includes("income")){
-        //     console.log('expense')
-        //       state.expenses =[...state.expenses, transaction]
-        //   }
-        // });
+          //   if (transaction.typeOfTransaction.toLowerCase().includes("expense")){
+          //     console.log('income')
+          //       state.incomes = [...state.incomes, transaction]
+          //   }
+          //   else if (transaction.typeOfTransaction.toLowerCase().includes("income")){
+          //     console.log('expense')
+          //       state.expenses =[...state.expenses, transaction]
+          //   }
+          // });
         });
       })
       //14.getUserBalance
       .addCase(setUserBalance.fulfilled, (state, action) => {
-        console.log('getUserBalance', action.payload);
+        console.log("getUserBalance", action.payload);
         state.isLoading = false;
         state.isError = null;
       })
@@ -283,6 +283,7 @@ export const {
   readDataFromLocalStorage,
   saveDataToLocalStorage,
   changeSelectedDate,
+  setBalance,
 } = storeSlice.actions;
 
 export default storeSlice.reducer;
