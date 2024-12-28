@@ -10,15 +10,15 @@ axios.defaults.headers.common.Authorization = `Bearer ${token}`
 //User registration
 export const addUser = createAsyncThunk(
     'addUser/fetchaAddUser', 
+
     async(newUser) => {
         const resp = await axios.post('/auth/register',
-            //newUser
-            {
-                "username": "olaf12",
-                "email": "user00@example.com",
-                "password": "qwerty123!"
-            }
-
+            newUser
+            // {
+            //     "username": username,
+            //     "email": email,
+            //     "password": password
+            // }
         )
         return resp.data
 })
