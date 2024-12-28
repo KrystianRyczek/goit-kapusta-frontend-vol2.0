@@ -6,29 +6,10 @@ import {
 } from '../../redux/storeSlice';
 import css from '../../css/ReportsIncExpSum.module.css';
 import { useSelector } from 'react-redux';
-
-const monthNames = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];
+import { useSelectedDate } from '../hooks/useSelectedDate';
 
 export default function ReportsIncExpSum() {
-  const storedDate = localStorage.getItem('selectedDate');
-  const initialDate = storedDate
-    ? JSON.parse(storedDate)
-    : { monthIndex: new Date().getMonth(), year: new Date().getFullYear() };
-
-  const selectedDate = useSelector(selectSelectedDate) || initialDate;
+  const { selectedDate, monthNames } = useSelectedDate();
   // console.log('selectedDate', selectedDate);
 
   const totalIncomeYear = useSelector(selectIncomesStat);
