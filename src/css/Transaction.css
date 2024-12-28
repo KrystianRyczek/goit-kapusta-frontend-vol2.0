@@ -27,10 +27,9 @@
 .transaction-tables-box {
   display: flex;
   flex-wrap: wrap;
-  gap: 74px;
   justify-content: center;
 }
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1279px) {
   .transaction-tables-box {
     gap: 40px;
   }
@@ -39,5 +38,6 @@
   .transaction-tables-box {
     width: 1034px;
     gap: 74px;
+    margin-left: 32px;
   }
 }
