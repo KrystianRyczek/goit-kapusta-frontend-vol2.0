@@ -13,31 +13,31 @@ const init = {
   email: null,
   userID: null,
   userAvatar: null,
-  balance: null,
+  balance: 0,
   totalIncome: null,
   totalExpense: null,
   selectedDate: null,
   incomes: [
     {
       description: "1Transaction's description",
-      category: 'Salary',
+      category: "Salary",
       amount: 100,
-      date: '2024-12-20',
-      _id: '507f1f77bcf86cd799439011',
+      date: "2024-12-20",
+      _id: "507f1f77bcf86cd799439011",
     },
     {
       description: "2Transaction's description",
-      category: 'Salary',
+      category: "Salary",
       amount: 300,
-      date: '2024-11-31',
-      _id: '507f1f77bcf86cd799439012',
+      date: "2024-11-31",
+      _id: "507f1f77bcf86cd799439012",
     },
     {
       description: "3Transaction's description",
-      category: 'Additional income',
+      category: "Additional income",
       amount: 500,
-      date: '2024-12-21',
-      _id: '507f1f77bcf86cd799439013',
+      date: "2024-12-21",
+      _id: "507f1f77bcf86cd799439013",
     },
   ],
   incomesCat: [],
@@ -57,32 +57,32 @@ const init = {
   ],
   expenses: [
     {
-      description: 'Ticket',
-      category: 'Transport',
+      description: "Ticket",
+      category: "Transport",
       amount: 10,
-      date: '2024-12-10',
-      _id: '507f1f77bcf86cd799439011',
+      date: "2024-12-10",
+      _id: "507f1f77bcf86cd799439011",
     },
     {
-      description: 'Books',
-      category: 'Education',
+      description: "Books",
+      category: "Education",
       amount: 30,
-      date: '2024-12-06',
-      _id: '507f1f77bcf86cd799439012',
+      date: "2024-12-06",
+      _id: "507f1f77bcf86cd799439012",
     },
     {
-      description: 'Vegetables',
-      category: 'Products',
+      description: "Vegetables",
+      category: "Products",
       amount: 50,
-      date: '2024-11-31',
-      _id: '507f1f77bcf86cd799439013',
+      date: "2024-11-31",
+      _id: "507f1f77bcf86cd799439013",
     },
     {
-      description: 'Gym',
-      category: 'Sport',
+      description: "Gym",
+      category: "Sport",
       amount: 75,
-      date: '2024-11-30',
-      _id: '507f1f77bcf86cd799439011',
+      date: "2024-11-30",
+      _id: "507f1f77bcf86cd799439011",
     },
   ],
   expenseCat: [],
@@ -104,7 +104,7 @@ const init = {
 };
 
 const initStorageValue = () => {
-  const userLocaldata = window.localStorage.getItem('userLocaldata');
+  const userLocaldata = window.localStorage.getItem("userLocaldata");
   if (userLocaldata !== null) {
     return JSON.parse(userLocaldata);
   }
