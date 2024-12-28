@@ -56,3 +56,8 @@
 .arrowBtn:hover {
   color: var(--light-orange);
 }
+
+.errorMessage {
+  color: red;
+  text-align: center;
+}

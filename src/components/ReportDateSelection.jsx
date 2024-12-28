@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import css from '../css/ReportDateSelection.module.css';
 import { useSelectedDate } from '../hooks/useSelectedDate';
 
@@ -18,8 +19,10 @@ const monthNames = [
 
 export default function ReportDateSelection() {
   const { selectedDate, setSelectedDate } = useSelectedDate();
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handlePrevious = () => {
+    setErrorMessage('');
     const previousDate = new Date(
       selectedDate.year,
       selectedDate.monthIndex - 1
@@ -28,7 +31,18 @@ export default function ReportDateSelection() {
   };
 
   const handleNext = () => {
+    const currentDate = new Date();
     const nextDate = new Date(selectedDate.year, selectedDate.monthIndex + 1);
+
+    if (
+      nextDate.getFullYear() > currentDate.getFullYear() ||
+      (nextDate.getFullYear() === currentDate.getFullYear() &&
+        nextDate.getMonth() > currentDate.getMonth())
+    ) {
+      setErrorMessage('You cannot move forward');
+      return;
+    }
+    setErrorMessage('');
     setSelectedDate(nextDate);
   };
 
@@ -61,6 +75,7 @@ export default function ReportDateSelection() {
             {'>'}
           </button>
         </div>
+        {errorMessage && <p className={css.errorMessage}>{errorMessage}</p>}
       </div>
     </div>
   );
