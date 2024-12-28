@@ -74,14 +74,18 @@ const storeSlice = createSlice({
         state.userAvatar = action.payload.userData.color;
         state.isVerified = action.payload.userData.veryfi;
         state.balance = action.payload.userData.balance;
+        state.incomes = []
+        state.expenses = []
         action.payload.userData.transactions.forEach((transaction) => {
-          console.log(transaction);
-          // if (transaction.typeOfTransaction.toLowerCase().includes("expense")){
-          //     state.incomes = [...state.incomes, transaction]
-          // }
-          // else if (transaction.typeOfTransaction.toLowerCase().includes("income")){
-          //     state.expenses =[...state.expenses, transaction]
-          // }
+
+          if (transaction.typeOfTransaction.toLowerCase().includes("expense")){
+            console.log('income')
+              state.incomes = [...state.incomes, transaction]
+          }
+          else if (transaction.typeOfTransaction.toLowerCase().includes("income")){
+            console.log('expense')
+              state.expenses =[...state.expenses, transaction]
+          }
         });
 
         //          add transation
