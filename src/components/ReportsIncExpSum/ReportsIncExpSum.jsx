@@ -1,9 +1,5 @@
 import '../../App.css';
-import {
-  selectIncomesStat,
-  selectExpenseStat,
-  selectSelectedDate,
-} from '../../redux/storeSlice';
+import { selectIncomesStat, selectExpenseStat } from '../../redux/storeSlice';
 import css from '../../css/ReportsIncExpSum.module.css';
 import { useSelector } from 'react-redux';
 import { useSelectedDate } from '../../hooks/useSelectedDate';
