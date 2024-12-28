@@ -80,15 +80,15 @@ const storeSlice = createSlice({
 
           if (transaction.typeOfTransaction.toLowerCase().includes("expense")){
             console.log('income')
-              state.incomes = [...state.incomes, transaction]
+              state.expenses =[...state.expenses, transaction]
+              
           }
           else if (transaction.typeOfTransaction.toLowerCase().includes("income")){
             console.log('expense')
-              state.expenses =[...state.expenses, transaction]
+              state.incomes = [...state.incomes, transaction]
           }
         });
 
-        //          add transation
       })
       //3.signOutUser
       .addCase(signOutUser.fulfilled, (state, action) => {
@@ -191,14 +191,19 @@ const storeSlice = createSlice({
         //state.userAvatar = action.payload.color
         //state.isVerified = action.payload.veryfi
         state.balance = action.payload.balance;
+        // state.incomes = []
+        // state.expenses = []
         action.payload.userData.transactions.forEach((transaction) => {
-          console.log(transaction);
-          // if (transaction.typeOfTransaction.toLowerCase().includes("expense")){
-          //     state.incomes = [...state.incomes, transaction]
-          // }
-          // else if (transaction.typeOfTransaction.toLowerCase().includes("income")){
-          //     state.expenses =[...state.expenses, transaction]
-          // }
+
+        //   if (transaction.typeOfTransaction.toLowerCase().includes("expense")){
+        //     console.log('income')
+        //       state.incomes = [...state.incomes, transaction]
+        //   }
+        //   else if (transaction.typeOfTransaction.toLowerCase().includes("income")){
+        //     console.log('expense')
+        //       state.expenses =[...state.expenses, transaction]
+        //   }
+        // });
         });
       })
       //14.getUserBalance

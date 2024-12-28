@@ -6,7 +6,8 @@ const axios = Axios.create({
     baseURL: 'http://localhost:3000/api'
   });
 
-
+const token = (state)=>state.store.token
+axios.defaults.headers.common.Authorization = `Bearer ${token}`
 
 //Get all your info
 
@@ -24,12 +25,15 @@ export const userDetails = createAsyncThunk(
 
 export const setUserBalance = createAsyncThunk(
     'getUserBalance/fetchGetUserBalance', 
-    async(newBalance,token) => {
-        axios.defaults.headers.common.Authorization = `Bearer ${token}`
+    async(data) => {
+        console.log(data.newBalance)
+        console.log(data.token)
+        axios.defaults.headers.common.Authorization = `Bearer ${data.token}`
+        const balance= parseFloat(data.newBalance)
         const resp = await axios.patch('/user/balance',
-            //newBalance
+            //balance
             {
-                "newBalance": 1
+                "newBalance": balance
             }
         )
         return resp.data
