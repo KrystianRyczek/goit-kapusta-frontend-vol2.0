@@ -1,75 +1,43 @@
+import { useState } from 'react';
 import css from '../css/ReportDateSelection.module.css';
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import {
-  changeSelectedDate,
-  selectSelectedDate,
-  selectToken,
-} from '../redux/storeSlice';
-import { userTransactionPeriodDate } from '../redux/transaction/operation';
-
-const monthNames = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];
+import { useSelectedDate } from '../hooks/useSelectedDate';
+import arrowIcon from '../images/arrow.png'
+import { useBtnGoBack } from '../hooks/useBtnGoBack';
 
 export default function ReportDateSelection() {
-  const storedDate = localStorage.getItem('selectedDate');
-  const initialDate = storedDate
-    ? JSON.parse(storedDate)
-    : { monthIndex: new Date().getMonth(), year: new Date().getFullYear() };
+  const { selectedDate, setSelectedDate, monthNames } = useSelectedDate();
 
-  const selectedDate = useSelector(selectSelectedDate) || initialDate;
-
-  const token = useSelector(selectToken);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    localStorage.setItem('selectedDate', JSON.stringify(selectedDate));
-    if (token && selectedDate) {
-      dispatch(
-        userTransactionPeriodDate({
-          monthIndex: selectedDate.monthIndex,
-          year: selectedDate.year,
-          token,
-        })
-      );
-    }
-  }, [selectedDate, token]);
-
-  const handleDateChange = (newDate) => {
-    const monthIndex = newDate.getMonth();
-    const year = newDate.getFullYear();
-
-    dispatch(changeSelectedDate({ monthIndex, year }));
-  };
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handlePrevious = () => {
+    setErrorMessage('');
     const previousDate = new Date(
       selectedDate.year,
       selectedDate.monthIndex - 1
     );
-    handleDateChange(previousDate);
+    setSelectedDate(previousDate);
   };
 
   const handleNext = () => {
     const nextDate = new Date(selectedDate.year, selectedDate.monthIndex + 1);
-    handleDateChange(nextDate);
+    // PONIŻEJ COŚ NIE DZIAŁA
+    // if (
+    //   nextDate.getFullYear() > selectedDate.getFullYear() ||
+    //   (nextDate.getFullYear() === selectedDate.getFullYear() &&
+    //     nextDate.getMonth() > selectedDate.getMonth())
+    // ) {
+    //   setErrorMessage('You cannot move forward');
+    //   return;
+    // }
+    // setErrorMessage('');
+    setSelectedDate(nextDate);
   };
 
-  const handleBack = () => {
-    console.log('Navigating back to the main page');
-  };
+  // const handleBack = () => {
+  //   console.log('Navigating back to the main page');
+  // };
+
+  const { handleBack } = useBtnGoBack();
 
   const formatDate = (monthIndex, year) => {
     return `${monthNames[monthIndex]} ${year}`;
@@ -79,9 +47,9 @@ export default function ReportDateSelection() {
     <div className={css.box}>
       <div className={css.back}>
         <button onClick={handleBack} className={css.arrowBtn}>
-          {'<-'}
+          <img src={arrowIcon} alt="Go Back" className={css.arrowIcon} />
         </button>
-        <p>Main page</p>
+        <p className={css.text}>Main page</p>
       </div>
       <div className={css.dataNav}>
         <p>Current period:</p>
@@ -96,6 +64,7 @@ export default function ReportDateSelection() {
             {'>'}
           </button>
         </div>
+        {errorMessage && <p className={css.errorMessage}>{errorMessage}</p>}
       </div>
     </div>
   );

@@ -1,20 +1,42 @@
-.transaction-table-box {
-  /* width: 746px; */
-  /* height: 382px; */
-  background-color: white;
-  overflow-y: scroll;
-  scrollbar-color: red red;
-  scrollbar-width: thin;
+@media (min-width: 768px) and (max-width: 1279px) {
+  .transaction-table-head-box {
+    height: 40px;
+    width: 624px;
+    display: flex;
+    align-items: center;
+    background-color: #f5f6fb;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+  }
+  .transaction-table-box {
+    width: 624px;
+    background-color: white;
+    overflow-y: scroll;
+    scrollbar-color: red red;
+    scrollbar-width: thin;
+  }
 }
-.transaction-table-head-box {
-  height: 40px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  background-color: #f5f6fb;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
+
+@media (min-width: 1280px) {
+  .transaction-table-head-box {
+    height: 40px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: #f5f6fb;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+  }
+  .transaction-table-box {
+    /* width: 746px; */
+    /* height: 382px; */
+    background-color: white;
+    overflow-y: scroll;
+    scrollbar-color: red red;
+    scrollbar-width: thin;
+  }
 }
+
 .transaction-table-head {
   text-align: left;
   font-size: 12px;

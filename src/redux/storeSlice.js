@@ -48,6 +48,9 @@ const storeSlice = createSlice({
     //3.selectedDate
     changeSelectedDate: (state, action) => {
       state.selectedDate = action.payload;
+      const userLocaldata = JSON.parse(localStorage.getItem('userLocaldata'));
+      userLocaldata.selectedDate = action.payload;
+      localStorage.setItem('userLocaldata', JSON.stringify(userLocaldata));
     },
   },
   extraReducers: (builder) => {
@@ -74,21 +77,21 @@ const storeSlice = createSlice({
         state.userAvatar = action.payload.userData.color;
         state.isVerified = action.payload.userData.veryfi;
         state.balance = action.payload.userData.balance;
-        state.incomes = []
-        state.expenses = []
+        state.incomes = [];
+        state.expenses = [];
+        state.incomes = [];
+        state.expenses = [];
         action.payload.userData.transactions.forEach((transaction) => {
-
-          if (transaction.typeOfTransaction.toLowerCase().includes("expense")){
-            console.log('income')
-              state.expenses =[...state.expenses, transaction]
-              
-          }
-          else if (transaction.typeOfTransaction.toLowerCase().includes("income")){
-            console.log('expense')
-              state.incomes = [...state.incomes, transaction]
+          if (transaction.typeOfTransaction.toLowerCase().includes('expense')) {
+            console.log('income');
+            state.expenses = [...state.expenses, transaction];
+          } else if (
+            transaction.typeOfTransaction.toLowerCase().includes('income')
+          ) {
+            console.log('expense');
+            state.incomes = [...state.incomes, transaction];
           }
         });
-
       })
       //3.signOutUser
       .addCase(signOutUser.fulfilled, (state, action) => {
@@ -194,16 +197,15 @@ const storeSlice = createSlice({
         // state.incomes = []
         // state.expenses = []
         action.payload.userData.transactions.forEach((transaction) => {
-
-        //   if (transaction.typeOfTransaction.toLowerCase().includes("expense")){
-        //     console.log('income')
-        //       state.incomes = [...state.incomes, transaction]
-        //   }
-        //   else if (transaction.typeOfTransaction.toLowerCase().includes("income")){
-        //     console.log('expense')
-        //       state.expenses =[...state.expenses, transaction]
-        //   }
-        // });
+          //   if (transaction.typeOfTransaction.toLowerCase().includes("expense")){
+          //     console.log('income')
+          //       state.incomes = [...state.incomes, transaction]
+          //   }
+          //   else if (transaction.typeOfTransaction.toLowerCase().includes("income")){
+          //     console.log('expense')
+          //       state.expenses =[...state.expenses, transaction]
+          //   }
+          // });
         });
       })
       //14.getUserBalance
@@ -283,6 +285,7 @@ export const {
   readDataFromLocalStorage,
   saveDataToLocalStorage,
   changeSelectedDate,
+  setBalance,
 } = storeSlice.actions;
 
 export default storeSlice.reducer;

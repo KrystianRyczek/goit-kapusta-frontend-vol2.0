@@ -1,3 +1,9 @@
+const initialCurrentDate = {
+  monthIndex: new Date().getMonth(),
+  year: new Date().getFullYear(),
+};
+console.log('initialCurrentDate', initialCurrentDate);
+
 const init = {
   lightTheme: true,
   isLoading: false,
@@ -13,10 +19,13 @@ const init = {
   email: null,
   userID: null,
   userAvatar: null,
-  balance: null,
+  balance: 0,
   totalIncome: null,
   totalExpense: null,
-  selectedDate: null,
+  selectedDate: {
+    monthIndex: initialCurrentDate.monthIndex,
+    year: initialCurrentDate.year,
+  },
   incomes: [
     {
       description: "1Transaction's description",
