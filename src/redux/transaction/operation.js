@@ -6,28 +6,25 @@ const axios = Axios.create({
 });
 
 //Add an income
-
 export const addUserIncome = createAsyncThunk(
   'addUserIncome/fetchAddUserIncome',
-  async (income, token) => {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-    const resp = await axios.post(
-      '/transaction/income',
-      //income
-      {
-        typeOfTransaction: 'income',
-        description: 'Selary',
-        amount: '500',
-        date: '2024-10-03',
-        category: 'Food',
-      }
-    );
-    return resp.data;
+  async ({ income, token }, { rejectWithValue }) => {
+    try {
+      axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+      const resp = await axios.post('/transaction/income', income,
+        { headers: { Authorization: `Bearer ${token}` } });
+      
+      console.log("Odpowiedź serwera po wysłaniu transakcji:", resp.data);
+      
+      return resp.data;
+    } catch (error) {
+      console.error("Błąd podczas wysyłania transakcji:", error);
+      return rejectWithValue(error.response?.data || 'Błąd serwera');
+    }
   }
 );
 
 //Get income stats
-
 export const getUserIncome = createAsyncThunk(
   'getUserIncome/fetchGetUserIncome',
   async (token) => {
@@ -40,20 +37,20 @@ export const getUserIncome = createAsyncThunk(
 //Add an expense
 export const addUserExpense = createAsyncThunk(
   'addUserExpense/fetchAddUserExpense',
-  async (expense, token) => {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-    const resp = await axios.post(
-      '/transaction/expense',
-      //expense
-      {
-        typeOfTransaction: 'expense',
-        description: 'Diner',
-        amount: '500',
-        date: '2024-10-03',
-        category: 'Food',
-      }
-    );
-    return resp.data;
+  async ({ expense, token }, { rejectWithValue }) => {
+    try {
+      axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+      const resp = await axios.post('/transaction/expense', expense,
+        { headers: { Authorization: `Bearer ${token}` } });
+
+      // Logowanie odpowiedzi serwera
+      console.log("Odpowiedź serwera po wysłaniu transakcji:", resp.data);
+
+      return resp.data;
+    } catch (error) {
+      console.error("Błąd podczas wysyłania transakcji:", error);
+      return rejectWithValue(error.response?.data || 'Błąd serwera');
+    }
   }
 );
 
