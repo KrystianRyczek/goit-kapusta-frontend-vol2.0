@@ -132,11 +132,11 @@ const storeSlice = createSlice({
       })
       //6.getUserIncome
       .addCase(getUserIncome.fulfilled, (state, action) => {
-        console.log("getUserIncome", action.payload.incomes);
+        console.log("getUserIncome", action.payload);
         state.isLoading = false;
         state.isError = null;
         state.incomes = action.payload.incomes;
-        //state.incomesStat = action.payload.monthStats
+        state.incomesStat = action.payload.monthStats
       })
       //7.addUserExpense
       .addCase(addUserExpense.fulfilled, (state, action) => {
@@ -147,7 +147,7 @@ const storeSlice = createSlice({
       })
       //8.getUserExpense
       .addCase(getUserExpense.fulfilled, (state, action) => {
-        console.log("getUserExpense", action.payload.monthStats);
+        console.log("getUserExpense", action.payload);
         state.isLoading = false;
         state.isError = null;
         state.expenses = action.payload.expense;
