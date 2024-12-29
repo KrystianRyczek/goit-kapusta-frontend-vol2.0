@@ -10,9 +10,14 @@ axios.interceptors.response.use(
   (error) => {
     if (error.response) {
       if (error.response.status === 401) {
-        console.error("Unauthorized: Logging out user");
-        localStorage.removeItem("authToken"); // Usuń token
-        window.location.href = "/login"; // Przekieruj na stronę logowania
+
+        console.error('Unauthorized - redirecting to login');
+        const userLocaldata =
+          JSON.parse(localStorage.getItem('userLocaldata')) || {};
+        userLocaldata.token = null;
+        userLocaldata.refreshToken = null;
+        localStorage.setItem('userLocaldata', JSON.stringify(userLocaldata));
+        window.location.href = '/login'; // Przekieruj na stronę logowania
       }
       if (error.response.status === 403) {
         console.error("Forbidden: You don't have access to this resource");
