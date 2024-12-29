@@ -49,13 +49,13 @@ const storeSlice = createSlice({
     changeSelectedDate: (state, action) => {
       //------------
 
-      const initialDate = {
-        monthIndex: new Date().getMonth(),
-        year: new Date().getFullYear(),
-      };
-      console.log('initialDate', initialDate);
+      // const initialDate = {
+      //   monthIndex: new Date().getMonth(),
+      //   year: new Date().getFullYear(),
+      // };
+      // console.log('initialDate', initialDate);
 
-      localStorage.setItem('selectedDate', JSON.stringify(initialDate));
+      // localStorage.setItem('selectedDate', JSON.stringify(initialDate));
       // ------------
       state.selectedDate = action.payload;
     },
