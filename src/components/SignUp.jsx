@@ -50,8 +50,8 @@ export default function SignUp() {
                         </div> 
                       </div>                        
                       <div className='register-form-btn-box'>
-                        <button type="submit" className="isInActive" onClick={event=>{clickSignIn(event)}}>Sign In</button>
-                        <button type="submit" className="isActive">Sign Up</button>
+                        <button type="submit" className="isInActive" onClick={event=>{clickSignIn(event)}}>LOG IN</button>
+                        <button type="submit" className="isActive">REGISTRATION</button>
                       </div>
                     </Form>
                   </Formik>
