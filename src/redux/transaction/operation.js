@@ -7,21 +7,23 @@ const axios = Axios.create({
 
 //Add an income
 export const addUserIncome = createAsyncThunk(
-  "addUserIncome/fetchAddUserIncome",
-  async ({ income, token }, { rejectWithValue }) => {
-    try {
+  'addUserIncome/fetchAddUserIncome',
+  async ({token , transactionDetails }) => {
+    console.log('addUserIncome transaction', transactionDetails)
+    console.log('addUserIncome token', token)
       axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-      const resp = await axios.post("/transaction/income", income, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-
-      console.log("Odpowiedź serwera po wysłaniu transakcji:", resp.data);
-
+      const resp = await axios.post('/transaction/income', 
+        transactionDetails
+                // {
+                //   "typeOfTransaction": "expense",
+                //   "description": "Nice dinner",
+                //   "amount": "500",
+                //   "date": "2024-10-03",
+                //   "category": "Food"
+                // }
+              );
+    
       return resp.data;
-    } catch (error) {
-      console.error("Błąd podczas wysyłania transakcji:", error);
-      return rejectWithValue(error.response?.data || "Błąd serwera");
-    }
   }
 );
 
@@ -37,24 +39,22 @@ export const getUserIncome = createAsyncThunk(
 
 //Add an expense
 export const addUserExpense = createAsyncThunk(
-  "addUserExpense/fetchAddUserExpense",
-  async ({ expense, token }, { rejectWithValue }) => {
-    try {
+  'addUserExpense/fetchAddUserExpense',
+  async ({token , transactionDetails }) => {
+    console.log('addUserExpense transaction', transactionDetails)
       axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-      const resp = await axios.post("/transaction/expense", expense, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-
-      // Logowanie odpowiedzi serwera
-      console.log("Odpowiedź serwera po wysłaniu transakcji:", resp.data);
-
-      return resp.data;
-    } catch (error) {
-      console.error("Błąd podczas wysyłania transakcji:", error);
-      return rejectWithValue(error.response?.data || "Błąd serwera");
-    }
-  }
-);
+      const resp = await axios.post('/transaction/expense', 
+        transactionDetails
+              // {
+              //   "typeOfTransaction": "expense",
+              //   "description": "Nice dinner",
+              //   "amount": "500",
+              //   "date": "2024-10-03",
+              //   "category": "Food"
+              // }
+              );
+      return resp.data;        
+  });
 
 //Get expense stats
 export const getUserExpense = createAsyncThunk(
@@ -68,10 +68,13 @@ export const getUserExpense = createAsyncThunk(
 
 // Delete transaction
 export const deleteUserExpense = createAsyncThunk(
-  "deleteUserExpense/fetchDeleteUserExpense",
-  async (transactionId, token) => {
+  'deleteUserTransaction/fetchDeleteUserTransaction',
+  async ({ transactionId, token, typeOfTransaction }) => {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-    const resp = await axios.get(`/transaction/${transactionId}`);
+    const endpoint = typeOfTransaction === 'income' 
+      ? `/transaction/income/${transactionId}` 
+      : `/transaction/expense/${transactionId}`;
+    const resp = await axios.delete(endpoint);
     return resp.data;
   }
 );

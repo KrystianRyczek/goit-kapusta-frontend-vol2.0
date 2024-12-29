@@ -5,21 +5,19 @@ import css from './ReportsIconSet.module.css';
 import { useLocation } from 'react-router';
 import { expencesIcons, incomeIcons } from './icons';
 import ReportNavBtn from '../ReportNavBtn';
-import { useState } from 'react';
-
 
 export default function ReportsIconSet({
   activeSheet,
   expensesClass,
   incomesClass,
+  selectCategory,   
+  onCategoryChange, 
 }) {
   const location = useLocation();
 
-  const [selectCategory, setSelectCategory] = useState(null); 
-
   const handleClickIcon = (category) => {
-    setSelectCategory(category);
-  } 
+    onCategoryChange(category); 
+  };
 
   return (
     <div>
@@ -34,9 +32,7 @@ export default function ReportsIconSet({
           {location.pathname === '/transaction/reports/expenses'
             ? expencesIcons.map((icon, index) => (
                 <React.Fragment key={index}>
-                  <div key={index} className={css.div_svg}
-                  onClick={() => handleClickIcon(icon[1])}
-                  >
+                  <div key={index} className={css.div_svg} onClick={() => handleClickIcon(icon[1])}>
                     <svg className={css.svg}>
                       <use href={icon[0]}></use>
                     </svg>
@@ -47,16 +43,14 @@ export default function ReportsIconSet({
                 </React.Fragment>
               ))
             : incomeIcons.map((icon, index) => (
-              <div key={index} className={css.div_svg}
-              onClick={() => handleClickIcon(icon[1])}
-              >
-                  <svg className={css.svg}>
-                    <use href={icon[0]}></use>
-                  </svg>
-                  <div className={css.div_background_svg}></div>
-                  <p className={css.text_icon}>{icon[1]}</p>
-                </div>
-              ))}
+              <div key={index} className={css.div_svg} onClick={() => handleClickIcon(icon[1])}>
+                <svg className={css.svg}>
+                  <use href={icon[0]}></use>
+                </svg>
+                <div className={css.div_background_svg}></div>
+                <p className={css.text_icon}>{icon[1]}</p>
+              </div>
+            ))}
         </div>
       </div>
     </div>

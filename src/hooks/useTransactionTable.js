@@ -1,30 +1,43 @@
-import { useDispatch, useSelector } from "react-redux"
-import {selectIncomes, selectExpenses, selectToken} from '../redux/storeSlice';
-import { useState } from "react";
+import { useSelector } from "react-redux"
+import { selectIncomes, selectExpenses } from '../redux/storeSlice';
+import { useEffect, useState } from "react";
 
-export const useTransactionTable=()=>{
-    const incomes = useSelector(selectIncomes)
-    const expense = useSelector(selectExpenses)
-    const [modalIsOpen, setModalIsOpen]=useState(false)
-    const [transDesc, setTransDesc]=useState(null)
+export const useTransactionTable = (activeSheet) => {
+  const incomes = useSelector(selectIncomes);
+  const expenses = useSelector(selectExpenses);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [transDesc, setTransDesc] = useState(null);
+  const [activeData, setActiveData] = useState([]);
 
-    const transactionTableData= (activeSheet) =>{
-        if(activeSheet ==="expenses"){
-            return expense
-        }
-    return incomes
+  const transactionTableData = () => activeData;
+
+  const deleteTransaction = (description) => {
+    setModalIsOpen(true);
+    setTransDesc(description);
+  };
+
+  const deleteConf = () => {
+    setModalIsOpen(false);
+    console.log("Deleting transaction:", transDesc);
+  };
+
+  const deleteModalClose = () => {
+    setModalIsOpen(false);
+  };
+
+  useEffect(() => {
+    if (activeSheet === "expenses") {
+      setActiveData(expenses);
+    } else {
+      setActiveData(incomes);
     }
-  const deleteTransaction =(description)=>{
-    setModalIsOpen(true)
-    setTransDesc(description)
-  }
-  const deleteConf=()=>{
-    setModalIsOpen(false)
-    console.log(transDesc)
+  }, [expenses, incomes, activeSheet]);
 
-  }
-  const deleteModalClose = () =>{
-    setModalIsOpen(false)
-  }
-    return { transactionTableData, deleteTransaction, deleteConf, deleteModalClose , modalIsOpen}
-}
+  return {
+    transactionTableData,
+    deleteTransaction,
+    deleteConf,
+    deleteModalClose,
+    modalIsOpen,
+  };
+};

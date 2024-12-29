@@ -14,24 +14,29 @@ import {
   Cell,
 } from 'recharts';
 
-export function Chart({ activeSheet }) {
+export function Chart({ activeSheet, selectedCategory }) {
   const { summaryReportData } = useReportChart();
   const sumaryData = summaryReportData(activeSheet);
 
-  console.log("sumaryData:", sumaryData)
+  // console.log("sumaryData:", sumaryData)
+
+
+  // console.log("selectedCategory:", selectedCategory);
 
   const { selectedDate } = useSelectedDate();
 
-  const groupedData = sumaryData.reduce((acc, { description, amount, date }) => {
+
+  const groupedData = sumaryData.reduce((acc, { description, amount, date, category }) => {
     const existing = acc.find((item) => item.description === description);
     if (existing) {
       existing.amount += amount;
     } else {
-      acc.push({ description, amount, date });
+      acc.push({ description, amount, date, category });
     }
     return acc;
   }, []);
 
+  // console.log("groupedData:", groupedData)
 
   const filteredData = groupedData.filter(transaction => {
       
@@ -39,12 +44,18 @@ export function Chart({ activeSheet }) {
     const transactionMonthYear = date.toISOString().slice(0, 7);
     const selectedMonthYear = `${selectedDate.year}-${String(selectedDate.monthIndex + 1).padStart(2, '0')}`;
 
-    return transactionMonthYear === selectedMonthYear;
+    const isSameMonth = transactionMonthYear === selectedMonthYear;
+
+  
+    const isSameCategory = transaction.category === selectedCategory;
+
+  
+    return isSameMonth && isSameCategory;
   })
 
   const sortedData = filteredData.sort((a, b) => b.amount - a.amount).slice(0, 6);
 
-  console.log("sortedData:", sortedData)
+  // console.log("sortedData:", sortedData)
 
   return (
     <div>
@@ -82,3 +93,4 @@ export function Chart({ activeSheet }) {
     </div>
   );
 }
+

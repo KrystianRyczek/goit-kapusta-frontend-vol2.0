@@ -22,13 +22,13 @@ p {
   font-weight: 700;
   font-size: 14px;
   letter-spacing: 0.04em;
-  box-shadow: 0 10px 60px 0 rgba(170, 178, 197, 0.2);
-  background: #fff;
+  box-shadow: 5px 10px 20px 0 rgba(170, 178, 197, 0.4);
 }
 @media (min-width: 768px) {
   .bar {
     border-radius: 30px;
     width: 704px;
+    box-shadow: 0 10px 60px 0 rgba(170, 178, 197, 0.2);
   }
 }
 @media (min-width: 1280px) {
@@ -39,10 +39,45 @@ p {
 
 .textExpense {
   color: var(--red);
-  padding: 0 15px 0 15px;
+}
+@media (min-width: 768px) {
+  .textExpense {
+    padding: 0 0 0 15px;
+  }
 }
 
 .textIncome {
   color: var(--green);
-  padding: 0 15px 0 15px;
+}
+@media (min-width: 768px) {
+  .textIncome {
+    padding: 0 0 0 15px;
+  }
+}
+
+.line {
+  width: 1px;
+  height: 70px;
+  background-color: var(--kapusta-grey);
+  margin-right: 15px;
+  margin-left: 15px;
+}
+@media (min-width: 768px) {
+  .line {
+    height: 25px;
+  }
+}
+
+.toWrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 9px 0;
+}
+@media (min-width: 768px) {
+  .toWrap {
+    flex-direction: row;
+    padding: 0;
+  }
 }
