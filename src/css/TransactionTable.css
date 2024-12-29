@@ -28,11 +28,11 @@
     border-top-right-radius: 16px;
   }
   .transaction-table-box {
-    /* width: 746px; */
-    /* height: 382px; */
+    width: 746px;
+    height: 382px;
     background-color: white;
     overflow-y: scroll;
-    scrollbar-color: red red;
+    scrollbar-color: var(--light-grey) var(--dark-grey);
     scrollbar-width: thin;
   }
 }
