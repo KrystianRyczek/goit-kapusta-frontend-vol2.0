@@ -1,3 +1,4 @@
+
 .box {
   width: 320px;
   box-shadow: 0 10px 60px 0 rgba(170, 178, 197, 0.2);
@@ -9,23 +10,30 @@
   align-items: center;
   flex-direction: column;
   border-radius: 30px;
-  padding-top: 40px;
+  gap:20px;
 }
 .icons {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   column-gap: 13px;
-  row-gap: 41px;
 }
 .div_svg {
+  width: 84px;
+  height: 140px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
-  width: 84px;
-  height: 122px;
+}
+.amount {
+  margin-bottom: 5px;
+  text-align: center;
+}
+.text_icon{
+  margin-top: 5px;
+  text-align: center;
 }
 .div_background_svg {
   position: absolute;
@@ -48,6 +56,14 @@
 .div_svg:hover .svg {
   fill: #ff751d;
 }
+.active_background{
+  background-color: #ffdac0;
+}
+.active_svg{
+  fill: #ff751d;
+}
+
+
 .line {
   width: 280px;
   height: 1px;
@@ -62,11 +78,9 @@
     width: 623px;
     height: 268px;
     column-gap: 33px;
-    row-gap: 40px;
   }
   .div_svg {
     width: 73px;
-    height: 106px;
   }
   .line {
     display: none;
