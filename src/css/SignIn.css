@@ -48,7 +48,18 @@
   height: 40px;
   background-color: #f6f7fb;
   border-radius: 26px;
+  border: none;
   margin: 40px auto 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  box-shadow: 0px 5px 5px 0px #aab2c533;
+}
+.required-star{
+  color: red;
+  font-size: 16px;
 }
 .login-form-p2 {
   margin: 40px auto 40px auto;
