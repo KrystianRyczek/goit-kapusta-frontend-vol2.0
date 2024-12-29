@@ -1,47 +1,49 @@
-import Axios from 'axios';
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import Axios from "axios";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
 const axios = Axios.create({
-  baseURL: 'http://localhost:3000/api',
+  baseURL: "http://localhost:3000/api",
 });
 
 //Add an income
 export const addUserIncome = createAsyncThunk(
-  'addUserIncome/fetchAddUserIncome',
+  "addUserIncome/fetchAddUserIncome",
   async ({ income, token }, { rejectWithValue }) => {
     try {
       axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-      const resp = await axios.post('/transaction/income', income,
-        { headers: { Authorization: `Bearer ${token}` } });
-      
+      const resp = await axios.post("/transaction/income", income, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
       console.log("Odpowiedź serwera po wysłaniu transakcji:", resp.data);
-      
+
       return resp.data;
     } catch (error) {
       console.error("Błąd podczas wysyłania transakcji:", error);
-      return rejectWithValue(error.response?.data || 'Błąd serwera');
+      return rejectWithValue(error.response?.data || "Błąd serwera");
     }
   }
 );
 
 //Get income stats
 export const getUserIncome = createAsyncThunk(
-  'getUserIncome/fetchGetUserIncome',
+  "getUserIncome/fetchGetUserIncome",
   async (token) => {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-    const resp = await axios.get('/transaction/income');
+    const resp = await axios.get("/transaction/income");
     return resp.data;
   }
 );
 
 //Add an expense
 export const addUserExpense = createAsyncThunk(
-  'addUserExpense/fetchAddUserExpense',
+  "addUserExpense/fetchAddUserExpense",
   async ({ expense, token }, { rejectWithValue }) => {
     try {
       axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-      const resp = await axios.post('/transaction/expense', expense,
-        { headers: { Authorization: `Bearer ${token}` } });
+      const resp = await axios.post("/transaction/expense", expense, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
 
       // Logowanie odpowiedzi serwera
       console.log("Odpowiedź serwera po wysłaniu transakcji:", resp.data);
@@ -49,24 +51,24 @@ export const addUserExpense = createAsyncThunk(
       return resp.data;
     } catch (error) {
       console.error("Błąd podczas wysyłania transakcji:", error);
-      return rejectWithValue(error.response?.data || 'Błąd serwera');
+      return rejectWithValue(error.response?.data || "Błąd serwera");
     }
   }
 );
 
 //Get expense stats
 export const getUserExpense = createAsyncThunk(
-  'getUserExpense/fetchGetUserExpense',
+  "getUserExpense/fetchGetUserExpense",
   async (token) => {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-    const resp = await axios.get('/transaction/expense');
+    const resp = await axios.get("/transaction/expense");
     return resp.data;
   }
 );
 
 // Delete transaction
 export const deleteUserExpense = createAsyncThunk(
-  'deleteUserExpense/fetchDeleteUserExpense',
+  "deleteUserExpense/fetchDeleteUserExpense",
   async (transactionId, token) => {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
     const resp = await axios.get(`/transaction/${transactionId}`);
@@ -77,10 +79,10 @@ export const deleteUserExpense = createAsyncThunk(
 //Get categories for incomes
 
 export const userIncomeCategory = createAsyncThunk(
-  'userIncomeCategory/fetchUserIncomeCategory',
+  "userIncomeCategory/fetchUserIncomeCategory",
   async (token) => {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-    const resp = await axios.get('/transaction/income-categories');
+    const resp = await axios.get("/transaction/income-categories");
     return resp.data;
   }
 );
@@ -88,10 +90,10 @@ export const userIncomeCategory = createAsyncThunk(
 //Get categories for expenses
 
 export const userExpenseCategory = createAsyncThunk(
-  'userExpenseCategory/fetchUserExpenseCategory',
+  "userExpenseCategory/fetchUserExpenseCategory",
   async (token) => {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-    const resp = await axios.get('/transaction/expense-categories');
+    const resp = await axios.get("/transaction/expense-categories");
     return resp.data;
   }
 );
@@ -99,10 +101,10 @@ export const userExpenseCategory = createAsyncThunk(
 //Get transactions data for a specific period
 
 export const userTransactionPeriodDate = createAsyncThunk(
-  'userTransactionPeriodDate/fetchUserTransactionPeriodDate',
+  "userTransactionPeriodDate/fetchUserTransactionPeriodDate",
   async ({ monthIndex, year, token }, { rejectWithValue }) => {
     try {
-      console.log('Dane przekazane do zapytania:', { monthIndex, year });
+      console.log("Dane przekazane do zapytania:", { monthIndex, year });
       //   console.log("Token użyty do autoryzacji:", token);
       axios.defaults.headers.common.Authorization =
         axios.defaults.headers.common.Authorization = `Bearer ${encodeURIComponent(
@@ -113,8 +115,42 @@ export const userTransactionPeriodDate = createAsyncThunk(
       );
       return resp.data;
     } catch (error) {
-      console.error('Błąd podczas pobierania danych:', error);
-      return rejectWithValue(error.response?.data || 'Błąd serwera');
+      console.error("Błąd podczas pobierania danych:", error);
+      return rejectWithValue(error.response?.data || "Błąd serwera");
+    }
+  }
+);
+
+// Update balance
+export const updateBalance = createAsyncThunk(
+  "user/updateBalance",
+  async (balance, { getState, rejectWithValue }) => {
+    try {
+      const state = getState();
+      const token = state.store.token;
+      if (!token) {
+        console.error("No token found");
+        return rejectWithValue("No token found");
+      }
+      console.log("Using token:", token);
+      console.log("Sending balance:", balance);
+      const response = await axios.patch(
+        "/user/balance",
+        { newBalance: Number(balance) },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log("Response from server:", response.data);
+      return response.data;
+    } catch (error) {
+      console.error(
+        "Error updating balance:",
+        error.response?.data || error.message
+      );
+      return rejectWithValue(error.response?.data || "Server error");
     }
   }
 );

@@ -2,38 +2,53 @@ import "../css/Balance.css";
 import { Field, Form, Formik, ErrorMessage } from "formik";
 import { useBalance } from "../hooks/useBalance";
 import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import WelcomeModal from "./WelcomeModal";
+import { setBalance } from "../redux/storeSlice";
+import { updateBalance } from "../redux/transaction/operation";
 
 export default function Balance() {
-  const {balanceShema, balance, setBalance } = useBalance();
+  const { balanceShema } = useBalance();
   const [isWelcomeModalOpen, setWelcomeModalOpen] = useState(false);
+  const dispatch = useDispatch();
+  const balance = useSelector((state) => state.store.balance);
 
-  const initialValues = { balance: 10 };
+  const initialValues = { balance };
 
   useEffect(() => {
-    if (initialValues.balance === 0) {
+    console.log("useEffect called, balance:", balance);
+    if (balance === 0) {
       setWelcomeModalOpen(true);
     }
-  }, [initialValues.balance]);
+  }, [balance]);
 
   const closeWelcomeModal = () => {
     setWelcomeModalOpen(false);
   };
 
+  const handleSubmit = async (values, actions) => {
+    console.log("handleSubmit called, values:", values);
+    try {
+      // Wyślij dane do backendu
+      const result = await dispatch(updateBalance(values.balance)).unwrap();
+      console.log("updateBalance result:", result);
+
+      actions.setSubmitting(false);
+    } catch (error) {
+      console.error("Failed to update balance:", error);
+      actions.setSubmitting(false);
+    }
+  };
+
+  console.log("Balance component rendered, initialValues:", initialValues);
+
   return (
     <div className="balance-container">
-      <p className="balance-p1">Balance:</p>
+      <p className="balance-p1">Balance</p>
       <Formik
         validationSchema={balanceShema}
         initialValues={initialValues}
-        onSubmit={(values, actions) => {
-          setBalance(values, actions);
-          if (values.balance === 0) {
-            setWelcomeModalOpen(true);
-          } else {
-            setWelcomeModalOpen(false);
-          }
-        }}
+        onSubmit={handleSubmit}
       >
         {({ values }) => (
           <Form className="balance-form">
