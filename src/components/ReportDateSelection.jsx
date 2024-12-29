@@ -46,10 +46,10 @@ export default function ReportDateSelection() {
   return (
     <div className={css.box}>
       <div className={css.back}>
-        <button onClick={handleBack} className={css.arrowBtn}>
+        <button onClick={handleBack} className={css.goBackBtn}>
           <img src={arrowIcon} alt="Go Back" className={css.arrowIcon} />
+          Main page
         </button>
-        <p className={css.text}>Main page</p>
       </div>
       <div className={css.dataNav}>
         <p>Current period:</p>

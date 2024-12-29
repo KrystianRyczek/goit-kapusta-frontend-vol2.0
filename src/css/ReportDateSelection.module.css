@@ -68,11 +68,6 @@
   color: var(--text-light-grey)
 }
 
-.text {
-  letter-spacing: 0.04em;
-  color: var(--text-light-grey);
-  cursor: pointer;
-}
 
 .back {
   margin-top: 0px;
@@ -102,11 +97,18 @@
   padding: 5px;
 }
 
-.arrowBtn:hover {
-  color: var(--light-orange);
+.goBackBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-light-grey);
 }
 
 .errorMessage {
   color: red;
   text-align: center;
+}
+
+.arrowIcon {
+  margin-right: 20px; 
 }
