@@ -213,15 +213,6 @@ const storeSlice = createSlice({
           //       state.expenses =[...state.expenses, transaction]
           //   }
           // });
-          //   if (transaction.typeOfTransaction.toLowerCase().includes("expense")){
-          //     console.log('income')
-          //       state.incomes = [...state.incomes, transaction]
-          //   }
-          //   else if (transaction.typeOfTransaction.toLowerCase().includes("income")){
-          //     console.log('expense')
-          //       state.expenses =[...state.expenses, transaction]
-          //   }
-          // });
         });
       })
       //14.getUserBalance
