@@ -7,7 +7,7 @@ import ReportsIconSet from './ReportsIconSet/ReportsIconSet';
 import ReportsIncExpSum from './ReportsIncExpSum';
 
 export default function Report({ activeSheet, expensesClass, incomesClass }) {
-  const [selectCategory, setSelectCategory] = useState(null);
+  const [selectCategory, setSelectCategory] = useState("Products");
 
   const handleCategoryChange = (category) => {
     setSelectCategory(category);

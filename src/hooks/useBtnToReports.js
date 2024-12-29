@@ -4,7 +4,7 @@ export const useBtnToReports = () => {
   const navigate = useNavigate();
 
   const handleOnClick = () => {
-    navigate('/transaction/reports/incomes');
+    navigate('/transaction/reports/expenses');
   };
 
   return { handleOnClick };
