@@ -1,6 +1,6 @@
 @media (max-width: 767px) {
   .balance-container {
-    width: 183px;
+    width: 184px;
     height: 72px;
     display: flex;
     align-items: center;
@@ -47,14 +47,14 @@
 }
 .balance-input {
   padding-left: 15px;
-  width: 183px;
+  width: 115px;
   height: 44px;
   background-color: #f2f5fc;
   border-radius: 16px;
   border: 2px solid #ffffff;
 }
 .balance-btn {
-  width: 125px;
+  width: 115px;
   height: 44px;
   background-color: #f2f5fc;
   border-radius: 16px;
