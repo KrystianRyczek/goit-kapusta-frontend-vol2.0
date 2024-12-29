@@ -47,17 +47,10 @@ const storeSlice = createSlice({
     },
     //3.selectedDate
     changeSelectedDate: (state, action) => {
-      //------------
-
-      // const initialDate = {
-      //   monthIndex: new Date().getMonth(),
-      //   year: new Date().getFullYear(),
-      // };
-      // console.log('initialDate', initialDate);
-
-      // localStorage.setItem('selectedDate', JSON.stringify(initialDate));
-      // ------------
       state.selectedDate = action.payload;
+      const userLocaldata = JSON.parse(localStorage.getItem('userLocaldata'));
+      userLocaldata.selectedDate = action.payload;
+      localStorage.setItem('userLocaldata', JSON.stringify(userLocaldata));
     },
   },
   extraReducers: (builder) => {

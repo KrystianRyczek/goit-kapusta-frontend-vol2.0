@@ -5,8 +5,7 @@ import arrowIcon from '../images/arrow.png'
 import { useBtnGoBack } from '../hooks/useBtnGoBack';
 
 export default function ReportDateSelection() {
-  const { selectedDate, setSelectedDate, monthNames, initialDate } =
-    useSelectedDate();
+  const { selectedDate, setSelectedDate, monthNames } = useSelectedDate();
 
   const [errorMessage, setErrorMessage] = useState('');
 
