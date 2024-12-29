@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import WelcomeModal from "./WelcomeModal";
 
 export default function Balance() {
-  const {balanceShema, balance, setBalance } = useBalance();
+  const { balanceShema, balance, setBalance } = useBalance();
   const [isWelcomeModalOpen, setWelcomeModalOpen] = useState(false);
 
   const initialValues = { balance: 10 };
