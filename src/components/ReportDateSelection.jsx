@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import css from '../css/ReportDateSelection.module.css';
 import { useSelectedDate } from '../hooks/useSelectedDate';
+import arrowIcon from '../images/arrow.png'
+import { useBtnGoBack } from '../hooks/useBtnGoBack';
 
 export default function ReportDateSelection() {
   const { selectedDate, setSelectedDate, monthNames, initialDate } =
@@ -32,9 +34,11 @@ export default function ReportDateSelection() {
     setSelectedDate(nextDate);
   };
 
-  const handleBack = () => {
-    console.log('Navigating back to the main page');
-  };
+  // const handleBack = () => {
+  //   console.log('Navigating back to the main page');
+  // };
+
+  const { handleBack } = useBtnGoBack();
 
   const formatDate = (monthIndex, year) => {
     return `${monthNames[monthIndex]} ${year}`;
@@ -44,7 +48,7 @@ export default function ReportDateSelection() {
     <div className={css.box}>
       <div className={css.back}>
         <button onClick={handleBack} className={css.arrowBtn}>
-          {'<--'}
+          <img src={arrowIcon} alt="Go Back" className={css.arrowIcon} />
         </button>
         <p className={css.text}>Main page</p>
       </div>
