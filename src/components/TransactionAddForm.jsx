@@ -13,11 +13,14 @@ const Option = ({ category }) => {
 };
 
 export default function TransactionAddForm({ activeSheet }) {
-  const { category, fetchCategories } = useTransactionAddForm();
-  const selectCategorys = category(activeSheet);
-  const [hasClickedCategory, setHasClickedCategory] = useState(false);
-  const dispatch = useDispatch();
-  const token = useSelector(selectToken);
+  const {category, useEffectGetCategory, addTransaction } = useTransactionAddForm();
+  // const selectCategorys = category(activeSheet);
+  // const [hasClickedCategory, setHasClickedCategory] = useState(false);
+  // const dispatch = useDispatch();
+  // const token = useSelector(selectToken);
+
+  useEffectGetCategory()
+  const selectCategory = category(activeSheet)
 
   const initialValues = {
     typeOfTransaction: activeSheet === 'expenses' ? 'expense' : 'income',
@@ -28,57 +31,18 @@ export default function TransactionAddForm({ activeSheet }) {
     owner: "user"
   };
 
-  useEffect(() => {
-    initialValues.typeOfTransaction = activeSheet === 'expenses' ? 'expense' : 'income';
-  }, [activeSheet]);
 
-  const handleCategoryClick = () => {
-    if (!hasClickedCategory) {
-      fetchCategories(activeSheet);
-      setHasClickedCategory(true);
-    }
-  };
 
   return (
     <div className='transaction-add-form-container'>
       <Formik
         name="addTransaction"
-        initialValues={initialValues}
+        initialValues={{date:"", description:"", category:'', amount:''}}
         enableReinitialize
-        onSubmit={async (values, actions) => {
-          const { typeOfTransaction, description, amount, date, category, owner } = values;
-
-          console.log("Form values:", values);
-
-          const amountNumber = parseFloat(amount);
-
-          if (description && !isNaN(amountNumber) && category) {
-            try {
-              let response;
-              if (typeOfTransaction === 'expense') {
-                response = await dispatch(addUserExpense({
-                  expense: { typeOfTransaction, description, amount: amountNumber, category, date, owner },
-                  token
-                }));
-              } else if (typeOfTransaction === 'income') {
-                response = await dispatch(addUserIncome({
-                  income: { typeOfTransaction, description, amount: amountNumber, category, date, owner },
-                  token
-                }));
-              }
-              if (response.payload) {
-                console.log("Transakcja została prawidłowo wysłana na serwer:", response.payload);
-              } else {
-                console.error("Błąd podczas wysyłania transakcji:", response.error);
-              }
-            } catch (error) {
-              console.error("Błąd wysyłania transakcji:", error);
-            }
-          } else {
-            console.log("Brak wymaganych danych w formularzu.");
-          }
-
-          actions.resetForm();
+        onSubmit={ (values, actions ) => {
+          console.log(activeSheet)
+          addTransaction({values, activeSheet} )
+          //actions.resetForm();
         }}
       >
         <Form className="transaction-add-form" name="addTransaction">
@@ -101,10 +65,9 @@ export default function TransactionAddForm({ activeSheet }) {
               name="category"
               as="select"
               placeholder="Select Category"
-              onClick={handleCategoryClick}
             >
               <option defaultValue>Product category</option>
-              {selectCategorys.map((category) => <Option category={category} key={uuidv4()} />)}
+              {selectCategory.map((category) => <Option category={category} key={uuidv4()} />)}
             </Field>
             <div className='error-msg'>
               <ErrorMessage name="category" as='div' />

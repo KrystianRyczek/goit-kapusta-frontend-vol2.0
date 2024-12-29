@@ -1,30 +1,51 @@
 import { useDispatch, useSelector } from "react-redux"
-import {selectIncomesCat, selectExpenseCat} from '../redux/storeSlice';
+import {selectIncomesCat, selectExpenseCat, selectToken} from '../redux/storeSlice';
 // import { useState } from "react";
-import { userExpenseCategory, userIncomeCategory } from "../redux/transaction/operation";
+import { userExpenseCategory, userIncomeCategory, addUserExpense, addUserIncome } from "../redux/transaction/operation";
+import { useEffect } from "react";
 
 export const useTransactionAddForm = () => {
     const dispatch = useDispatch();
-    const incomesCategory = useSelector(selectIncomesCat)
+    const incomeCategory = useSelector(selectIncomesCat)
     const expenseCategory = useSelector(selectExpenseCat)
+    const token = useSelector(selectToken)
 
-    const fetchCategories = async (activeSheet) => {
-  try {
-    if (activeSheet === "expenses") {
-      await dispatch(userExpenseCategory());
-    } else if (activeSheet === "incomes") {
-      await dispatch(userIncomeCategory());
+    const useEffectGetCategory = () => {
+      useEffect(() => {
+        dispatch(userIncomeCategory(token))
+        dispatch(userExpenseCategory(token))
+      }, []);
     }
-  } catch (error) {
-    console.error("Błąd podczas pobierania kategorii:", error);
-  }
-};
-    
     const category= (activeSheet) =>{
         if(activeSheet ==="expenses"){
-            return expenseCategory || []
+            return expenseCategory
         }
-    return incomesCategory || []
+    return incomeCategory
     } 
-    return {category, fetchCategories }
+
+
+  const addTransaction = ( {values, activeSheet} ) =>{
+      const type= (activeSheet) =>{
+        if(activeSheet ==="expenses"){
+            return 'expense'
+        }
+        return 'income'
+      }   
+
+      const transactionDetails ={
+          "typeOfTransaction": type(activeSheet),
+          "description": values.description,
+          "amount":  parseFloat(values.amount),
+          "date": values.date,
+          "category": values.category
+        }
+
+        if (activeSheet === 'expenses'){
+          return  dispatch(addUserExpense({token, transactionDetails}))
+        }
+        return  dispatch(addUserIncome({token, transactionDetails}))
+
+    }
+    
+    return {category, useEffectGetCategory, addTransaction } 
 }
