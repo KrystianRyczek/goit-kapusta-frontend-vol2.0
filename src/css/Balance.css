@@ -44,6 +44,7 @@
   letter-spacing: 2%;
   font-weight: 500;
   line-height: 14.06px;
+  color: var(--text-light-grey);
 }
 .balance-form {
   display: flex;
@@ -64,6 +65,8 @@
   background-color: #f2f5fc;
   border-radius: 16px;
   border: 2px solid #ffffff;
+  color: var(--text-light-grey);
+  cursor: pointer;
 }
 .welcome-modal-container {
   position: absolute;
