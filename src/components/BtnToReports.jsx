@@ -1,6 +1,6 @@
 import '../css/BtnToReports.css'
 import { useBtnToReports } from "../hooks/useBtnToReports";
-import graph from '../images/graph-svg.png'
+import graph from '../images/report.png'
 
 
 export default function BtnToReports() {

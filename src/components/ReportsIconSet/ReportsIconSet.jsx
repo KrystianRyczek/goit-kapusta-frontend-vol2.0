@@ -5,6 +5,9 @@ import css from './ReportsIconSet.module.css';
 import { useLocation } from 'react-router';
 import { expencesIcons, incomeIcons } from './icons';
 import ReportNavBtn from '../ReportNavBtn';
+import { useState } from 'react';
+import { Chart } from '../Chart/Chart';
+
 
 export default function ReportsIconSet({
   activeSheet,
@@ -12,6 +15,13 @@ export default function ReportsIconSet({
   incomesClass,
 }) {
   const location = useLocation();
+
+  const [selectCategory, setSelectCategory] = useState(null); 
+
+  const handleClickIcon = (category) => {
+    setSelectCategory(category);
+  } 
+
   return (
     <div>
       <div className={css.box}>
@@ -25,26 +35,34 @@ export default function ReportsIconSet({
           {location.pathname === '/transaction/reports/expenses'
             ? expencesIcons.map((icon, index) => (
                 <React.Fragment key={index}>
-                  <div key={index} className={css.div_svg}>
-
+                  <div key={index} className={css.div_svg}
+                  onClick={() => handleClickIcon(icon[1])}
+                  >
                     <svg className={css.svg}>
-                      <use href={icon}></use>
+                      <use href={icon[0]}></use>
                     </svg>
                     <div className={css.div_background_svg}></div>
+                    <p className={css.text_icon}>{icon[1]}</p>
                   </div>
                   {(index + 1) % 3 === 0 && <div className={css.line}></div>}
                 </React.Fragment>
               ))
             : incomeIcons.map((icon, index) => (
-                <div key={index} className={css.div_svg}>
+              <div key={index} className={css.div_svg}
+              onClick={() => handleClickIcon(icon[1])}
+              >
                   <svg className={css.svg}>
-                    <use href={icon}></use>
+                    <use href={icon[0]}></use>
                   </svg>
                   <div className={css.div_background_svg}></div>
+                  <p className={css.text_icon}>{icon[1]}</p>
                 </div>
               ))}
         </div>
       </div>
+      <Chart selectedCategory={selectCategory}></Chart>
     </div>
   );
+  
 }
+

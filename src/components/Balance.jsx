@@ -8,7 +8,7 @@ export default function Balance() {
   const {balanceShema, balance, setBalance } = useBalance();
   const [isWelcomeModalOpen, setWelcomeModalOpen] = useState(false);
 
-  const initialValues = { balance: 0 };
+  const initialValues = { balance: 10 };
 
   useEffect(() => {
     if (initialValues.balance === 0) {

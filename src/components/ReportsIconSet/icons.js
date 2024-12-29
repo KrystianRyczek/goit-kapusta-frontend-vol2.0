@@ -1,18 +1,18 @@
 export const expencesIcons = [
-    "/icons/sprite.svg#icon-products",
-    "/icons/sprite.svg#icon-coctail",
-    "/icons/sprite.svg#icon-kite",
-    "/icons/sprite.svg#icon-hands-holding-heart",
-    "/icons/sprite.svg#icon-car",
-    "/icons/sprite.svg#icon-couch",
-    "/icons/sprite.svg#icon-tools",
-    "/icons/sprite.svg#icon-invoice",
-    "/icons/sprite.svg#icon-clay",
-    "/icons/sprite.svg#icon-book",
-    "/icons/sprite.svg#icon-ufo",
-]
+    ["/icons/sprite.svg#icon-products", "Products"],
+    ["/icons/sprite.svg#icon-coctail", "Alcohol"],
+    ["/icons/sprite.svg#icon-kite", "Entertainment"],
+    ["/icons/sprite.svg#icon-hands-holding-heart", "Health"],
+    ["/icons/sprite.svg#icon-car", "Transport"],
+    ["/icons/sprite.svg#icon-couch", "Housing"],
+    ["/icons/sprite.svg#icon-tools", "Technique"],
+    ["/icons/sprite.svg#icon-invoice", "Communal, communication"],
+    ["/icons/sprite.svg#icon-clay", "Sports, hobbies"],
+    ["/icons/sprite.svg#icon-book", "Education"],
+    ["/icons/sprite.svg#icon-ufo", "Other"]
+  ]
 
 export const incomeIcons = [
-    "/icons/sprite.svg#icon-salary",
-    "/icons/sprite.svg#icon-add-icome",
-]
+    ["/icons/sprite.svg#icon-salary", "Salary"],
+    ["/icons/sprite.svg#icon-add-icome", "Add. income"]
+  ]

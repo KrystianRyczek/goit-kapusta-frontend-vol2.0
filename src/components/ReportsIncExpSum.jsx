@@ -6,7 +6,7 @@ import { useSelectedDate } from '../hooks/useSelectedDate';
 
 export default function ReportsIncExpSum() {
   const { selectedDate, monthNames } = useSelectedDate();
-  // console.log('selectedDate', selectedDate);
+  console.log('selectedDate', selectedDate);
 
   const totalIncomeYear = useSelector(selectIncomesStat);
   const totalExpenseYear = useSelector(selectExpenseStat);
@@ -34,14 +34,16 @@ export default function ReportsIncExpSum() {
     );
     monthExpense = entry ? entry[monthName] : 0;
   }
+  // console.log('month expense', monthExpense);
 
   return (
     <div>
       <div className={css.bar}>
         <p>Expenses:</p>
         <p className={css.textExpense}>- {`${monthExpense}`}</p>
+        <div className={css.line}></div>
         <p>Incomes:</p>
-        <p className={css.textIncome}>{`${monthIncome}`}</p>
+        <p className={css.textIncome}>+ {`${monthIncome}`}</p>
       </div>
     </div>
   );

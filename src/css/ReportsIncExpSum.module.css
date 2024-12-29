@@ -46,3 +46,10 @@ p {
   color: var(--green);
   padding: 0 15px 0 15px;
 }
+
+.line {
+  width: 1px;
+  height: 25px;
+  background-color: var(--kapusta-grey);
+  margin-right: 15px;
+}

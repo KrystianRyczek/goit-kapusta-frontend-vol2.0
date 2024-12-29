@@ -64,6 +64,16 @@
   }
 }
 
+.dataNav {
+  color: var(--text-light-grey)
+}
+
+.text {
+  letter-spacing: 0.04em;
+  color: var(--text-light-grey);
+  cursor: pointer;
+}
+
 .back {
   margin-top: 0px;
 }

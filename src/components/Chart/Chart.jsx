@@ -1,8 +1,8 @@
 import '../../App.css';
 import { useReportChart } from '../../hooks/useReportChart';
-import { selectSelectedDate } from '../../redux/storeSlice';
 import css from './Chart.module.css';
-import { useSelector } from "react-redux";
+import { useSelectedDate } from "../../hooks/useSelectedDate"
+
 import {
   BarChart,
   Bar,
@@ -14,14 +14,16 @@ import {
   Cell,
 } from 'recharts';
 
-export function Chart({ activeSheet }) {
+export function Chart({ activeSheet, selectedCategory }) {
   const { summaryReportData } = useReportChart();
   const sumaryData = summaryReportData(activeSheet);
-  const selectedDate = useSelector(selectSelectedDate) // {monthIndex: 9, year: 2024} - data wybrana na przełączniku 
 
-  console.log(selectedDate)
+  console.log("sumaryData:", sumaryData)
 
-  const safeSelectedDate = selectedDate || { monthIndex: 0, year: new Date().getFullYear() };
+
+  console.log(selectedCategory);
+
+  const { selectedDate } = useSelectedDate();
 
 
   const groupedData = sumaryData.reduce((acc, { description, amount, date }) => {
@@ -39,18 +41,20 @@ export function Chart({ activeSheet }) {
       
     const date = new Date(transaction.date);
     const transactionMonthYear = date.toISOString().slice(0, 7);
-    const selectedMonthYear = `${safeSelectedDate.year}-${String(safeSelectedDate.monthIndex + 1).padStart(2, '0')}`;
+    const selectedMonthYear = `${selectedDate.year}-${String(selectedDate.monthIndex + 1).padStart(2, '0')}`;
 
     return transactionMonthYear === selectedMonthYear;
   })
 
-  const sortedData = filteredData.sort((a, b) => b.amount - a.amount);
+  const sortedData = filteredData.sort((a, b) => b.amount - a.amount).slice(0, 6);
+
+  console.log("sortedData:", sortedData)
 
   return (
     <div>
       <div className={css.box}>
         <ResponsiveContainer width="100%" height="100%" className={css.chart}>
-          <BarChart data={sortedData}>
+          <BarChart data={sortedData} margin={{ top: 40 }}>
             <CartesianGrid vertical={false} horizontal={true} />
             <XAxis
               dataKey="description"
@@ -74,7 +78,7 @@ export function Chart({ activeSheet }) {
                   fill={index % 2 === 0 ? '#ff751d' : '#ffdac0'}
                 />
               ))}
-              <LabelList dataKey="amount" position="top" fill="#5e6373" />
+              <LabelList dataKey="amount" position="top" fill="#5e6373"  />
             </Bar>
           </BarChart>
         </ResponsiveContainer>
@@ -82,3 +86,4 @@ export function Chart({ activeSheet }) {
     </div>
   );
 }
+

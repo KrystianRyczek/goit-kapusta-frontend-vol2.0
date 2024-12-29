@@ -6,28 +6,28 @@ const axios = Axios.create({
 });
 
 //Add an income
-
 export const addUserIncome = createAsyncThunk(
   'addUserIncome/fetchAddUserIncome',
-  async (income, token) => {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-    const resp = await axios.post(
-      '/transaction/income',
-      //income
-      {
-        typeOfTransaction: 'income',
-        description: 'Selary',
-        amount: '500',
-        date: '2024-10-03',
-        category: 'Food',
-      }
-    );
-    return resp.data;
+  async ({token , transactionDetails }) => {
+    console.log('addUserIncome transaction', transactionDetails)
+    console.log('addUserIncome token', token)
+      axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+      const resp = await axios.post('/transaction/income', 
+        transactionDetails
+                // {
+                //   "typeOfTransaction": "expense",
+                //   "description": "Nice dinner",
+                //   "amount": "500",
+                //   "date": "2024-10-03",
+                //   "category": "Food"
+                // }
+              );
+    
+      return resp.data;
   }
 );
 
 //Get income stats
-
 export const getUserIncome = createAsyncThunk(
   'getUserIncome/fetchGetUserIncome',
   async (token) => {
@@ -40,22 +40,21 @@ export const getUserIncome = createAsyncThunk(
 //Add an expense
 export const addUserExpense = createAsyncThunk(
   'addUserExpense/fetchAddUserExpense',
-  async (expense, token) => {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-    const resp = await axios.post(
-      '/transaction/expense',
-      //expense
-      {
-        typeOfTransaction: 'expense',
-        description: 'Diner',
-        amount: '500',
-        date: '2024-10-03',
-        category: 'Food',
-      }
-    );
-    return resp.data;
-  }
-);
+  async ({token , transactionDetails }) => {
+    console.log('addUserExpense transaction', transactionDetails)
+      axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+      const resp = await axios.post('/transaction/expense', 
+        transactionDetails
+              // {
+              //   "typeOfTransaction": "expense",
+              //   "description": "Nice dinner",
+              //   "amount": "500",
+              //   "date": "2024-10-03",
+              //   "category": "Food"
+              // }
+              );
+      return resp.data;        
+  });
 
 //Get expense stats
 export const getUserExpense = createAsyncThunk(
