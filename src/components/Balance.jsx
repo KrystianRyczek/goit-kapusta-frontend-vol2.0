@@ -8,7 +8,8 @@ import { setBalance } from "../redux/storeSlice";
 import { updateBalance } from "../redux/transaction/operation";
 
 export default function Balance() {
-  const { balanceShema, balance, setBalance } = useBalance();
+  //const { balanceShema, balance, setBalance } = useBalance();
+  const { balanceShema } = useBalance();
   const [isWelcomeModalOpen, setWelcomeModalOpen] = useState(false);
   const dispatch = useDispatch();
   const balance = useSelector((state) => state.store.balance);
