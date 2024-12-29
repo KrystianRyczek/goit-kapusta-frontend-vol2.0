@@ -84,4 +84,13 @@
   color: var(--text-grey);
   font-family: 'Roboto', sans-serif;
   cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
+.nav-bar-button:hover {
+  transform: scale(1.20);
+  color: #ff751d;
+}
+.isActive:active {
+  filter: brightness(1.3);
+}
+
