@@ -60,52 +60,54 @@ export default function TransactionAddForm({ activeSheet }) {
         onSubmit={ (values, actions ) => {
           console.log(activeSheet)
           addTransaction({values, activeSheet} )
-          //actions.resetForm();
+          actions.resetForm();
         }}
       >
-        <Form className="transaction-add-form" name="addTransaction">
-          <div className="transaction-add-form-data">
-            <Field className="" type="date" name="date" />
-            <div className=''>
-              <ErrorMessage name="date" as='div' />
+        {({ resetForm }) => (
+          <Form className="transaction-add-form" name="addTransaction">
+            <div className="transaction-add-form-data">
+              <Field className="" type="date" name="date" />
+              <div className=''>
+                <ErrorMessage name="date" as='div' />
+              </div>
             </div>
-          </div>
 
-          <div className="transaction-add-form-desciption">
-            <Field className="" type="text" name="description" placeholder="Product description" />
-            <div className=''>
-              <ErrorMessage name="description" as='div' />
+            <div className="transaction-add-form-desciption">
+              <Field className="" type="text" name="description" placeholder="Product description" />
+              <div className=''>
+                <ErrorMessage name="description" as='div' />
+              </div>
             </div>
-          </div>
 
-          <div className="transaction-add-form-category">
-            <Field
-              name="category"
-              as="select"
-            >
-              <option value="" disabled>Product category</option>
-              {selectCategory.map((category) => <Option category={category} key={uuidv4()} />)}
-            </Field>
-            <div className='error-msg'>
-              <ErrorMessage name="category" as='div' />
+            <div className="transaction-add-form-category">
+              <Field
+                name="category"
+                as="select"
+              >
+                <option value="" disabled>Product category</option>
+                {selectCategory.map((category) => <Option category={category} key={uuidv4()} />)}
+              </Field>
+              <div className='error-msg'>
+                <ErrorMessage name="category" as='div' />
+              </div>
             </div>
-          </div>
 
-          <div className="transaction-add-form-amount">
-            <div className="transaction-add-form-amount-container">
-              <Field className="" type="text" name="amount" placeholder="0.00" />
-              <img className="calculator-icon" src={calculator} alt="calculator" />
+            <div className="transaction-add-form-amount">
+              <div className="transaction-add-form-amount-container">
+                <Field className="" type="text" name="amount" placeholder="0.00" />
+                <img className="calculator-icon" src={calculator} alt="calculator" />
+              </div>
+              <div className=''>
+                <ErrorMessage name="amount" as='div' />
+              </div>
             </div>
-            <div className=''>
-              <ErrorMessage name="amount" as='div' />
-            </div>
-          </div>
 
-          <div className='transaction-add-form-btn-box'>
-            <button type="submit">INPUT</button>
-            <button type="button" onClick={() => {}}>CLEAR</button>
-          </div>
-        </Form>
+            <div className='transaction-add-form-btn-box'>
+              <button type="submit">INPUT</button>
+              <button type="button" onClick={() => resetForm()}>CLEAR</button>
+            </div>
+          </Form>
+        )}
       </Formik>
     </div>
   );
