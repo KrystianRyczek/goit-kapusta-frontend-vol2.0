@@ -5,15 +5,15 @@ import { useSelector } from 'react-redux';
 import { useSelectedDate } from '../hooks/useSelectedDate';
 
 export default function ReportsIncExpSum() {
-  const { selectedDate, monthNames } = useSelectedDate();
-  // console.log('selectedDate', selectedDate);
+  const { selectedDate, monthNames, initialDate } = useSelectedDate();
+  console.log('selectedDate', selectedDate);
 
   const totalIncomeYear = useSelector(selectIncomesStat);
   const totalExpenseYear = useSelector(selectExpenseStat);
   // console.log('totalExpenseYear', totalExpenseYear);
   // console.log('totalIncomeYear', totalIncomeYear);
 
-  const monthIndex = selectedDate.monthIndex;
+  const monthIndex = initialDate.monthIndex;
   // console.log('monthIndex', monthIndex);
 
   const monthName = monthNames[monthIndex];
