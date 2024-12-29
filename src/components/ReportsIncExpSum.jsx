@@ -41,7 +41,7 @@ export default function ReportsIncExpSum() {
         <p>Expenses:</p>
         <p className={css.textExpense}>- {`${monthExpense}`}</p>
         <p>Incomes:</p>
-        <p className={css.textIncome}>{`${monthIncome}`}</p>
+        <p className={css.textIncome}>+ {`${monthIncome}`}</p>
       </div>
     </div>
   );
