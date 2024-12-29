@@ -68,10 +68,13 @@ export const getUserExpense = createAsyncThunk(
 
 // Delete transaction
 export const deleteUserExpense = createAsyncThunk(
-  'deleteUserExpense/fetchDeleteUserExpense',
-  async (transactionId, token) => {
+  'deleteUserTransaction/fetchDeleteUserTransaction',
+  async ({ transactionId, token, typeOfTransaction }) => {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-    const resp = await axios.get(`/transaction/${transactionId}`);
+    const endpoint = typeOfTransaction === 'income' 
+      ? `/transaction/income/${transactionId}` 
+      : `/transaction/expense/${transactionId}`;
+    const resp = await axios.delete(endpoint);
     return resp.data;
   }
 );
