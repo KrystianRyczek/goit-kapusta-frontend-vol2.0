@@ -1,15 +1,45 @@
-.btn-to-reports {
-  width: 84px;
-  height: 24px;
-  position: absolute;
-  top: 50px;
-  right: 91px;
-  display: flex;
-  align-items: baseline;
-  gap: 15px;
-  border: none;
-  background-color: transparent;
+@media (max-width: 767px) {
+  .btn-to-reports {
+    text-align: center;
+    gap: 15px;
+    width: 84px;
+    height: 24px;
+    align-items: baseline;
+    display: flex;
+    border: none;
+    background-color: transparent;
+    margin: 0 auto;
+  }
 }
+@media (min-width: 768px) and (max-width: 1279px) {
+  .btn-to-reports {
+    top: 50px;
+    right: 37px;
+    gap: 15px;
+    width: 84px;
+    height: 24px;
+    position: absolute;
+    display: flex;
+    align-items: baseline;
+    border: none;
+    background-color: transparent;
+  }
+}
+@media (min-width: 1280px) {
+  .btn-to-reports {
+    width: 84px;
+    height: 24px;
+    position: absolute;
+    top: 50px;
+    right: 91px;
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    border: none;
+    background-color: transparent;
+  }
+}
+
 .btn-to-reports-p1 {
   text-align: right;
   font-size: 12px;
@@ -19,6 +49,6 @@
   color: #52555fb2;
 }
 .btn-to-reports-graph {
-  width: 24px;
-  height: 24px;
+  width: 14px;
+  height: 14px;
 }

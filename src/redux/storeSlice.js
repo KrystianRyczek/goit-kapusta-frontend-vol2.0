@@ -86,6 +86,8 @@ const storeSlice = createSlice({
         state.balance = action.payload.userData.balance;
         state.incomes = [];
         state.expenses = [];
+        state.incomes = [];
+        state.expenses = [];
         action.payload.userData.transactions.forEach((transaction) => {
           if (transaction.typeOfTransaction.toLowerCase().includes('expense')) {
             console.log('income');
@@ -211,6 +213,15 @@ const storeSlice = createSlice({
           //       state.expenses =[...state.expenses, transaction]
           //   }
           // });
+          //   if (transaction.typeOfTransaction.toLowerCase().includes("expense")){
+          //     console.log('income')
+          //       state.incomes = [...state.incomes, transaction]
+          //   }
+          //   else if (transaction.typeOfTransaction.toLowerCase().includes("income")){
+          //     console.log('expense')
+          //       state.expenses =[...state.expenses, transaction]
+          //   }
+          // });
         });
       })
       //14.getUserBalance
@@ -290,6 +301,7 @@ export const {
   readDataFromLocalStorage,
   saveDataToLocalStorage,
   changeSelectedDate,
+  setBalance,
 } = storeSlice.actions;
 
 export default storeSlice.reducer;
