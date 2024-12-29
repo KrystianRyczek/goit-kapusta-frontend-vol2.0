@@ -84,3 +84,7 @@
 .error-msg {
   color: red;
 }
+.required-star {
+  color: red;
+  font-size: 16px;
+}
