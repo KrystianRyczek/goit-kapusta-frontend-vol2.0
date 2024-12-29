@@ -16,8 +16,9 @@ axios.interceptors.response.use(
           JSON.parse(localStorage.getItem('userLocaldata')) || {};
         userLocaldata.token = null;
         userLocaldata.refreshToken = null;
+        userLocaldata.isLogin = false;
         localStorage.setItem('userLocaldata', JSON.stringify(userLocaldata));
-        window.location.href = '/login'; // Przekieruj na stronę logowania
+        window.location.href = '/'; // Przekieruj na stronę logowania
       }
       if (error.response.status === 403) {
         console.error("Forbidden: You don't have access to this resource");

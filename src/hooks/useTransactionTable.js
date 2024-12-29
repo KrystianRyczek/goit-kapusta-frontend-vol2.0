@@ -1,13 +1,16 @@
-import { useSelector } from "react-redux"
-import { selectIncomes, selectExpenses } from '../redux/storeSlice';
+import { useDispatch, useSelector } from "react-redux"
+import { selectIncomes, selectExpenses, selectToken } from '../redux/storeSlice';
 import { useEffect, useState } from "react";
+import { deleteUserExpense } from "../redux/transaction/operation";
 
 export const useTransactionTable = (activeSheet) => {
+  const dispatch = useDispatch()
   const incomes = useSelector(selectIncomes);
   const expenses = useSelector(selectExpenses);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [transDesc, setTransDesc] = useState(null);
   const [activeData, setActiveData] = useState([]);
+  const token = useSelector(selectToken)
 
   const transactionTableData = () => activeData;
 
@@ -18,7 +21,7 @@ export const useTransactionTable = (activeSheet) => {
 
   const deleteConf = () => {
     setModalIsOpen(false);
-    console.log("Deleting transaction:", transDesc);
+    dispatch(deleteUserExpense({ transDesc, token }))
   };
 
   const deleteModalClose = () => {
