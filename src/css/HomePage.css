@@ -38,6 +38,9 @@
 @media (min-width: 768px) and (max-width: 1279px) {
   .home-page-container {
     width: 768px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .home-page-bottom-svg-box {
@@ -69,8 +72,7 @@
     display: flex;
     flex-direction: column;
     top: 136px;
-    left: 171px;
-  }
+      }
   .home-page-logo-box {
     height: 526px;
     width: 100%;
