@@ -18,9 +18,9 @@ select{
     background-color: transparent;
 }
 .transaction-add-form-data{
-    width: 104px;
+    width: 112px;
     height: 100%;
-    margin-left:32px
+    margin-left:24px
 }
 .transaction-add-form-desciption{
     width: 290px;
@@ -33,20 +33,26 @@ select{
     width: 169px;
     height: 100%;
     border: 2px solid #F5F6FB;
-    
     margin-left:-2px;
 }
-.transaction-add-form-amount{
+.transaction-add-form-amount {
+    width: 121px;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid #f5f6fb;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+    margin-left: -2px;
+    padding-right: 16px;
+    text-align: right;
+}
+.transaction-add-form-amount-container {
     width: 121px;
     height: 100%;
     display: flex;
     align-items: center;
-    border: 2px solid #F5F6FB;
-    border-top-right-radius: 16px;
-    border-bottom-right-radius: 16px;
-    margin-left:-2px;
-    padding-right: 16px;
-    text-align: right;
+    margin-left: 8px;
 }
 .transaction-add-form-btn-box{
     width: 289px;

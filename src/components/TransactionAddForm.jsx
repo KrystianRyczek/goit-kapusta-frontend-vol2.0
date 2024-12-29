@@ -47,7 +47,7 @@ export default function TransactionAddForm({ activeSheet }) {
       .positive("Amount must be a positive number")
       .typeError("Amount must be a number"),
     category: Yup.string()
-      .required("Category is required"),
+      .required("Category is required")
   });
 
   return (
@@ -82,9 +82,8 @@ export default function TransactionAddForm({ activeSheet }) {
             <Field
               name="category"
               as="select"
-              placeholder="Select Category"
             >
-              <option defaultValue>Product category</option>
+              <option value="" disabled>Product category</option>
               {selectCategory.map((category) => <Option category={category} key={uuidv4()} />)}
             </Field>
             <div className='error-msg'>
@@ -93,8 +92,10 @@ export default function TransactionAddForm({ activeSheet }) {
           </div>
 
           <div className="transaction-add-form-amount">
-            <Field className="" type="text" name="amount" placeholder="0.00" />
-            <img className="calculator-icon" src={calculator} alt="calculator" />
+            <div className="transaction-add-form-amount-container">
+              <Field className="" type="text" name="amount" placeholder="0.00" />
+              <img className="calculator-icon" src={calculator} alt="calculator" />
+            </div>
             <div className=''>
               <ErrorMessage name="amount" as='div' />
             </div>
