@@ -18,10 +18,10 @@ export function Chart({ activeSheet, selectedCategory }) {
   const { summaryReportData } = useReportChart();
   const sumaryData = summaryReportData(activeSheet);
 
-  console.log("sumaryData:", sumaryData)
+  // console.log("sumaryData:", sumaryData)
 
 
-  console.log("selectedCategory:", selectedCategory);
+  // console.log("selectedCategory:", selectedCategory);
 
   const { selectedDate } = useSelectedDate();
 
@@ -36,7 +36,7 @@ export function Chart({ activeSheet, selectedCategory }) {
     return acc;
   }, []);
 
-  console.log("groupedData:", groupedData)
+  // console.log("groupedData:", groupedData)
 
   const filteredData = groupedData.filter(transaction => {
       
@@ -55,7 +55,7 @@ export function Chart({ activeSheet, selectedCategory }) {
 
   const sortedData = filteredData.sort((a, b) => b.amount - a.amount).slice(0, 6);
 
-  console.log("sortedData:", sortedData)
+  // console.log("sortedData:", sortedData)
 
   return (
     <div>
