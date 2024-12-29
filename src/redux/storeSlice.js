@@ -83,12 +83,12 @@ const storeSlice = createSlice({
         state.expenses = [];
         action.payload.userData.transactions.forEach((transaction) => {
           if (transaction.typeOfTransaction.toLowerCase().includes('expense')) {
-            console.log('income');
+            // console.log('income');
             state.expenses = [...state.expenses, transaction];
           } else if (
             transaction.typeOfTransaction.toLowerCase().includes('income')
           ) {
-            console.log('expense');
+            // console.log('expense');
             state.incomes = [...state.incomes, transaction];
           }
         });
