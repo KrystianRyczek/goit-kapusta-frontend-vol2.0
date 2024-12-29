@@ -1,8 +1,8 @@
-import Axios from 'axios';
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import Axios from "axios";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
 const axios = Axios.create({
-  baseURL: 'http://localhost:3000/api',
+  baseURL: "http://localhost:3000/api",
 });
 
 axios.interceptors.response.use(
@@ -10,6 +10,7 @@ axios.interceptors.response.use(
   (error) => {
     if (error.response) {
       if (error.response.status === 401) {
+
         console.error('Unauthorized - redirecting to login');
         const userLocaldata =
           JSON.parse(localStorage.getItem('userLocaldata')) || {};
@@ -33,11 +34,11 @@ axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 
 //User registration
 export const addUser = createAsyncThunk(
-  'addUser/fetchaAddUser',
+  "addUser/fetchaAddUser",
 
   async (newUser) => {
     const resp = await axios.post(
-      '/auth/register',
+      "/auth/register",
       newUser
       // {
       //     "username": username,
@@ -64,10 +65,10 @@ export const addUser = createAsyncThunk(
 // })
 
 export const signInUser = createAsyncThunk(
-  'signIn/fetchSignIn',
+  "signIn/fetchSignIn",
   async (user) => {
     const resp = await axios.post(
-      '/auth/login',
+      "/auth/login",
       user
       // {
       //     "email": "user00@example.com",
@@ -80,11 +81,11 @@ export const signInUser = createAsyncThunk(
 
 //Logout
 export const signOutUser = createAsyncThunk(
-  'signOut/fetchSignOut',
+  "signOut/fetchSignOut",
 
   async (token) => {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-    const resp = await axios.post('/auth/logout');
+    const resp = await axios.post("/auth/logout");
     return resp;
   }
 );
@@ -92,15 +93,15 @@ export const signOutUser = createAsyncThunk(
 //Not implemented - Get new pair of tokens (use Bearer {refreshToken} instead of accessToken)
 
 export const refreshUserToken = createAsyncThunk(
-  'refreshUserToken/fetchRefreshUserToken',
+  "refreshUserToken/fetchRefreshUserToken",
   async (sessionsId, refreshToken) => {
     axios.defaults.headers.common.Authorization = `Bearer ${refreshToken}`;
     const resp = await axios.post(
-      '/auth/refresh',
+      "/auth/refresh",
 
       //sessionsId
       {
-        sid: 'sadfasgergrshbsbdgjyujtyhsrtggsegsrtg',
+        sid: "sadfasgergrshbsbdgjyujtyhsrtggsegsrtg",
       }
     );
     return resp;
