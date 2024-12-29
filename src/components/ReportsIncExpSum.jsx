@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { useSelectedDate } from '../hooks/useSelectedDate';
 
 export default function ReportsIncExpSum() {
-  const { selectedDate, monthNames, initialDate } = useSelectedDate();
+  const { selectedDate, monthNames } = useSelectedDate();
   console.log('selectedDate', selectedDate);
 
   const totalIncomeYear = useSelector(selectIncomesStat);
@@ -13,7 +13,7 @@ export default function ReportsIncExpSum() {
   // console.log('totalExpenseYear', totalExpenseYear);
   // console.log('totalIncomeYear', totalIncomeYear);
 
-  const monthIndex = initialDate.monthIndex;
+  const monthIndex = selectedDate.monthIndex;
   // console.log('monthIndex', monthIndex);
 
   const monthName = monthNames[monthIndex];
@@ -34,12 +34,14 @@ export default function ReportsIncExpSum() {
     );
     monthExpense = entry ? entry[monthName] : 0;
   }
+  // console.log('month expense', monthExpense);
 
   return (
     <div>
       <div className={css.bar}>
         <p>Expenses:</p>
         <p className={css.textExpense}>- {`${monthExpense}`}</p>
+        <div className={css.line}></div>
         <p>Incomes:</p>
         <p className={css.textIncome}>+ {`${monthIncome}`}</p>
       </div>

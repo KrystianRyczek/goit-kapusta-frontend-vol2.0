@@ -3,8 +3,7 @@ import css from '../css/ReportDateSelection.module.css';
 import { useSelectedDate } from '../hooks/useSelectedDate';
 
 export default function ReportDateSelection() {
-  const { selectedDate, setSelectedDate, monthNames, initialDate } =
-    useSelectedDate();
+  const { selectedDate, setSelectedDate, monthNames } = useSelectedDate();
 
   const [errorMessage, setErrorMessage] = useState('');
 

@@ -26,11 +26,11 @@ export const useSelectedDate = () => {
   const dispatch = useDispatch();
   const token = useSelector(selectToken);
 
-  const initialDate = {
-    monthIndex: new Date().getMonth(),
-    year: new Date().getFullYear(),
-  };
-  console.log(initialDate);
+  // const initialDate = {
+  //   monthIndex: new Date().getMonth(),
+  //   year: new Date().getFullYear(),
+  // };
+  // console.log(initialDate);
 
   // const storedDate = localStorage.getItem('selectedDate');
   // const initialDate = storedDate
@@ -75,5 +75,5 @@ export const useSelectedDate = () => {
     dispatch(changeSelectedDate({ monthIndex, year }));
   };
 
-  return { selectedDate, setSelectedDate, monthNames, initialDate };
+  return { selectedDate, setSelectedDate, monthNames };
 };
