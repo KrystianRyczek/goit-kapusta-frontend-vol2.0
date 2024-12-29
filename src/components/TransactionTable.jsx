@@ -1,5 +1,6 @@
 import '../css/TransactionTable.css'
-import {useTransactionTable} from '../hooks/useTransactionTable'
+import { useEffect } from 'react'
+import { useTransactionTable } from '../hooks/useTransactionTable'
 import { v4 as uuidv4 } from 'uuid'
 import delate from '../images/delete-svg.png'
 import { ConfModal } from './Modal'
@@ -17,10 +18,13 @@ const transactionTableRow =(row, deleteTransaction)=>{
       </div>
       )
 }
-export default function TransactionTable({activeSheet}) {
+export default function TransactionTable({ activeSheet }) {
+  const { transactionTableData, deleteTransaction, deleteConf, deleteModalClose , modalIsOpen} =useTransactionTable(activeSheet)
+  const transactionData = transactionTableData()
 
-  const { transactionTableData, deleteTransaction, deleteConf, deleteModalClose , modalIsOpen} =useTransactionTable()
-  const transactionData = transactionTableData(activeSheet)
+  useEffect(() => {
+    console.log("Data updated for sheet:", activeSheet);
+  }, [transactionData]);
   
     return (
       <div className=''>
@@ -39,8 +43,6 @@ export default function TransactionTable({activeSheet}) {
           deleteModalClose={deleteModalClose}
           deleteConf={deleteConf}
         />
-      </div>
-
-              
+      </div>        
     );
   }
