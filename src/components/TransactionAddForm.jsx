@@ -1,12 +1,13 @@
 import '../css/TransactionAddForm.css';
 import calculator from '../images/calculator.svg';
 import { Field, Form, Formik, ErrorMessage } from "formik";
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import { useTransactionAddForm } from '../hooks/useTransactionAddForm';
 import { v4 as uuidv4 } from 'uuid';
-import { useDispatch, useSelector } from 'react-redux';
-import { addUserExpense, addUserIncome } from '../redux/transaction/operation';
-import { selectToken } from '../redux/storeSlice';
+import * as Yup from 'yup'
+// import { useDispatch, useSelector } from 'react-redux';
+// import { addUserExpense, addUserIncome } from '../redux/transaction/operation';
+// import { selectToken } from '../redux/storeSlice';
 
 const Option = ({ category }) => {
   return <option value={category} key={uuidv4()}>{category}</option>;
@@ -22,22 +23,39 @@ export default function TransactionAddForm({ activeSheet }) {
   useEffectGetCategory()
   const selectCategory = category(activeSheet)
 
+  const currentDate = new Date().toISOString().split('T')[0];
+
   const initialValues = {
     typeOfTransaction: activeSheet === 'expenses' ? 'expense' : 'income',
     description: "",
     amount: "",
-    date: "",
-    category: "Products",
-    owner: "user"
+    date: currentDate,
+    category: "",
+    owner: ""
   };
 
-
+  const validationSchema = Yup.object({
+    date: Yup.date()
+      .required("Date is required")
+      .max(new Date(), "Date cannot be in the future"),
+    description: Yup.string()
+      .required("Description is required")
+      .min(3, "Description must be at least 3 characters")
+      .max(10, "Description cannot be longer than 10 characters"),
+    amount: Yup.number()
+      .required("Amount is required")
+      .positive("Amount must be a positive number")
+      .typeError("Amount must be a number"),
+    category: Yup.string()
+      .required("Category is required"),
+  });
 
   return (
     <div className='transaction-add-form-container'>
       <Formik
         name="addTransaction"
-        initialValues={{date:"", description:"", category:'', amount:''}}
+        initialValues={initialValues}
+        validationSchema={validationSchema}
         enableReinitialize
         onSubmit={ (values, actions ) => {
           console.log(activeSheet)
@@ -47,7 +65,7 @@ export default function TransactionAddForm({ activeSheet }) {
       >
         <Form className="transaction-add-form" name="addTransaction">
           <div className="transaction-add-form-data">
-            <Field className="" type="date" name="date" placeholder={new Date().toLocaleDateString()} />
+            <Field className="" type="date" name="date" />
             <div className=''>
               <ErrorMessage name="date" as='div' />
             </div>
