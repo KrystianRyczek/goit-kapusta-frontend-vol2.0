@@ -3,7 +3,8 @@ import css from '../css/ReportDateSelection.module.css';
 import { useSelectedDate } from '../hooks/useSelectedDate';
 
 export default function ReportDateSelection() {
-  const { selectedDate, setSelectedDate, monthNames } = useSelectedDate();
+  const { selectedDate, setSelectedDate, monthNames, initialDate } =
+    useSelectedDate();
 
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -17,18 +18,17 @@ export default function ReportDateSelection() {
   };
 
   const handleNext = () => {
-    const currentDate = new Date();
     const nextDate = new Date(selectedDate.year, selectedDate.monthIndex + 1);
-
-    if (
-      nextDate.getFullYear() > currentDate.getFullYear() ||
-      (nextDate.getFullYear() === currentDate.getFullYear() &&
-        nextDate.getMonth() > currentDate.getMonth())
-    ) {
-      setErrorMessage('You cannot move forward');
-      return;
-    }
-    setErrorMessage('');
+    // PONIŻEJ COŚ NIE DZIAŁA
+    // if (
+    //   nextDate.getFullYear() > selectedDate.getFullYear() ||
+    //   (nextDate.getFullYear() === selectedDate.getFullYear() &&
+    //     nextDate.getMonth() > selectedDate.getMonth())
+    // ) {
+    //   setErrorMessage('You cannot move forward');
+    //   return;
+    // }
+    // setErrorMessage('');
     setSelectedDate(nextDate);
   };
 
