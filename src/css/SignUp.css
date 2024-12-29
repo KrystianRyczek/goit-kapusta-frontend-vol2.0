@@ -1,12 +1,28 @@
-.register-form-container {
-  width: 426px;
-  height: 552px;
-  position: absolute;
-  top: 117px;
-  left: 763px;
-  background-color: #ffffff;
-  border-radius: 30px;
-  box-shadow: 0px 10px 10px 0px #aab2c533;
+@media (max-width: 767px) {
+}
+@media (min-width: 768px) and (max-width: 1279px) {
+  .register-form-container {
+    width: 426px;
+    height: 552px;
+    position: absolute;
+    top: 317px;
+    left: 171px;
+    background-color: #ffffff;
+    border-radius: 30px;
+    box-shadow: 0px 10px 10px 0px #aab2c533;
+  }
+}
+@media (min-width: 1280px) {
+  .register-form-container {
+    width: 426px;
+    height: 552px;
+    position: absolute;
+    top: 117px;
+    left: 763px;
+    background-color: #ffffff;
+    border-radius: 30px;
+    box-shadow: 0px 10px 10px 0px #aab2c533;
+  }
 }
 .register-box {
   display: flex;

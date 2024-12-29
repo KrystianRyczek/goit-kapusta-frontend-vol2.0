@@ -1,10 +1,95 @@
-.home-page-container {
-  /* width: 1280px; */
-  height: 800px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: relative;
+@media (max-width: 767px) {
+  .home-page-logo {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 142px;
+    left: 20px;
+  }
+  .home-page-logo-box {
+    height: 286px;
+    width: 100%;
+    background-color: #f5f6fb;
+    border-bottom-left-radius: 150px;
+  }
+  .home-page-logo-h {
+    font-size: 47px;
+    font-weight: 700;
+    color: var(--black);
+  }
+  .home-page-logo-p {
+    text-align: center;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+}
+@media (min-width: 768px) and (max-width: 1279px) {
+  .home-page-container {
+    width: 768px;
+  }
+  .home-page-logo {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 136px;
+    left: 171px;
+  }
+  .home-page-logo-box {
+    height: 526px;
+    width: 100%;
+    background-color: #f5f6fb;
+    border-bottom-left-radius: 150px;
+  }
+  .home-page-logo-h {
+    font-size: 78px;
+    font-weight: 700;
+    color: var(--black);
+  }
+  .home-page-logo-p {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+}
+@media (min-width: 1280px) {
+  .home-page-logo {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 300px;
+    left: 229px;
+  }
+  .home-page-container {
+    /* width: 1280px; */
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+  .home-page-logo-h {
+    font-size: 102px;
+    font-weight: 900;
+    color: var(--black);
+  }
+  .home-page-logo-box {
+    height: 526px;
+    width: 100%;
+    background-color: #f5f6fb;
+    border-bottom-left-radius: 150px;
+  }
+
+  .home-page-logo-p {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
 }
 
 .home-page-top-svg-box {
@@ -105,35 +190,6 @@
   top: 91px;
   left: 1255px;
   transform: rotate(-0deg);
-}
-
-.home-page-logo-box {
-  height: 526px;
-  width: 100%;
-  background-color: #f5f6fb;
-  border-bottom-left-radius: 150px;
-}
-
-.home-page-logo {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  top: 300px;
-  left: 229px;
-}
-
-.home-page-logo-h {
-  font-size: 102px;
-  font-weight: 900;
-  color: var(--black);
-}
-
-.home-page-logo-p {
-  text-align: center;
-  font-size: 16px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
 }
 
 .home-page-bottom-svg-box {
