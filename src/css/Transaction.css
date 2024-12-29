@@ -23,19 +23,20 @@
     margin-bottom: 50px;
   }
 }
-
-.transaction-tables-box {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
 @media (min-width: 768px) and (max-width: 1279px) {
   .transaction-tables-box {
     gap: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-left: 40px;
   }
 }
 @media (min-width: 1280px) {
   .transaction-tables-box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     width: 1034px;
     gap: 74px;
     margin-left: 32px;
