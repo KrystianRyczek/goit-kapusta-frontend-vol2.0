@@ -14,13 +14,17 @@ import {
   Cell,
 } from 'recharts';
 
-export function Chart({ activeSheet }) {
+export function Chart({ activeSheet, selectedCategory }) {
   const { summaryReportData } = useReportChart();
   const sumaryData = summaryReportData(activeSheet);
 
   console.log("sumaryData:", sumaryData)
 
+
+  console.log(selectedCategory);
+
   const { selectedDate } = useSelectedDate();
+
 
   const groupedData = sumaryData.reduce((acc, { description, amount, date }) => {
     const existing = acc.find((item) => item.description === description);
@@ -82,3 +86,4 @@ export function Chart({ activeSheet }) {
     </div>
   );
 }
+

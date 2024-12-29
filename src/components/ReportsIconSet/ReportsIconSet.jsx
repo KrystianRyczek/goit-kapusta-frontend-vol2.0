@@ -6,6 +6,7 @@ import { useLocation } from 'react-router';
 import { expencesIcons, incomeIcons } from './icons';
 import ReportNavBtn from '../ReportNavBtn';
 import { useState } from 'react';
+import { Chart } from '../Chart/Chart';
 
 
 export default function ReportsIconSet({
@@ -59,6 +60,9 @@ export default function ReportsIconSet({
               ))}
         </div>
       </div>
+      <Chart selectedCategory={selectCategory}></Chart>
     </div>
   );
+  
 }
+
