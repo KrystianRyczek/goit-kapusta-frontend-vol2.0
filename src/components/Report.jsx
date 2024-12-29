@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../css/Report.css';
 import '../css/Transaction.css';
 import { Chart } from './Chart/Chart';
@@ -8,6 +8,15 @@ import ReportsIncExpSum from './ReportsIncExpSum';
 
 export default function Report({ activeSheet, expensesClass, incomesClass }) {
   const [selectCategory, setSelectCategory] = useState("Products");
+
+  // console.log("Activesheet:", activeSheet)
+
+  useEffect(() => {
+    if (activeSheet) {
+      const defaultCategory = activeSheet === 'incomes' ? 'Salary' : 'Products';
+      setSelectCategory(defaultCategory);
+    }
+  }, [activeSheet]);
 
   const handleCategoryChange = (category) => {
     setSelectCategory(category);
