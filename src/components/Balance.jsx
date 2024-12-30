@@ -13,7 +13,6 @@ export default function Balance() {
   const [formBalance, setFormBalance] = useState({ 'balance': balance })
 
   useEffect(() => {
-    console.log("useEffect called, balance:", balance);
     setFormBalance({ balance: balance })
     if (balance === 0) {
       setWelcomeModalOpen(true);
@@ -23,7 +22,6 @@ export default function Balance() {
   const closeWelcomeModal = () => {
     setWelcomeModalOpen(false);
   };
-  console.log('formBalance', formBalance)
   return (
     <div className="balance-container">
       <p className="balance-p1">Balance</p>
