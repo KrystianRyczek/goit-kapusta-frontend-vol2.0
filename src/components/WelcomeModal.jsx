@@ -4,7 +4,6 @@ import "../css/WelcomeModal.css";
 const WelcomeModal = ({ isOpen, onClose, firstLine, secondLine }) => {
   if (!isOpen) return null;
 
-  console.log("WelcomeModal is open");
 
   return (
     <div className="welcome-modal-overlay">

@@ -26,8 +26,6 @@ export const userDetails = createAsyncThunk(
 export const setUserBalance = createAsyncThunk(
     'getUserBalance/fetchGetUserBalance', 
     async(data) => {
-        console.log(data.newBalance)
-        console.log(data.token)
         axios.defaults.headers.common.Authorization = `Bearer ${data.token}`
         const balance= parseFloat(data.newBalance)
         const resp = await axios.patch('/user/balance',
