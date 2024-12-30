@@ -23,7 +23,7 @@ export default function Balance() {
   const closeWelcomeModal = () => {
     setWelcomeModalOpen(false);
   };
-  console.log('formBalance', formBalance)
+  // console.log('formBalance', formBalance)
   return (
     <div className="balance-container">
       <p className="balance-p1">Balance</p>
