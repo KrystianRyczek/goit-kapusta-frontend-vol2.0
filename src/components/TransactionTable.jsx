@@ -1,11 +1,10 @@
 /** @format */
 
-import "../css/TransactionTable.css";
-import { useEffect } from "react";
-import { useTransactionTable } from "../hooks/useTransactionTable";
-import { v4 as uuidv4 } from "uuid";
-import delate from "../images/delete-svg.png";
-import { ConfModal } from "./Modal";
+import '../css/TransactionTable.css';
+import { useTransactionTable } from '../hooks/useTransactionTable';
+import { v4 as uuidv4 } from 'uuid';
+import delate from '../images/delete-svg.png';
+import { ConfModal } from './Modal';
 
 const transactionTableRow = (row, deleteTransaction) => {
   return (
@@ -18,7 +17,8 @@ const transactionTableRow = (row, deleteTransaction) => {
         onClick={() => {
           deleteTransaction(row._id);
         }}
-        className="transaction-table-delate-btn">
+        className="transaction-table-delate-btn"
+      >
         <img src={delate} alt="Delate icon" />
       </button>
     </div>
@@ -33,8 +33,8 @@ export default function TransactionTable({ activeSheet }) {
     deleteModalClose,
     modalIsOpen,
   } = useTransactionTable(activeSheet);
-  
-  useEffectGetTransaction()
+
+  useEffectGetTransaction();
   const transactionData = transactionTableData();
 
   // useEffect(() => {

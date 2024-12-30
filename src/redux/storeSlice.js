@@ -1,10 +1,10 @@
-import { createSlice, isAnyOf } from "@reduxjs/toolkit";
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
   addUser,
   signInUser,
   signOutUser,
   refreshUserToken,
-} from "./auth/operation";
+} from './auth/operation';
 import {
   addUserIncome,
   getUserIncome,
@@ -15,25 +15,25 @@ import {
   userExpenseCategory,
   userTransactionPeriodDate,
   updateBalance,
-} from "./transaction/operation";
-import { userDetails, setUserBalance } from "./user/operation";
-import { initialState } from "./initialState";
+} from './transaction/operation';
+import { userDetails, setUserBalance } from './user/operation';
+import { initialState } from './initialState';
 
 const handlePending = (state) => {
-  console.log("Pending");
+  // console.log("Pending");
   state.isLoading = true;
   state.isError = null;
   state.isRegister = false;
 };
 const handleRejected = (state, action) => {
-  console.log("Fail");
+  console.log('Fail');
   state.isLoading = false;
   state.isError = action.error.message;
   console.log(state.isError);
 };
 
 const storeSlice = createSlice({
-  name: "store",
+  name: 'store',
   initialState: initialState,
   reducers: {
     //1.readDataFromLocalStorage
@@ -81,11 +81,10 @@ const storeSlice = createSlice({
         state.incomes = [];
         state.expenses = [];
         action.payload.userData.transactions.forEach((transaction) => {
-
-          if (transaction.typeOfTransaction.toLowerCase().includes("expense")) {
+          if (transaction.typeOfTransaction.toLowerCase().includes('expense')) {
             state.expenses = [...state.expenses, transaction];
           } else if (
-            transaction.typeOfTransaction.toLowerCase().includes("income")
+            transaction.typeOfTransaction.toLowerCase().includes('income')
           ) {
             state.incomes = [...state.incomes, transaction];
           }
@@ -123,7 +122,7 @@ const storeSlice = createSlice({
       })
       //5.addUserIncome
       .addCase(addUserIncome.fulfilled, (state, action) => {
-        //console.log("addUserIncome", action.payload.newBalance);
+        console.log('addUserIncome', action.payload.newBalance); // uwaga! ten balance ściągany jest z bazy danych, inny jest w Reduxie i localStorage.
         state.isLoading = false;
         state.isError = null;
         state.balance = action.payload.newBalance;
@@ -134,7 +133,7 @@ const storeSlice = createSlice({
         state.isLoading = false;
         state.isError = null;
         state.incomes = action.payload.incomes;
-        state.incomesStat = action.payload.monthStats
+        state.incomesStat = action.payload.monthStats;
       })
       //7.addUserExpense
       .addCase(addUserExpense.fulfilled, (state, action) => {

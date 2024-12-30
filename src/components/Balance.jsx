@@ -1,23 +1,23 @@
-import "../css/Balance.css";
-import { Field, Form, Formik, ErrorMessage } from "formik";
-import { useBalance } from "../hooks/useBalance";
-import { useState, useEffect } from "react";
-import WelcomeModal from "./WelcomeModal";
+import '../css/Balance.css';
+import { Field, Form, Formik, ErrorMessage } from 'formik';
+import { useBalance } from '../hooks/useBalance';
+import { useState, useEffect } from 'react';
+import WelcomeModal from './WelcomeModal';
 
 export default function Balance() {
-
   const { balanceShema, balance, setBalance, getBalance } = useBalance();
 
   const [isWelcomeModalOpen, setWelcomeModalOpen] = useState(false);
-  
-  const [formBalance, setFormBalance] = useState({ 'balance': balance })
+
+  const [formBalance, setFormBalance] = useState({ balance: balance });
 
   useEffect(() => {
-    setFormBalance({ balance: balance })
+    setFormBalance({ balance: balance });
     if (balance === 0) {
       setWelcomeModalOpen(true);
     }
   }, [balance]);
+  console.log('balance', balance);
 
   const closeWelcomeModal = () => {
     setWelcomeModalOpen(false);
@@ -30,17 +30,17 @@ export default function Balance() {
         initialValues={formBalance}
         onSubmit={(values, actions) => {
           setBalance(values, actions);
-          actions.resetForm({ values: { balance: "" } });
+          actions.resetForm({ values: { balance: '' } });
         }}
       >
         {({ values }) => (
           <Form className="balance-form">
-            <div style={{ position: "relative" }}>
+            <div style={{ position: 'relative' }}>
               <Field
                 className="balance-input"
                 type="text"
                 name="balance"
-                placeholder={balance !== undefined ? balance.toString() : "0"}
+                placeholder={balance !== undefined ? balance.toString() : '0'}
               />
               {values.balance === 0 && isWelcomeModalOpen && (
                 <div className="welcome-modal-container">
