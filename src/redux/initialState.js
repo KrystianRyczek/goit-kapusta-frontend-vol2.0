@@ -2,7 +2,6 @@ const initialCurrentDate = {
   monthIndex: new Date().getMonth(),
   year: new Date().getFullYear(),
 };
-// console.log('initialCurrentDate', initialCurrentDate);
 
 const init = {
   lightTheme: true,
