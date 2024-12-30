@@ -7,9 +7,14 @@
     position: relative;
 }
 .modal-close-button{
- position: absolute;
- top:0px;
- right: 10px;
+    position: absolute;
+    top:0px;
+    right: 10px;
+    background-color: #FFFFFF;
+    border-radius: 16px;
+    border: none;
+    color: #52555F;
+    
 }
 .modal-p{
     margin:30px auto 0px auto;
