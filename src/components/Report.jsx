@@ -11,6 +11,7 @@ import { useSelectedDate } from '../hooks/useSelectedDate';
 import { calculateCategorySums, addMissingCategories, getNonZeroCategories } from '../components/ReportsIconSet/calculateSums';
 import { expencesIcons, incomeIcons } from '../components/ReportsIconSet/icons';
 
+
 export default function Report({ activeSheet, expensesClass, incomesClass }) {
   const [selectCategory, setSelectCategory] = useState("Products");
 
