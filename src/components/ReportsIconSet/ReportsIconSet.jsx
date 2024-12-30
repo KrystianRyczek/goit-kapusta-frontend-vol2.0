@@ -56,7 +56,7 @@ export default function ReportsIconSet({
                 <React.Fragment key={index}>
                   <div
                     key={index}
-                    className={`${css.div_svg} ${selectCategory === icon[1] ? css.active_svg : ''}`}
+                    className={`${css.div_svg} ${selectCategory === icon[1] ? css.active_svg : ''} ${sumCatExpenses[icon[1]] === 0 ? css.blocked : ''}`}
                     onClick={() => handleClickIcon(icon[1])}
                   >
                     <p className={css.amount}>{sumCatExpenses[icon[1]]}</p>
@@ -72,7 +72,7 @@ export default function ReportsIconSet({
             : incomeIcons.map((icon, index) => (
               <div
                 key={index}
-                className={`${css.div_svg} ${selectCategory === icon[1] ? css.active_svg : ''}`}
+                className={`${css.div_svg} ${selectCategory === icon[1] ? css.active_svg : ''} ${sumCatIncomes[icon[1]] === 0 ? css.blocked : ''}`}
                 onClick={() => handleClickIcon(icon[1])}
               >
                 <p className={css.amount}>{sumCatIncomes[icon[1]]}</p>
@@ -88,4 +88,3 @@ export default function ReportsIconSet({
     </div>
   );
 }
-
