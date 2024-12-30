@@ -18,12 +18,10 @@ export default function ReportDateSelection() {
     );
     setSelectedDate(previousDate);
   };
-  // console.log(selectedDate);
 
   const handleNext = () => {
     const todayDate = new Date(currentDate.year, currentDate.monthIndex);
     const nextDate = new Date(selectedDate.year, selectedDate.monthIndex + 1);
-    // console.log(nextDate, todayDate);
     if (
       nextDate.getFullYear() > todayDate.getFullYear() ||
       (nextDate.getFullYear() === todayDate.getFullYear() &&

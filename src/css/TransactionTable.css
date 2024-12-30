@@ -13,7 +13,7 @@
     width: 624px;
     background-color: white;
     overflow-y: scroll;
-    scrollbar-color: var(--light-grey) var(--dark-grey);
+    scrollbar-color: #ff751d #f5f6fb;
     scrollbar-width: thin;
   }
 }
@@ -33,7 +33,7 @@
     height: 382px;
     background-color: white;
     overflow-y: scroll;
-    scrollbar-color: var(--light-grey) var(--dark-grey);
+    scrollbar-color: #ff751d #f5f6fb;
     scrollbar-width: thin;
   }
 }

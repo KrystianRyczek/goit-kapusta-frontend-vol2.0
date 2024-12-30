@@ -12,6 +12,7 @@ import { calculateCategorySums, addMissingCategories, getNonZeroCategories } fro
 import { expencesIcons, incomeIcons } from '../components/ReportsIconSet/icons';
 
 export default function Report({ activeSheet, expensesClass, incomesClass }) {
+
   const [selectCategory, setSelectCategory] = useState("Products");
 
   const expenses = useSelector(selectExpenses);
@@ -46,6 +47,9 @@ export default function Report({ activeSheet, expensesClass, incomesClass }) {
 
   }, [expenses, incomes, selectedDate]);
 
+  const [selectCategory, setSelectCategory] = useState('Products');
+
+
   useEffect(() => {
     if (activeSheet) {
       if (activeSheet === 'incomes' && nonZeroCategoriesIncomes.length > 0) {
@@ -63,19 +67,16 @@ export default function Report({ activeSheet, expensesClass, incomesClass }) {
     <>
       <ReportDataSelection />
       <ReportsIncExpSum activeSheet={activeSheet} />
-      
+
       <ReportsIconSet
         activeSheet={activeSheet}
         expensesClass={expensesClass}
         incomesClass={incomesClass}
         selectCategory={selectCategory}
-        onCategoryChange={handleCategoryChange} 
+        onCategoryChange={handleCategoryChange}
       />
-      
-      <Chart
-        activeSheet={activeSheet}
-        selectedCategory={selectCategory} 
-      />
+
+      <Chart activeSheet={activeSheet} selectedCategory={selectCategory} />
     </>
   );
 }
