@@ -111,10 +111,10 @@ const storeSlice = createSlice({
         state.totalExpense = null;
         state.incomes = [];
         state.incomesCat = [];
-        state.incomesStat = [];
+        state.incomesStat = {};
         state.expenses = [];
         state.expenseCat = [];
-        state.expenseStat = [];
+        state.expenseStat = {};
         state.transactionData = {};
       })
       //4.refreshUserToken   not implemented
