@@ -54,11 +54,21 @@
   flex-wrap: wrap;
 }
 input,
-select {
-  width: 100%;
-  height: 100%;
-  border: none;
-  background-color: transparent;
+
+select{
+    width:100%;
+    height:100%;
+    border: none;
+    background-color: transparent;
+}
+.transaction-add-form-data{
+    width: 112px;
+    height: 100%;
+    margin-left:24px;
+}
+input:focus {
+    outline: none;
+
 }
 .transaction-add-form-data {
   width: 112px;
@@ -96,21 +106,40 @@ select {
   width: 20px;
   height: 20px;
 }
-.transaction-add-form-btn-box > :nth-child(1) {
-  width: 136px;
-  height: 100%;
-  background-color: #ff751d;
-  border-radius: 16px;
-  border: none;
-  color: #ffffff;
-  box-shadow: 0px 5px 5px 0px #ff6b0859;
+.transaction-add-form-btn-box>:nth-child(1){
+    width: 136px;
+    height: 100%;
+    background-color: #FF751D;
+    border-radius: 16px;
+    border: none;
+    color: #FFFFFF;
+    box-shadow: 0px 5px 5px 0px #FF6B0859;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    cursor: pointer;
 }
-.transaction-add-form-btn-box > :nth-child(2) {
-  width: 136px;
-  height: 100%;
-  background-color: #f5f6fb;
-  border-radius: 16px;
-  border: none;
-  color: #52555f;
-  box-shadow: 0px 5px 5px 0px #aab2c533;
+.transaction-add-form-btn-box>:nth-child(1):hover {
+    transform: scale(1.1);
+}
+.transaction-add-form-btn-box>:nth-child(1):active {
+    filter: brightness(1.3);
+}
+.transaction-add-form-btn-box>:nth-child(2){
+    width: 136px;
+    height: 100%;
+    background-color: #F5F6FB;
+    border-radius: 16px;
+    border: none;
+    color: #52555F;
+    box-shadow: 0px 5px 5px 0px #AAB2C533;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    cursor: pointer;
+}
+.transaction-add-form-btn-box>:nth-child(2):hover {
+    transform: scale(1.1);
+}
+.transaction-add-form-btn-box>:nth-child(2):active {
+    filter: brightness(0.8);
+}
+.error-msg {
+    color: red;
 }

@@ -67,14 +67,14 @@ export default function TransactionAddForm({ activeSheet }) {
           <Form className="transaction-add-form" name="addTransaction">
             <div className="transaction-add-form-data">
               <Field className="" type="date" name="date" />
-              <div className=''>
+              <div className='error-msg'>
                 <ErrorMessage name="date" as='div' />
               </div>
             </div>
 
             <div className="transaction-add-form-desciption">
               <Field className="" type="text" name="description" placeholder="Product description" />
-              <div className=''>
+              <div className='error-msg'>
                 <ErrorMessage name="description" as='div' />
               </div>
             </div>
@@ -97,7 +97,7 @@ export default function TransactionAddForm({ activeSheet }) {
                 <Field className="" type="text" name="amount" placeholder="0.00" />
                 <img className="calculator-icon" src={calculator} alt="calculator" />
               </div>
-              <div className=''>
+              <div className='error-msg'>
                 <ErrorMessage name="amount" as='div' />
               </div>
             </div>
