@@ -6,8 +6,8 @@ const summaryTableRow = (row) => {
   const key = Object.keys(row);
   return (
     <div key={uuidv4()} className="summary-table-row">
-      <p>{key[0]}</p>
-      <p>{row[key[0]]} PLN</p>
+      <p>{row[key[0]]}</p>
+      <p>{row[key[1]]} PLN</p>
     </div>
   );
 };
@@ -15,7 +15,7 @@ const summaryTableRow = (row) => {
 export default function TransactionSummary({ activeSheet }) {
   const { summaryTableData } = useTransactionSummary();
   const samaryData = summaryTableData(activeSheet);
-  console.log("samaryData", samaryData);
+  // console.log("samaryData", samaryData);
   return (
     <div className="transaction-summary-box">
       <div className="summary-table-head">
