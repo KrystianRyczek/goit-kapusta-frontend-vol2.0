@@ -8,27 +8,19 @@ export const useBalance=()=>{
   const balance = useSelector(selectBalance);
   const token = useSelector(selectToken)
 
-
   const balanceShema = Yup.object().shape({
     balance: Yup.number()
-                .positive()
+                .min(1)
   })
 
-
-
   const setBalance = (newBalance, actions)=>{
-    
     const data = {
                       "newBalance": newBalance.balance,
                       "token": token
                     }
-
-    console.log("usebalance", data)
-
     dispach(setUserBalance(data))
     actions.resetForm()
   }
-
-
-    return {balanceShema, balance, setBalance }
+  
+  return {balanceShema, balance, setBalance }
 }

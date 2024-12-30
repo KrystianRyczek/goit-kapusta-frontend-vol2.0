@@ -1,28 +1,19 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
-import { selectIsLoading} from '../redux/storeSlice';
-import { readDataFromLocalStorage,  saveDataToLocalStorage} from '../redux/storeSlice'
-import { initialState } from '../redux/initialState';
+import { selectIsLoading } from '../redux/storeSlice';
+import { saveDataToLocalStorage } from '../redux/storeSlice'
+
 
 export const useApp=()=>{
-  const dispach = useDispatch()
+  const dispatch = useDispatch()
   const isLoading = useSelector(selectIsLoading)
 
-  const useReadLocalStorage = ()=>{
-    useEffect(() => {
-      const userLocaldata = window.localStorage.getItem('userLocaldata');
-      if (userLocaldata !== null) {
-        dispach(readDataFromLocalStorage());
-      }
-        }, []);
-  }
   const useSaveLocalStorage = ()=>{
     useEffect(() => {
-        dispach(saveDataToLocalStorage());
+      dispatch(saveDataToLocalStorage());
         }, [isLoading]);
   }
 
-
-    return {useReadLocalStorage, useSaveLocalStorage }
+    return { useSaveLocalStorage }
 }
 

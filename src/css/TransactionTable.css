@@ -9,10 +9,11 @@
     border-top-right-radius: 16px;
   }
   .transaction-table-box {
+    height: 382px;
     width: 624px;
     background-color: white;
     overflow-y: scroll;
-    scrollbar-color: red red;
+    scrollbar-color: var(--light-grey) var(--dark-grey);
     scrollbar-width: thin;
   }
 }
@@ -28,11 +29,11 @@
     border-top-right-radius: 16px;
   }
   .transaction-table-box {
-    /* width: 746px; */
-    /* height: 382px; */
+    width: 746px;
+    height: 382px;
     background-color: white;
     overflow-y: scroll;
-    scrollbar-color: red red;
+    scrollbar-color: var(--light-grey) var(--dark-grey);
     scrollbar-width: thin;
   }
 }
@@ -97,6 +98,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+.transaction-table-delate-btn:hover {
+  transform: scale(1.25);
+  color: #ff751d;
+}
+.transaction-table-delate-btn:active {
+  filter: brightness(1.3);
 }
 .transaction-table-delate-img {
   background-color: transparent;

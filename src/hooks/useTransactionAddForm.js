@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
-import {selectIncomesCat, selectExpenseCat, selectToken} from '../redux/storeSlice';
-// import { useState } from "react";
-import { userExpenseCategory, userIncomeCategory, addUserExpense, addUserIncome } from "../redux/transaction/operation";
+import {selectIncomesCat, selectExpenseCat, selectToken } from '../redux/storeSlice';
+import { useState } from "react";
+import { userExpenseCategory, userIncomeCategory, addUserExpense, addUserIncome, getUserIncome, getUserExpense,  } from "../redux/transaction/operation";
 import { useEffect } from "react";
 
 export const useTransactionAddForm = () => {
@@ -9,6 +9,8 @@ export const useTransactionAddForm = () => {
     const incomeCategory = useSelector(selectIncomesCat)
     const expenseCategory = useSelector(selectExpenseCat)
     const token = useSelector(selectToken)
+    const [submit, setSubmit] = useState(false)
+
 
     const useEffectGetCategory = () => {
       useEffect(() => {
@@ -16,6 +18,17 @@ export const useTransactionAddForm = () => {
         dispatch(userExpenseCategory(token))
       }, []);
     }
+
+
+    const useEffectGetTransaction = () => {
+      useEffect(() => {
+        setSubmit(false)
+        dispatch(getUserIncome(token));
+        dispatch(getUserExpense(token));
+
+      }, [submit]);
+    }
+
     const category= (activeSheet) =>{
         if(activeSheet ==="expenses"){
             return expenseCategory
@@ -39,6 +52,7 @@ export const useTransactionAddForm = () => {
           "date": values.date,
           "category": values.category
         }
+        setSubmit(true)
 
         if (activeSheet === 'expenses'){
           return  dispatch(addUserExpense({token, transactionDetails}))
@@ -47,5 +61,5 @@ export const useTransactionAddForm = () => {
 
     }
     
-    return {category, useEffectGetCategory, addTransaction } 
+    return {category, useEffectGetCategory, useEffectGetTransaction, addTransaction } 
 }

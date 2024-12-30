@@ -1,26 +1,20 @@
 import '../css/TransactionAddForm.css';
 import calculator from '../images/calculator.svg';
 import { Field, Form, Formik, ErrorMessage } from "formik";
-// import { useState, useEffect } from 'react';
 import { useTransactionAddForm } from '../hooks/useTransactionAddForm';
 import { v4 as uuidv4 } from 'uuid';
 import * as Yup from 'yup'
-// import { useDispatch, useSelector } from 'react-redux';
-// import { addUserExpense, addUserIncome } from '../redux/transaction/operation';
-// import { selectToken } from '../redux/storeSlice';
 
 const Option = ({ category }) => {
   return <option value={category} key={uuidv4()}>{category}</option>;
 };
 
 export default function TransactionAddForm({ activeSheet }) {
-  const {category, useEffectGetCategory, addTransaction } = useTransactionAddForm();
-  // const selectCategorys = category(activeSheet);
-  // const [hasClickedCategory, setHasClickedCategory] = useState(false);
-  // const dispatch = useDispatch();
-  // const token = useSelector(selectToken);
+  const {category, useEffectGetCategory,useEffectGetTransaction, addTransaction } = useTransactionAddForm();
 
   useEffectGetCategory()
+  useEffectGetTransaction()
+  
   const selectCategory = category(activeSheet)
 
   const currentDate = new Date().toISOString().split('T')[0];
@@ -58,7 +52,6 @@ export default function TransactionAddForm({ activeSheet }) {
         validationSchema={validationSchema}
         enableReinitialize
         onSubmit={ (values, actions ) => {
-          console.log(activeSheet)
           addTransaction({values, activeSheet} )
           actions.resetForm();
         }}
@@ -67,14 +60,14 @@ export default function TransactionAddForm({ activeSheet }) {
           <Form className="transaction-add-form" name="addTransaction">
             <div className="transaction-add-form-data">
               <Field className="" type="date" name="date" />
-              <div className=''>
+              <div className='error-msg'>
                 <ErrorMessage name="date" as='div' />
               </div>
             </div>
 
             <div className="transaction-add-form-desciption">
               <Field className="" type="text" name="description" placeholder="Product description" />
-              <div className=''>
+              <div className='error-msg'>
                 <ErrorMessage name="description" as='div' />
               </div>
             </div>
@@ -97,7 +90,7 @@ export default function TransactionAddForm({ activeSheet }) {
                 <Field className="" type="text" name="amount" placeholder="0.00" />
                 <img className="calculator-icon" src={calculator} alt="calculator" />
               </div>
-              <div className=''>
+              <div className='error-msg'>
                 <ErrorMessage name="amount" as='div' />
               </div>
             </div>

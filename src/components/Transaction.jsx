@@ -4,8 +4,12 @@ import TransactionNavBtn from './TransactionNavBtn';
 import TransactionAddForm from './TransactionAddForm';
 import TransactionTable from './TransactionTable';
 import TransactionSummary from './TransactionSummary';
+import { useTransaction } from '../hooks/useTransaction';
 
 export default function Transaction({activeSheet, expensesClass, incomesClass}) {
+
+  const { useTransactionData } = useTransaction();
+  useTransactionData()
 
   
   return (

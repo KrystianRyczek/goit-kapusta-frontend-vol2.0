@@ -1,18 +1,21 @@
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 import {selectIncomesStat,  selectExpenseStat} from '../redux/storeSlice';
 
 
 
-export const useTransactionSummary=()=>{
-    const incomesStat = useSelector(selectIncomesStat)
-    const expenseStat = useSelector(selectExpenseStat)
+export const useTransactionSummary = () => {
 
-    const summaryTableData= (activeSheet) =>{
-        if(activeSheet ==="expenses"){
-            return expenseStat
-        }
-    return incomesStat
-    } 
+    const incomesStat = useSelector(selectIncomesStat);
+    const expenseStat = useSelector(selectExpenseStat);
 
-    return { summaryTableData,  }
-}
+    const data =(activeSheet) => {
+        return activeSheet === "expenses" ? expenseStat : incomesStat;
+    }
+    const keys = (data) => {
+        
+        return Object.keys(data);
+
+    };
+
+    return { data, keys }
+};

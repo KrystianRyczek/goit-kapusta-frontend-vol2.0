@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import css from '../css/ReportDateSelection.module.css';
 import { useSelectedDate } from '../hooks/useSelectedDate';
-import arrowIcon from '../images/arrow.png'
+import arrowIcon from '../images/arrow.png';
 import { useBtnGoBack } from '../hooks/useBtnGoBack';
 
 export default function ReportDateSelection() {
-  const { selectedDate, setSelectedDate, monthNames } = useSelectedDate();
+  const { selectedDate, setSelectedDate, monthNames, currentDate } =
+    useSelectedDate();
 
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -19,23 +20,19 @@ export default function ReportDateSelection() {
   };
 
   const handleNext = () => {
+    const todayDate = new Date(currentDate.year, currentDate.monthIndex);
     const nextDate = new Date(selectedDate.year, selectedDate.monthIndex + 1);
-    // PONIŻEJ COŚ NIE DZIAŁA
-    // if (
-    //   nextDate.getFullYear() > selectedDate.getFullYear() ||
-    //   (nextDate.getFullYear() === selectedDate.getFullYear() &&
-    //     nextDate.getMonth() > selectedDate.getMonth())
-    // ) {
-    //   setErrorMessage('You cannot move forward');
-    //   return;
-    // }
-    // setErrorMessage('');
+    if (
+      nextDate.getFullYear() > todayDate.getFullYear() ||
+      (nextDate.getFullYear() === todayDate.getFullYear() &&
+        nextDate.getMonth() > todayDate.getMonth())
+    ) {
+      setErrorMessage('You cannot move forward');
+      return;
+    }
+    setErrorMessage('');
     setSelectedDate(nextDate);
   };
-
-  // const handleBack = () => {
-  //   console.log('Navigating back to the main page');
-  // };
 
   const { handleBack } = useBtnGoBack();
 

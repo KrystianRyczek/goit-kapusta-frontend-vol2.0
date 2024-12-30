@@ -36,6 +36,11 @@
   display: flex;
   margin: 13px auto 32px 12px;
 }
+.nav-bar-logo-home {
+  border-style: none;
+  background-color: transparent;
+  cursor: pointer;
+}
 .nav-bar-box {
   height: 100%;
   display: flex;
@@ -84,4 +89,12 @@
   color: var(--text-grey);
   font-family: 'Roboto', sans-serif;
   cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+.nav-bar-button:hover {
+  transform: scale(1.2);
+  color: #ff751d;
+}
+.isActive:active {
+  filter: brightness(1.3);
 }

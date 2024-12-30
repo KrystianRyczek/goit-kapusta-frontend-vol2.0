@@ -27,11 +27,14 @@ const transactionTableRow = (row, deleteTransaction) => {
 export default function TransactionTable({ activeSheet }) {
   const {
     transactionTableData,
+    useEffectGetTransaction,
     deleteTransaction,
     deleteConf,
     deleteModalClose,
     modalIsOpen,
   } = useTransactionTable(activeSheet);
+  
+  useEffectGetTransaction()
   const transactionData = transactionTableData();
 
   useEffect(() => {
