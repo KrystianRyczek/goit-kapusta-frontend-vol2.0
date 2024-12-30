@@ -1,12 +1,15 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
-import { selectIsLoading} from '../redux/storeSlice';
+import { selectBalance, selectIsLoading, selectToken} from '../redux/storeSlice';
 import { readDataFromLocalStorage,  saveDataToLocalStorage} from '../redux/storeSlice'
 import { initialState } from '../redux/initialState';
+import { getUserExpense, getUserIncome } from "../redux/transaction/operation";
 
 export const useApp=()=>{
   const dispach = useDispatch()
   const isLoading = useSelector(selectIsLoading)
+  const token = useSelector(selectToken)
+  const balance = useSelector(selectBalance)
 
   const useReadLocalStorage = ()=>{
     useEffect(() => {
@@ -22,7 +25,14 @@ export const useApp=()=>{
         }, [isLoading]);
   }
 
+  const useTransactionData = () => {
+    useEffect(() => {
+      dispach(getUserIncome(token));
+      dispach(getUserExpense(token));
+    }, [balance]);
+  }
 
-    return {useReadLocalStorage, useSaveLocalStorage }
+
+    return {useReadLocalStorage, useSaveLocalStorage, useTransactionData }
 }
 
