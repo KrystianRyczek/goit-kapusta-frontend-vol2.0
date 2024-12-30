@@ -27,3 +27,7 @@ export const calculateCategorySums = (transactions, selectedDate) => {
     return sums;
   };
   
+  export const getNonZeroCategories = (icons, sums) => {
+    // Przechodzimy przez tablicę icons i sprawdzamy, które kategorie mają wartość większą niż 0
+    return icons.filter(icon => sums[icon] > 0);
+  };

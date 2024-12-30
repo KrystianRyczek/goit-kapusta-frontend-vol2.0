@@ -11,6 +11,8 @@
   flex-direction: column;
   border-radius: 30px;
   gap:20px;
+  padding-top:20px;
+  padding-bottom: 20px;
 }
 .icons {
   display: flex;
@@ -26,6 +28,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
+  cursor: pointer;
 }
 .amount {
   margin-bottom: 5px;
@@ -62,7 +65,10 @@
 .active_svg{
   fill: #ff751d;
 }
-
+.blocked{
+  fill:grey;
+  pointer-events: none;
+}
 
 .line {
   width: 280px;
