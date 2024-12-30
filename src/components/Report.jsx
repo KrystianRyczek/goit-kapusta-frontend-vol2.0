@@ -6,10 +6,9 @@ import ReportDataSelection from './ReportDateSelection';
 import ReportsIconSet from './ReportsIconSet/ReportsIconSet';
 import ReportsIncExpSum from './ReportsIncExpSum';
 
+
 export default function Report({ activeSheet, expensesClass, incomesClass }) {
   const [selectCategory, setSelectCategory] = useState("Products");
-
-  // console.log("Activesheet:", activeSheet)
 
   useEffect(() => {
     if (activeSheet) {

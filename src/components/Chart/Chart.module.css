@@ -4,6 +4,7 @@
   box-shadow: 0 10px 60px 0 rgba(170, 178, 197, 0.2);
   background: #fff;
   margin: 0 auto;
+  height: 300px;
 }
 .chart {
   padding: 10px 30px;
