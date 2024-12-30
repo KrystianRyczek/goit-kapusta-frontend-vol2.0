@@ -1,15 +1,20 @@
 @media (max-width: 767px) {
-  .btn-to-reports {
-    text-align: center;
-    gap: 15px;
-    width: 84px;
-    height: 24px;
-    align-items: baseline;
-    display: flex;
-    border: none;
-    background-color: transparent;
-    margin: 0 auto;
-  }
+      .btn-to-reports {
+        text-align: center;
+        gap: 15px;
+        width: 84px;
+        height: 24px;
+        align-items: baseline;
+        display: flex;
+        border: none;
+        background-color: transparent;
+        margin: 0 auto;
+        position: absolute;
+        top: 42px;
+        transform-origin: center;
+        z-index: 1000;
+        left: 38%;
+      }
 }
 @media (min-width: 768px) and (max-width: 1279px) {
   .btn-to-reports {
