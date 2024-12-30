@@ -15,12 +15,10 @@ const SignIn = lazy(() => import('./components/SignIn'));
 const SignUp = lazy(() => import('./components/SignUp'));
 
 function App() {
-  const { useReadLocalStorage, useSaveLocalStorage, useTransactionData } =
+  const { useSaveLocalStorage } =
     useApp();
 
-  useReadLocalStorage();
-  useSaveLocalStorage();
-  useTransactionData();
+   useSaveLocalStorage();
   return (
     <>
       <BrowserRouter>
