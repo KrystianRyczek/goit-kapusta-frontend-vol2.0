@@ -38,9 +38,9 @@ export default function TransactionTable({ activeSheet }) {
   useEffectGetTransaction();
   const transactionData = transactionTableData();
 
-  useEffect(() => {
-    // console.log("Data for transaction:", transactionData);
-  }, [transactionData]);
+  // useEffect(() => {
+  //   console.log("Data for transaction:", transactionData);
+  // }, [transactionData]);
 
   return (
     <div className="">
