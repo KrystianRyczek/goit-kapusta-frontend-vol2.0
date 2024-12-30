@@ -6,16 +6,11 @@ import { useSelectedDate } from '../hooks/useSelectedDate';
 
 export default function ReportsIncExpSum() {
   const { selectedDate, monthNames } = useSelectedDate();
-  // console.log('selectedDate', selectedDate);
 
   const totalIncomeYear = useSelector(selectIncomesStat);
   const totalExpenseYear = useSelector(selectExpenseStat);
-  // console.log('totalExpenseYear', totalExpenseYear);
-  // console.log('totalIncomeYear', totalIncomeYear);
 
   const monthIndex = selectedDate.monthIndex;
-  // console.log('monthIndex', monthIndex);
-
   const monthName = monthNames[monthIndex];
 
   let monthIncome = 0;
@@ -23,13 +18,10 @@ export default function ReportsIncExpSum() {
     monthIncome = totalIncomeYear[monthName] || 0;
   }
 
-  // console.log('month income', monthIncome);
-
   let monthExpense = 10;
   if (totalExpenseYear && totalExpenseYear.hasOwnProperty(monthName)) {
     monthExpense = totalExpenseYear[monthName] || 0;
   }
-  // console.log('month expense', monthExpense);
 
   return (
     <div>
