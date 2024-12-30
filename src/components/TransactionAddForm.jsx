@@ -52,7 +52,6 @@ export default function TransactionAddForm({ activeSheet }) {
         validationSchema={validationSchema}
         enableReinitialize
         onSubmit={ (values, actions ) => {
-          console.log(activeSheet)
           addTransaction({values, activeSheet} )
           actions.resetForm();
         }}

@@ -8,7 +8,7 @@ import ReportsIncExpSum from './ReportsIncExpSum';
 
 
 export default function Report({ activeSheet, expensesClass, incomesClass }) {
-  const [selectCategory, setSelectCategory] = useState("Products");
+  const [selectCategory, setSelectCategory] = useState('Products');
 
   useEffect(() => {
     if (activeSheet) {
@@ -25,19 +25,16 @@ export default function Report({ activeSheet, expensesClass, incomesClass }) {
     <>
       <ReportDataSelection />
       <ReportsIncExpSum activeSheet={activeSheet} />
-      
+
       <ReportsIconSet
         activeSheet={activeSheet}
         expensesClass={expensesClass}
         incomesClass={incomesClass}
         selectCategory={selectCategory}
-        onCategoryChange={handleCategoryChange} 
+        onCategoryChange={handleCategoryChange}
       />
-      
-      <Chart
-        activeSheet={activeSheet}
-        selectedCategory={selectCategory} 
-      />
+
+      <Chart activeSheet={activeSheet} selectedCategory={selectCategory} />
     </>
   );
 }
