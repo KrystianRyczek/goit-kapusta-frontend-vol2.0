@@ -20,6 +20,7 @@ export function Chart({ activeSheet, selectedCategory }) {
   const sumaryData = summaryReportData(activeSheet);
   const [isMobile, setIsMobile] = useState(false);
 
+
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 1280);
@@ -38,8 +39,19 @@ export function Chart({ activeSheet, selectedCategory }) {
 
   const { selectedDate } = useSelectedDate();
 
+  const filteredData = sumaryData.filter(transaction => {
+      
+    const date = new Date(transaction.date);
+    const transactionMonthYear = date.toISOString().slice(0, 7);
+    const selectedMonthYear = `${selectedDate.year}-${String(selectedDate.monthIndex + 1).padStart(2, '0')}`;
 
-  const groupedData = sumaryData.reduce((acc, { description, amount, date, category }) => {
+    const isSameMonth = transactionMonthYear === selectedMonthYear;
+    const isSameCategory = transaction.category === selectedCategory;
+
+    return isSameMonth && isSameCategory;
+  })
+
+  const groupedData = filteredData.reduce((acc, { description, amount, date, category }) => {
     const existing = acc.find((item) => item.description === description);
     if (existing) {
       existing.amount += amount;
@@ -49,24 +61,9 @@ export function Chart({ activeSheet, selectedCategory }) {
     return acc;
   }, []);
 
-  // console.log("groupedData:", groupedData)
+   // console.log("groupedData:", groupedData)
 
-  const filteredData = groupedData.filter(transaction => {
-      
-    const date = new Date(transaction.date);
-    const transactionMonthYear = date.toISOString().slice(0, 7);
-    const selectedMonthYear = `${selectedDate.year}-${String(selectedDate.monthIndex + 1).padStart(2, '0')}`;
-
-    const isSameMonth = transactionMonthYear === selectedMonthYear;
-
-  
-    const isSameCategory = transaction.category === selectedCategory;
-
-  
-    return isSameMonth && isSameCategory;
-  })
-
-  const sortedData = filteredData.sort((a, b) => b.amount - a.amount).slice(0, 6);
+  const sortedData = groupedData.sort((a, b) => b.amount - a.amount).slice(0, 6);
 
   // console.log("sortedData:", sortedData)
   
