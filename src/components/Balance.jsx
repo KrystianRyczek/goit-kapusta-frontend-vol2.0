@@ -6,25 +6,24 @@ import WelcomeModal from "./WelcomeModal";
 
 export default function Balance() {
 
-  const { balanceShema, balance, setBalance } = useBalance();
+  const { balanceShema, balance, setBalance, getBalance } = useBalance();
 
   const [isWelcomeModalOpen, setWelcomeModalOpen] = useState(false);
   
-  const [formBalance, setFormBalance] = useState({ 'balance': balance})
+  const [formBalance, setFormBalance] = useState({ 'balance': balance })
 
   useEffect(() => {
     console.log("useEffect called, balance:", balance);
-    setFormBalance({ balance: balance})
+    setFormBalance({ balance: balance })
     if (balance === 0) {
       setWelcomeModalOpen(true);
-      
     }
   }, [balance]);
 
   const closeWelcomeModal = () => {
     setWelcomeModalOpen(false);
   };
-console.log('formBalance', formBalance)
+  console.log('formBalance', formBalance)
   return (
     <div className="balance-container">
       <p className="balance-p1">Balance</p>
@@ -32,8 +31,9 @@ console.log('formBalance', formBalance)
         validationSchema={balanceShema}
         initialValues={formBalance}
         onSubmit={(values, actions) => {
-                        //actions.resetForm()
-                        setBalance(values, actions)}}
+          setBalance(values, actions);
+          actions.resetForm({ values: { balance: "" } });
+        }}
       >
         {({ values }) => (
           <Form className="balance-form">
@@ -42,7 +42,7 @@ console.log('formBalance', formBalance)
                 className="balance-input"
                 type="text"
                 name="balance"
-                placeholder="0"
+                placeholder={balance !== undefined ? balance.toString() : "0"}
               />
               {values.balance === 0 && isWelcomeModalOpen && (
                 <div className="welcome-modal-container">
