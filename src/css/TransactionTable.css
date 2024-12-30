@@ -100,7 +100,9 @@
   justify-content: center;
   transition: transform 0.3s ease, filter 0.3s ease;
 }
+
 .transaction-table-delate-btn > img:hover {
+
   transform: scale(1.25);
   color: #ff751d;
 }
