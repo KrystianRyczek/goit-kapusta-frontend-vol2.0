@@ -2,7 +2,7 @@ import '../css/NavBar.css';
 import kapustaLogo from '../images/kapusta-logo.png';
 import { useNavBar } from '../hooks/useNavBar';
 import { ConfCloseModal } from './Modal';
-import { useHome } from '../hooks/useHome';
+import { useBtnGoBack } from '../hooks/useBtnGoBack';
 
 export default function NavBar() {
   const {
@@ -15,7 +15,7 @@ export default function NavBar() {
     modalIsClose,
   } = useNavBar();
 
-  const { navigate } = useHome();
+  const { navigate } = useBtnGoBack();
 
   if (!isLogin) {
     return (
@@ -26,7 +26,7 @@ export default function NavBar() {
   }
 
   const handleLogoClick = () => {
-    navigate('/');
+    navigate('');
   };
 
   return (
