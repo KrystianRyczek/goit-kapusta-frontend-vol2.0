@@ -10,7 +10,7 @@ import { ConfModal } from "./Modal";
 const transactionTableRow = (row, deleteTransaction) => {
   return (
     <div key={uuidv4()} className="transaction-table-row">
-      <p>{row.date}</p>
+      <p>{row.date.slice(0, 10)}</p>
       <p>{row.description}</p>
       <p>{row.category}</p>
       <p>{row.amount}</p>
