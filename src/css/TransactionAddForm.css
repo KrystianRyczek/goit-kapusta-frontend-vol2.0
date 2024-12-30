@@ -1,3 +1,34 @@
+@media (max-width: 767px) {
+
+  .transaction-add-form-data{
+    width: 112px;
+    height: 100%;
+}
+
+.transaction-add-form {
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  margin: 15px;
+  row-gap: 10px;
+  align-items: center;
+}
+
+.transaction-table-head-box {
+  display: flex;
+  column-gap: 5px;
+  justify-content: space-evenly;
+}
+
+.transaction-table-head {
+  margin: none;
+  width: auto;
+}
+
+}
+
 @media (min-width: 768px) and (max-width: 1279px) {
   .transaction-add-form-btn-box {
     width: 289px;
