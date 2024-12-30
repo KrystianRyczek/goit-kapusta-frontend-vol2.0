@@ -1,12 +1,11 @@
 .home-page-bottom-svg-box {
   display: flex;
   gap: 10px;
-  position: fixed;
+  position: absolute;
   bottom: 50px;
   left: 230px;
   flex-direction: row;
 }
-
 
 @media (max-width: 767px) {
   .home-page-logo {
@@ -33,7 +32,6 @@
     letter-spacing: 0.15em;
     text-transform: uppercase;
   }
-
 }
 @media (min-width: 768px) and (max-width: 1279px) {
   .home-page-container {
@@ -52,7 +50,6 @@
     flex-direction: row;
   }
 
-
   .home-page-svg-spot {
     width: 67px;
     height: 14px;
@@ -61,7 +58,6 @@
   }
 
   .home-page-bottom-svg-box > div:nth-child(1) {
-    
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -72,7 +68,7 @@
     display: flex;
     flex-direction: column;
     top: 136px;
-      }
+  }
   .home-page-logo-box {
     height: 526px;
     width: 100%;
