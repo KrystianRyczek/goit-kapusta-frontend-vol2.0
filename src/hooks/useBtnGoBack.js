@@ -7,5 +7,5 @@ export const useBtnGoBack = () => {
     navigate('/transaction/expenses');
   };
 
-  return { handleBack, navigate };
+  return { handleBack };
 };

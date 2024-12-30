@@ -15,7 +15,7 @@ export default function NavBar() {
     modalIsClose,
   } = useNavBar();
 
-  const { navigate } = useBtnGoBack();
+  const { handleBack } = useBtnGoBack();
 
   if (!isLogin) {
     return (
@@ -25,13 +25,9 @@ export default function NavBar() {
     );
   }
 
-  const handleLogoClick = () => {
-    navigate('');
-  };
-
   return (
     <div className="nav-bar-container">
-      <button className="nav-bar-logo-home" onClick={handleLogoClick}>
+      <button className="nav-bar-logo-home" onClick={handleBack}>
         <img className="nav-bar-logo" src={kapustaLogo} alt="Kapusta Logo" />
       </button>
       <div className="nav-bar-box">
