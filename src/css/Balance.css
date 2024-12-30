@@ -1,37 +1,3 @@
-@media (max-width: 767px) {
-  .balance-container {
-    width: 184px;
-    height: 72px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 8px;
-    margin: 32px auto;
-  }
-}
-@media (min-width: 768px) and (max-width: 1279px) {
-  .balance-container {
-    width: 704px;
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-    align-items: center;
-    margin: 0 auto;
-    margin: 40px auto 32px auto;
-  }
-}
-@media (min-width: 1280px) {
-  .balance-container {
-    width: 1034px;
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-    align-items: center;
-    margin: 0 auto;
-    margin: 40px auto 32px auto;
-  }
-}
-
 .balance-p1 {
   width: 48px;
   text-align: center;
@@ -77,4 +43,73 @@
   left: 80%;
   transform: translateX(-50%);
   z-index: 1000;
+}
+
+@media (max-width: 767px) {
+  .balance-container {
+    width: 184px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 8px;
+    margin: 32px auto;
+  }
+
+  .balance-input {
+    width: 140px;
+    border-top-left-radius: 22px;
+    border-bottom-left-radius: 22px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    text-align: right;
+    font-weight: 700;
+    font-size: 12px;
+    padding-right: 20px;
+    border-right: none;
+  }
+
+  .balance-btn {
+    width: 140px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 22px;
+    border-bottom-right-radius: 22px;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 12px;
+    padding-left: 20px;
+}
+
+  .balance-btn:hover {
+    transform: scale(1.05);
+}
+
+  .balance-form {
+    gap: 0;
+}
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+  .balance-container {
+    width: 704px;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    align-items: center;
+    margin: 0 auto;
+    margin: 40px auto 32px auto;
+  }
+}
+
+@media (min-width: 1280px) {
+  .balance-container {
+    width: 1034px;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    align-items: center;
+    margin: 0 auto;
+    margin: 40px auto 32px auto;
+  }
 }
