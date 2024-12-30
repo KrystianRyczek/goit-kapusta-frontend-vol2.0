@@ -9,8 +9,6 @@ const axios = Axios.create({
 export const addUserIncome = createAsyncThunk(
   'addUserIncome/fetchAddUserIncome',
   async ({token , transactionDetails }) => {
-    console.log('addUserIncome transaction', transactionDetails)
-    console.log('addUserIncome token', token)
       axios.defaults.headers.common.Authorization = `Bearer ${token}`;
       const resp = await axios.post('/transaction/income', 
         transactionDetails
@@ -41,7 +39,6 @@ export const getUserIncome = createAsyncThunk(
 export const addUserExpense = createAsyncThunk(
   'addUserExpense/fetchAddUserExpense',
   async ({token , transactionDetails }) => {
-    console.log('addUserExpense transaction', transactionDetails)
       axios.defaults.headers.common.Authorization = `Bearer ${token}`;
       const resp = await axios.post('/transaction/expense', 
         transactionDetails
