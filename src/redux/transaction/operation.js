@@ -107,7 +107,6 @@ export const userTransactionPeriodDate = createAsyncThunk(
     try {
       console.log("Dane przekazane do zapytania:", { monthIndex, year });
       //   console.log("Token użyty do autoryzacji:", token);
-      axios.defaults.headers.common.Authorization =
         axios.defaults.headers.common.Authorization = `Bearer ${encodeURIComponent(
           token
         )}`;

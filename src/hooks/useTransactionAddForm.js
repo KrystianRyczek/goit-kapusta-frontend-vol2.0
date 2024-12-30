@@ -14,7 +14,6 @@ export const useTransactionAddForm = () => {
 
     const useEffectGetCategory = () => {
       useEffect(() => {
-        console.log("useEffect")
         dispatch(userIncomeCategory(token))
         dispatch(userExpenseCategory(token))
       }, []);
@@ -23,7 +22,6 @@ export const useTransactionAddForm = () => {
 
     const useEffectGetTransaction = () => {
       useEffect(() => {
-        console.log("useEffect")
         setSubmit(false)
         dispatch(getUserIncome(token));
         dispatch(getUserExpense(token));

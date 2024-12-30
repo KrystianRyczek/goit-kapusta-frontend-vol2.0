@@ -137,7 +137,6 @@ const storeSlice = createSlice({
         state.isError = null;
         state.incomes = action.payload.incomes;
         state.incomesStat = action.payload.monthStats
-        state.balance = action.payload.newBalance;
       })
       //7.addUserExpense
       .addCase(addUserExpense.fulfilled, (state, action) => {
@@ -153,7 +152,6 @@ const storeSlice = createSlice({
         state.isError = null;
         state.expenses = action.payload.expense;
         state.expenseStat = action.payload.monthStats;
-        state.balance = action.payload.newBalance;
       })
       //9.deleteUserExpense
       .addCase(deleteUserExpense.fulfilled, (state, action) => {
@@ -210,9 +208,10 @@ const storeSlice = createSlice({
           // });
         });
       })
-      //14.getUserBalance
+      //14.setUserBalance
       .addCase(setUserBalance.fulfilled, (state, action) => {
         console.log("getUserBalance", action.payload);
+        state.balance = action.payload.newBalance;
         state.isLoading = false;
         state.isError = null;
       })
