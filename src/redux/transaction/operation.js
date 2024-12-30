@@ -120,8 +120,8 @@ export const userTransactionPeriodDate = createAsyncThunk(
 
 // Update balance
 export const updateBalance = createAsyncThunk(
-  "user/updateBalance",
-  async (balance, { getState, rejectWithValue }) => {
+  'user/updateBalance',
+  async ({ balance }, { getState, rejectWithValue }) => {
     try {
       const state = getState();
       const token = state.store.token;

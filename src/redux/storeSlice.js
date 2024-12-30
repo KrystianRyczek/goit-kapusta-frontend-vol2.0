@@ -122,7 +122,7 @@ const storeSlice = createSlice({
       })
       //5.addUserIncome
       .addCase(addUserIncome.fulfilled, (state, action) => {
-        //console.log("addUserIncome", action.payload.newBalance);
+        console.log('addUserIncome', action.payload.newBalance); // uwaga! ten balance ściągany jest z bazy danych, inny jest w Reduxie i localStorage.
         state.isLoading = false;
         state.isError = null;
         state.balance = action.payload.newBalance;

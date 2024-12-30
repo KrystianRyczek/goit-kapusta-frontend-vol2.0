@@ -1,7 +1,6 @@
 /** @format */
 
 import '../css/TransactionTable.css';
-import { useEffect } from 'react';
 import { useTransactionTable } from '../hooks/useTransactionTable';
 import { v4 as uuidv4 } from 'uuid';
 import delate from '../images/delete-svg.png';
