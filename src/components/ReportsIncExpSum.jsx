@@ -19,21 +19,21 @@ export default function ReportsIncExpSum() {
   const monthName = monthNames[monthIndex];
 
   let monthIncome = 0;
-  if (totalIncomeYear) {
-    const entry = totalIncomeYear.find((item) =>
-      item.hasOwnProperty(monthName)
-    );
-    monthIncome = entry ? entry[monthName] : 0;
-  }
+  // if (totalIncomeYear) {
+  //   const entry = totalIncomeYear.find((item) =>
+  //     item.hasOwnProperty(monthName)
+  //   );
+  //   monthIncome = entry ? entry[monthName] : 0;
+  // }
   // console.log('month income', monthIncome);
 
   let monthExpense = 10;
-  if (totalExpenseYear) {
-    const entry = totalExpenseYear.find((item) =>
-      item.hasOwnProperty(monthName)
-    );
-    monthExpense = entry ? entry[monthName] : 0;
-  }
+  // if (totalExpenseYear) {
+  //   const entry = totalExpenseYear.find((item) =>
+  //     item.hasOwnProperty(monthName)
+  //   );
+  //   monthExpense = entry ? entry[monthName] : 0;
+  // }
   // console.log('month expense', monthExpense);
 
   return (
