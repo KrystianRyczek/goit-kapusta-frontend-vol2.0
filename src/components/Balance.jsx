@@ -2,34 +2,37 @@ import "../css/Balance.css";
 import { Field, Form, Formik, ErrorMessage } from "formik";
 import { useBalance } from "../hooks/useBalance";
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import WelcomeModal from "./WelcomeModal";
-import { setBalance } from "../redux/storeSlice";
-import { updateBalance } from "../redux/transaction/operation";
 
 export default function Balance() {
 
   const { balanceShema, balance, setBalance } = useBalance();
+
   const [isWelcomeModalOpen, setWelcomeModalOpen] = useState(false);
+  
+  const [formBalance, setFormBalance] = useState({ 'balance': balance})
 
   useEffect(() => {
     console.log("useEffect called, balance:", balance);
+    setFormBalance({ balance: balance})
     if (balance === 0) {
       setWelcomeModalOpen(true);
+      
     }
   }, [balance]);
 
   const closeWelcomeModal = () => {
     setWelcomeModalOpen(false);
   };
-
+console.log('formBalance', formBalance)
   return (
     <div className="balance-container">
       <p className="balance-p1">Balance</p>
       <Formik
         validationSchema={balanceShema}
-        initialValues={{ balance: balance}}
+        initialValues={formBalance}
         onSubmit={(values, actions) => {
+                        //actions.resetForm()
                         setBalance(values, actions)}}
       >
         {({ values }) => (
