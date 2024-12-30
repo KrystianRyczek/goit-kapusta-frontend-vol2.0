@@ -21,9 +21,9 @@ export default function TransactionSummary({ activeSheet }) {
       <div className="summary-table-head">
         <p className="summary-table-head-p">SUMMARY</p>
       </div>
-      {samaryData.map((item) => {
+      {/* {samaryData.map((item) => {
         return summaryTableRow(item);
-      })}
+      })} */}
     </div>
   );
 }

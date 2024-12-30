@@ -5,46 +5,50 @@ import { useState, useEffect } from "react";
 import WelcomeModal from "./WelcomeModal";
 
 export default function Balance() {
-
   const { balanceShema, balance, setBalance } = useBalance();
 
   const [isWelcomeModalOpen, setWelcomeModalOpen] = useState(false);
-  
-  const [formBalance, setFormBalance] = useState({ 'balance': balance})
 
   useEffect(() => {
     console.log("useEffect called, balance:", balance);
-    setFormBalance({ balance: balance})
     if (balance === 0) {
       setWelcomeModalOpen(true);
-      
+    } else {
+      setWelcomeModalOpen(false);
     }
   }, [balance]);
 
   const closeWelcomeModal = () => {
     setWelcomeModalOpen(false);
   };
-console.log('formBalance', formBalance)
+
+  const initialValues = { balance };
+
+  console.log("Balance -> initialValues:", initialValues);
+
   return (
     <div className="balance-container">
       <p className="balance-p1">Balance</p>
       <Formik
         validationSchema={balanceShema}
-        initialValues={formBalance}
+        initialValues={initialValues}
+        enableReinitialize
         onSubmit={(values, actions) => {
-                        //actions.resetForm()
-                        setBalance(values, actions)}}
+          //actions.resetForm()
+          setBalance(values, actions);
+        }}
       >
         {({ values }) => (
           <Form className="balance-form">
             <div style={{ position: "relative" }}>
               <Field
                 className="balance-input"
-                type="text"
+                type="number"
                 name="balance"
                 placeholder="0"
               />
-              {values.balance === 0 && isWelcomeModalOpen && (
+              {/* Jeśli balance === 0, pokazujemy modal */}
+              {Number(values.balance) === 0 && isWelcomeModalOpen && (
                 <div className="welcome-modal-container">
                   <WelcomeModal
                     isOpen={isWelcomeModalOpen}
