@@ -20,7 +20,6 @@ export const useSignUp=()=>{
                      "password": values.password
                     }
     dispach(addUser(newUser))
-    console.log(isRegister)
     if(isRegister){
       actions.resetForm()
       navigate("/", {replace: true})

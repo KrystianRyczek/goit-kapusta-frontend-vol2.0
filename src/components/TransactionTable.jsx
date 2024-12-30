@@ -38,7 +38,7 @@ export default function TransactionTable({ activeSheet }) {
   const transactionData = transactionTableData();
 
   useEffect(() => {
-    console.log("Data updated for sheet:", activeSheet);
+    console.log("Data for transaction:", transactionData);
   }, [transactionData]);
 
   return (

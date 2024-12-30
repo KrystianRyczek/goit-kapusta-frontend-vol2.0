@@ -38,12 +38,10 @@ const storeSlice = createSlice({
   reducers: {
     //1.readDataFromLocalStorage
     readDataFromLocalStorage: (state, action) => {
-      console.log("Readed", action.payload);
       state = JSON.parse(localStorage.getItem(`userLocaldata`));
     },
     //2.saveDataToLocalStorage
     saveDataToLocalStorage: (state, action) => {
-      console.log("Saved", action.payload);
       localStorage.setItem(`userLocaldata`, JSON.stringify(state));
     },
     //3.selectedDate
@@ -66,7 +64,7 @@ const storeSlice = createSlice({
       })
       //2.signInUser
       .addCase(signInUser.fulfilled, (state, action) => {
-        console.log("signInUser", action.payload);
+        //console.log("signInUser", action.payload);
         state.isError = null;
         state.isLoading = false;
         state.isLogin = true;
@@ -95,7 +93,7 @@ const storeSlice = createSlice({
       })
       //3.signOutUser
       .addCase(signOutUser.fulfilled, (state, action) => {
-        console.log("signOutUser", action.payload);
+        //console.log("signOutUser", action.payload);
         (state.isLoading = false), (state.isError = null);
         state.isLogin = false;
         state.isDelate = null;
@@ -119,19 +117,20 @@ const storeSlice = createSlice({
       })
       //4.refreshUserToken   not implemented
       .addCase(refreshUserToken.fulfilled, (state, action) => {
-        console.log("refreshUserToken", action.payload);
+        //console.log("refreshUserToken", action.payload);
         state.isLoading = false;
         state.isError = null;
       })
       //5.addUserIncome
       .addCase(addUserIncome.fulfilled, (state, action) => {
+        //console.log("addUserIncome", action.payload.newBalance);
         state.isLoading = false;
         state.isError = null;
         state.balance = action.payload.newBalance;
       })
       //6.getUserIncome
       .addCase(getUserIncome.fulfilled, (state, action) => {
-        console.log("getUserIncome", action.payload);
+        //console.log("getUserIncome", action.payload);
         state.isLoading = false;
         state.isError = null;
         state.incomes = action.payload.incomes;
@@ -139,13 +138,14 @@ const storeSlice = createSlice({
       })
       //7.addUserExpense
       .addCase(addUserExpense.fulfilled, (state, action) => {
+        //console.log("addUserExpense", action.payload.newBalance);
         state.isLoading = false;
         state.isError = null;
         state.balance = action.payload.newBalance;
       })
       //8.getUserExpense
       .addCase(getUserExpense.fulfilled, (state, action) => {
-        console.log("getUserExpense", action.payload);
+        //console.log("getUserExpense", action.payload);
         state.isLoading = false;
         state.isError = null;
         state.expenses = action.payload.expense;
@@ -153,11 +153,11 @@ const storeSlice = createSlice({
       })
       //9.deleteUserExpense
       .addCase(deleteUserExpense.fulfilled, (state, action) => {
-        console.log("deleteUserExpense", action.payload);
+        //console.log("deleteUserExpense", action.payload);
         state.isLoading = false;
         state.isError = null;
         state.isDelate = true;
-        state.balance = action.payload.newBalance;
+        //state.balance = action.payload.newBalance;
       })
       //10.userIncomeCategory
       .addCase(userIncomeCategory.fulfilled, (state, action) => {
@@ -173,14 +173,14 @@ const storeSlice = createSlice({
       })
       //12.userTransactionPeriodDate & selectedDate
       .addCase(userTransactionPeriodDate.fulfilled, (state, action) => {
-        console.log("userTransactionPeriodDate", action.payload);
+        //console.log("userTransactionPeriodDate", action.payload);
         state.isLoading = false;
         state.isError = null;
         state.transactionData = action.payload;
       })
       //13.userDetails
       .addCase(userDetails.fulfilled, (state, action) => {
-        console.log("userDetails", action.payload.balance);
+        //console.log("userDetails", action.payload.balance);
         state.isError = null;
         state.isLoading = false;
         state.isLogin = true;
@@ -206,14 +206,14 @@ const storeSlice = createSlice({
       })
       //14.setUserBalance
       .addCase(setUserBalance.fulfilled, (state, action) => {
-        console.log("getUserBalance", action.payload);
+        //console.log("getUserBalance", action.payload);
         state.balance = action.payload.newBalance;
         state.isLoading = false;
         state.isError = null;
       })
       //15.updateBalance
       .addCase(updateBalance.fulfilled, (state, action) => {
-        console.log("updateBalance FULFILLED:", action.payload);
+        //console.log("updateBalance FULFILLED:", action.payload);
         state.isLoading = false;
         state.isError = null;
         state.balance = action.payload.newBalance;
